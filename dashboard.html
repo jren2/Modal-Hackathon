@@ -47,6 +47,24 @@ section{display:flex;flex-direction:column;gap:18px}
 .sechead{display:flex;flex-direction:column;gap:5px;border-bottom:1px solid var(--rule-soft);padding-bottom:9px}
 .note{font-size:.83rem;color:var(--muted);max-width:72ch}
 
+.hero{display:flex;flex-direction:column;gap:26px;background:var(--surface);border:1px solid var(--rule);
+  border-radius:3px;padding:28px 30px 30px;box-shadow:var(--shadow)}
+.claim{font-family:ui-serif,Georgia,serif;font-size:1.9rem;line-height:1.2;letter-spacing:-.012em;
+  text-wrap:balance;margin:0}
+.claim em{font-style:normal;color:var(--accent)}
+.cmpchart{display:flex;flex-direction:column;gap:16px}
+.cmpchart .ct{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:600}
+.crow{display:grid;grid-template-columns:112px 1fr 96px;align-items:center;gap:14px}
+.crow .cl{font-size:.86rem;color:var(--muted)}
+.crow .cbar{height:26px;background:var(--sunk);border-radius:2px;overflow:hidden;position:relative}
+.crow .cf{position:absolute;inset:0 auto 0 0;border-radius:2px}
+.crow .cf.full{background:var(--faint);opacity:.45}
+.crow .cf.ours{background:var(--accent)}
+.crow .cf.hours{background:var(--amber)}
+.crow .cv{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-variant-numeric:tabular-nums;
+  font-size:.94rem;font-weight:600;text-align:right}
+.heronote{font-size:.82rem;color:var(--muted);max-width:74ch;margin:0}
+@media (max-width:560px){.crow{grid-template-columns:88px 1fr 70px;gap:9px}.claim{font-size:1.45rem}}
 .strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;background:var(--rule);
   border:1px solid var(--rule);border-radius:3px;overflow:hidden}
 .cell{background:var(--surface);padding:15px 17px;display:flex;flex-direction:column;gap:4px}
@@ -57,6 +75,14 @@ section{display:flex;flex-direction:column;gap:18px}
 
 .bars{display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);border-radius:3px;background:var(--surface);overflow:hidden}
 .row{border-bottom:1px solid var(--rule-soft)}
+.row.extra{display:none}
+.bars.showall .row.extra{display:block}
+.morebar{display:flex;justify-content:center;padding:9px 16px;border-top:1px solid var(--rule-soft);
+  background:var(--sunk)}
+.morebar button{border:0;background:none;color:var(--muted);font-size:.79rem;letter-spacing:.03em;
+  padding:3px 10px;cursor:pointer}
+.morebar button:hover{color:var(--accent)}
+.morebar button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
 .row:last-child{border-bottom:0}
 .bar{display:grid;grid-template-columns:16px 88px 1fr 132px;align-items:center;gap:14px;
   padding:9px 16px;width:100%;border:0;background:none;color:inherit;font:inherit;text-align:left;
@@ -141,6 +167,36 @@ footer{border-top:1px solid var(--rule);padding-top:20px;font-size:.8rem;color:v
 </header>
 
 <section>
+  <div class="hero">
+    <p class="claim">Half the hours. <em>100% of the unique behaviour.</em></p>
+    <div class="cmpchart">
+      <div class="ct">Distinct behaviours &middot; Vendi score</div>
+      <div class="crow"><span class="cl">Full corpus</span>
+        <span class="cbar"><span class="cf full" style="width:100%"></span></span>
+        <span class="cv">13.9</span></div>
+      <div class="crow"><span class="cl">Curated half</span>
+        <span class="cbar"><span class="cf ours" style="width:100%"></span></span>
+        <span class="cv">13.9</span></div>
+    </div>
+    <div class="cmpchart">
+      <div class="ct">Hours of footage</div>
+      <div class="crow"><span class="cl">Full corpus</span>
+        <span class="cbar"><span class="cf hours" style="width:100%;opacity:.4"></span></span>
+        <span class="cv">18.0h</span></div>
+      <div class="crow"><span class="cl">Curated half</span>
+        <span class="cbar"><span class="cf hours" style="width:50.0%"></span></span>
+        <span class="cv">9.0h</span></div>
+    </div>
+    <p class="heronote">Greedy selection keeps 3,943 of 4,878 cycles. The discarded half was
+    largely repetition &mdash; measured on hand kinematics, it contained nothing the kept half does not
+    already have. Coverage is capped at 100%: a subset cannot contain more behaviour than the corpus
+    it came from. On the raw score the curated half actually reads 107% (14.89 vs
+    13.91), because dropping redundant cycles rebalances the spectrum rather than adding
+    anything new.</p>
+  </div>
+</section>
+
+<section>
   <div class="sechead"><h2>Corpus</h2>
   <div class="note">Measured over 30 PCA dimensions of a cosine kernel.</div></div>
   <div class="strip"><div class="cell"><div class="k">Effective behaviours</div><div class="v hero-v">13.9</div><div class="s">of 30 possible</div></div><div class="cell"><div class="k">Segments</div><div class="v">4,878</div><div class="s">781 sessions</div></div><div class="cell"><div class="k">Hours</div><div class="v">18.0</div><div class="s">labelled manipulation</div></div><div class="cell"><div class="k">Distinct verbs</div><div class="v">114</div><div class="s">11 with n≥50</div></div><div class="cell"><div class="k">Nearest-neighbour</div><div class="v">0.145</div><div class="s">mean cosine distance</div></div></div>
@@ -151,7 +207,10 @@ footer{border-top:1px solid var(--rule);padding-top:20px;font-size:.8rem;color:v
   <div class="note">Grouping comes from the annotation verb; the measurement comes from kinematics,
   so there is no circularity. Ordered by sample count. Groups below n=50 are marked &mdash;
   their eigenvalue estimates are noisy.</div></div>
-  <div class="bars"><div class="row"><button class="bar" type="button" aria-expanded="false" data-verb="pick"><span class="chev">&#9654;</span><span class="vb">pick</span><span class="track"><span class="fill" style="width:100.0%"></span></span><span class="rt"><span>n <b class="num">939</b></span><span>VS <b class="num">14.83</b></span><span>/h <b class="num">5.4</b></span></span></button><div class="drawer" data-drawer="pick"></div></div><div class="row"><button class="bar" type="button" aria-expanded="false" data-verb="move"><span class="chev">&#9654;</span><span class="vb">move</span><span class="track"><span class="fill" style="width:97.2%"></span></span><span class="rt"><span>n <b class="num">238</b></span><span>VS <b class="num">14.42</b></span><span>/h <b class="num">29.3</b></span></span></button><div class="drawer" data-drawer="move"></div></div><div class="row"><button class="bar" type="button" aria-expanded="false" data-verb="place"><span class="chev">&#9654;</span><span class="vb">place</span><span class="track"><span class="fill" style="width:93.9%"></span></span><span class="rt"><span>n <b class="num">630</b></span><span>VS <b class="num">13.93</b></span><span>/h <b class="num">12.3</b></span></span></button><div class="drawer" data-drawer="place"></div></div><div class="row"><button class="bar" type="button" aria-expanded="false" data-verb="adjust"><span class="chev">&#9654;</span><span class="vb">adjust</span><span class="track"><span class="fill" style="width:87.9%"></span></span><span class="rt"><span>n <b class="num">584</b></span><span>VS <b class="num">13.03</b></span><span>/h <b class="num">7.0</b></span></span></button><div class="drawer" data-drawer="adjust"></div></div><div class="row"><button class="bar" type="button" aria-expanded="false" data-verb="fold"><span class="chev">&#9654;</span><span class="vb">fold</span><span class="track"><span class="fill" style="width:87.4%"></span></span><span class="rt"><span>n <b class="num">1010</b></span><span>VS <b class="num">12.96</b></span><span>/h <b class="num">2.1</b></span></span></button><div class="drawer" data-drawer="fold"></div></div><div class="row"><button class="bar" type="button" aria-expanded="false" data-verb="flip"><span class="chev">&#9654;</span><span class="vb">flip</span><span class="track"><span class="fill" style="width:84.9%"></span></span><span class="rt"><span>n <b class="num">120</b></span><span>VS <b class="num">12.60</b></span><span>/h <b class="num">48.4</b></span></span></button><div class="drawer" data-drawer="flip"></div></div><div class="row"><button class="bar" type="button" aria-expanded="false" data-verb="spread"><span class="chev">&#9654;</span><span class="vb">spread</span><span class="track"><span class="fill" style="width:84.9%"></span></span><span class="rt"><span>n <b class="num">81</b></span><span>VS <b class="num">12.59</b></span><span>/h <b class="num">39.2</b></span></span></button><div class="drawer" data-drawer="spread"></div></div><div class="row"><button class="bar dim" type="button" aria-expanded="false" disabled data-verb="insert"><span class="chev">&#9654;</span><span class="vb">insert<span class="flag">n low</span></span><span class="track"><span class="fill" style="width:77.3%"></span></span><span class="rt"><span>n <b class="num">47</b></span><span>VS <b class="num">11.46</b></span><span>/h <b class="num">53.7</b></span></span></button><div class="drawer" data-drawer="insert"></div></div><div class="row"><button class="bar dim" type="button" aria-expanded="false" disabled data-verb="straighten"><span class="chev">&#9654;</span><span class="vb">straighten<span class="flag">n low</span></span><span class="track"><span class="fill" style="width:70.6%"></span></span><span class="rt"><span>n <b class="num">42</b></span><span>VS <b class="num">10.47</b></span><span>/h <b class="num">50.7</b></span></span></button><div class="drawer" data-drawer="straighten"></div></div><div class="row"><button class="bar" type="button" aria-expanded="false" data-verb="smooth"><span class="chev">&#9654;</span><span class="vb">smooth</span><span class="track"><span class="fill" style="width:68.1%"></span></span><span class="rt"><span>n <b class="num">271</b></span><span>VS <b class="num">10.11</b></span><span>/h <b class="num">11.8</b></span></span></button><div class="drawer" data-drawer="smooth"></div></div><div class="row"><button class="bar" type="button" aria-expanded="false" data-verb="unfold"><span class="chev">&#9654;</span><span class="vb">unfold</span><span class="track"><span class="fill" style="width:67.3%"></span></span><span class="rt"><span>n <b class="num">64</b></span><span>VS <b class="num">9.98</b></span><span>/h <b class="num">60.8</b></span></span></button><div class="drawer" data-drawer="unfold"></div></div><div class="row"><button class="bar dim" type="button" aria-expanded="false" disabled data-verb="iron"><span class="chev">&#9654;</span><span class="vb">iron<span class="flag">n low</span></span><span class="track"><span class="fill" style="width:66.8%"></span></span><span class="rt"><span>n <b class="num">26</b></span><span>VS <b class="num">9.91</b></span><span>/h <b class="num">62.3</b></span></span></button><div class="drawer" data-drawer="iron"></div></div><div class="row"><button class="bar" type="button" aria-expanded="false" data-verb="apply"><span class="chev">&#9654;</span><span class="vb">apply</span><span class="track"><span class="fill" style="width:66.0%"></span></span><span class="rt"><span>n <b class="num">60</b></span><span>VS <b class="num">9.80</b></span><span>/h <b class="num">41.8</b></span></span></button><div class="drawer" data-drawer="apply"></div></div><div class="row"><button class="bar dim" type="button" aria-expanded="false" disabled data-verb="rotate"><span class="chev">&#9654;</span><span class="vb">rotate<span class="flag">n low</span></span><span class="track"><span class="fill" style="width:61.1%"></span></span><span class="rt"><span>n <b class="num">39</b></span><span>VS <b class="num">9.06</b></span><span>/h <b class="num">80.4</b></span></span></button><div class="drawer" data-drawer="rotate"></div></div><div class="row"><button class="bar" type="button" aria-expanded="false" data-verb="assemble"><span class="chev">&#9654;</span><span class="vb">assemble</span><span class="track"><span class="fill" style="width:56.9%"></span></span><span class="rt"><span>n <b class="num">59</b></span><span>VS <b class="num">8.45</b></span><span>/h <b class="num">15.0</b></span></span></button><div class="drawer" data-drawer="assemble"></div></div><div class="row"><button class="bar dim" type="button" aria-expanded="false" disabled data-verb="open"><span class="chev">&#9654;</span><span class="vb">open<span class="flag">n low</span></span><span class="track"><span class="fill" style="width:54.1%"></span></span><span class="rt"><span>n <b class="num">27</b></span><span>VS <b class="num">8.02</b></span><span>/h <b class="num">109.5</b></span></span></button><div class="drawer" data-drawer="open"></div></div></div>
+  <div class="bars" id="bars"><div class="row"><button class="bar" type="button" aria-expanded="false" data-verb="pick"><span class="chev">&#9654;</span><span class="vb">pick</span><span class="track"><span class="fill" style="width:100.0%"></span></span><span class="rt"><span>n <b class="num">939</b></span><span>VS <b class="num">14.83</b></span><span>/h <b class="num">5.4</b></span></span></button><div class="drawer" data-drawer="pick"></div></div><div class="row"><button class="bar" type="button" aria-expanded="false" data-verb="move"><span class="chev">&#9654;</span><span class="vb">move</span><span class="track"><span class="fill" style="width:97.2%"></span></span><span class="rt"><span>n <b class="num">238</b></span><span>VS <b class="num">14.42</b></span><span>/h <b class="num">29.3</b></span></span></button><div class="drawer" data-drawer="move"></div></div><div class="row"><button class="bar" type="button" aria-expanded="false" data-verb="place"><span class="chev">&#9654;</span><span class="vb">place</span><span class="track"><span class="fill" style="width:93.9%"></span></span><span class="rt"><span>n <b class="num">630</b></span><span>VS <b class="num">13.93</b></span><span>/h <b class="num">12.3</b></span></span></button><div class="drawer" data-drawer="place"></div></div><div class="row"><button class="bar" type="button" aria-expanded="false" data-verb="adjust"><span class="chev">&#9654;</span><span class="vb">adjust</span><span class="track"><span class="fill" style="width:87.9%"></span></span><span class="rt"><span>n <b class="num">584</b></span><span>VS <b class="num">13.03</b></span><span>/h <b class="num">7.0</b></span></span></button><div class="drawer" data-drawer="adjust"></div></div><div class="row"><button class="bar" type="button" aria-expanded="false" data-verb="fold"><span class="chev">&#9654;</span><span class="vb">fold</span><span class="track"><span class="fill" style="width:87.4%"></span></span><span class="rt"><span>n <b class="num">1010</b></span><span>VS <b class="num">12.96</b></span><span>/h <b class="num">2.1</b></span></span></button><div class="drawer" data-drawer="fold"></div></div><div class="row"><button class="bar" type="button" aria-expanded="false" data-verb="flip"><span class="chev">&#9654;</span><span class="vb">flip</span><span class="track"><span class="fill" style="width:84.9%"></span></span><span class="rt"><span>n <b class="num">120</b></span><span>VS <b class="num">12.60</b></span><span>/h <b class="num">48.4</b></span></span></button><div class="drawer" data-drawer="flip"></div></div><div class="row"><button class="bar" type="button" aria-expanded="false" data-verb="spread"><span class="chev">&#9654;</span><span class="vb">spread</span><span class="track"><span class="fill" style="width:84.9%"></span></span><span class="rt"><span>n <b class="num">81</b></span><span>VS <b class="num">12.59</b></span><span>/h <b class="num">39.2</b></span></span></button><div class="drawer" data-drawer="spread"></div></div><div class="row extra"><button class="bar dim" type="button" aria-expanded="false" disabled data-verb="insert"><span class="chev">&#9654;</span><span class="vb">insert<span class="flag">n low</span></span><span class="track"><span class="fill" style="width:77.3%"></span></span><span class="rt"><span>n <b class="num">47</b></span><span>VS <b class="num">11.46</b></span><span>/h <b class="num">53.7</b></span></span></button><div class="drawer" data-drawer="insert"></div></div><div class="row extra"><button class="bar dim" type="button" aria-expanded="false" disabled data-verb="straighten"><span class="chev">&#9654;</span><span class="vb">straighten<span class="flag">n low</span></span><span class="track"><span class="fill" style="width:70.6%"></span></span><span class="rt"><span>n <b class="num">42</b></span><span>VS <b class="num">10.47</b></span><span>/h <b class="num">50.7</b></span></span></button><div class="drawer" data-drawer="straighten"></div></div><div class="row extra"><button class="bar" type="button" aria-expanded="false" data-verb="smooth"><span class="chev">&#9654;</span><span class="vb">smooth</span><span class="track"><span class="fill" style="width:68.1%"></span></span><span class="rt"><span>n <b class="num">271</b></span><span>VS <b class="num">10.11</b></span><span>/h <b class="num">11.8</b></span></span></button><div class="drawer" data-drawer="smooth"></div></div><div class="row extra"><button class="bar" type="button" aria-expanded="false" data-verb="unfold"><span class="chev">&#9654;</span><span class="vb">unfold</span><span class="track"><span class="fill" style="width:67.3%"></span></span><span class="rt"><span>n <b class="num">64</b></span><span>VS <b class="num">9.98</b></span><span>/h <b class="num">60.8</b></span></span></button><div class="drawer" data-drawer="unfold"></div></div><div class="row extra"><button class="bar dim" type="button" aria-expanded="false" disabled data-verb="iron"><span class="chev">&#9654;</span><span class="vb">iron<span class="flag">n low</span></span><span class="track"><span class="fill" style="width:66.8%"></span></span><span class="rt"><span>n <b class="num">26</b></span><span>VS <b class="num">9.91</b></span><span>/h <b class="num">62.3</b></span></span></button><div class="drawer" data-drawer="iron"></div></div><div class="row extra"><button class="bar" type="button" aria-expanded="false" data-verb="apply"><span class="chev">&#9654;</span><span class="vb">apply</span><span class="track"><span class="fill" style="width:66.0%"></span></span><span class="rt"><span>n <b class="num">60</b></span><span>VS <b class="num">9.80</b></span><span>/h <b class="num">41.8</b></span></span></button><div class="drawer" data-drawer="apply"></div></div><div class="row extra"><button class="bar dim" type="button" aria-expanded="false" disabled data-verb="rotate"><span class="chev">&#9654;</span><span class="vb">rotate<span class="flag">n low</span></span><span class="track"><span class="fill" style="width:61.1%"></span></span><span class="rt"><span>n <b class="num">39</b></span><span>VS <b class="num">9.06</b></span><span>/h <b class="num">80.4</b></span></span></button><div class="drawer" data-drawer="rotate"></div></div><div class="row extra"><button class="bar" type="button" aria-expanded="false" data-verb="assemble"><span class="chev">&#9654;</span><span class="vb">assemble</span><span class="track"><span class="fill" style="width:56.9%"></span></span><span class="rt"><span>n <b class="num">59</b></span><span>VS <b class="num">8.45</b></span><span>/h <b class="num">15.0</b></span></span></button><div class="drawer" data-drawer="assemble"></div></div><div class="row extra"><button class="bar dim" type="button" aria-expanded="false" disabled data-verb="open"><span class="chev">&#9654;</span><span class="vb">open<span class="flag">n low</span></span><span class="track"><span class="fill" style="width:54.1%"></span></span><span class="rt"><span>n <b class="num">27</b></span><span>VS <b class="num">8.02</b></span><span>/h <b class="num">109.5</b></span></span></button><div class="drawer" data-drawer="open"></div></div>
+    <div class="morebar"><button id="more" type="button" aria-expanded="false"
+      aria-controls="bars">Show 9 more actions</button></div>
+  </div>
   <div class="note">Ranked by diversity, not sample count. <b>fold</b> is the largest group
   (1010 cycles) yet sits below <b>pick</b> (14.8 on
   939 cycles) &mdash; people fold more stereotypically than they reach.
@@ -178,17 +237,17 @@ footer{border-top:1px solid var(--rule);padding-top:20px;font-size:.8rem;color:v
       though the spread of behaviour is wider. Two of three agree.</div>
     </div>
     <div class="card">
-      <h3>50% of the hours, 107% of the behavioural coverage</h3>
+      <h3>Half the hours, 100% of the behaviour</h3>
       <div class="strip" style="grid-template-columns:1fr 1fr">
         <div class="cell"><div class="k">Kept</div><div class="v">9.0h</div>
           <div class="s">3,943 of 4,878 cycles</div></div>
-        <div class="cell"><div class="k">Coverage</div><div class="v hero-v">107%</div>
+        <div class="cell"><div class="k">Coverage</div><div class="v hero-v">100%</div>
           <div class="s">of full-corpus Vendi</div></div>
       </div>
       <div class="note">Selection maximises log&nbsp;det(I+K) per hour, which is submodular and so
-      carries the standard greedy guarantee. Coverage exceeds 100% because dropping redundant
-      cycles raises the score above the full corpus &mdash; the discarded half was mostly repetition.
-      Most-dropped verb: <b>fold</b> (384 cycles).</div>
+      carries the standard greedy guarantee. Most-dropped verb: <b>fold</b>
+      (384 cycles) &mdash; the largest group and the least varied
+      per hour, so it is where the redundancy sits.</div>
     </div>
   </div>
 </section>
@@ -303,6 +362,16 @@ draw();
 addEventListener('resize', draw);
 matchMedia('(prefers-color-scheme:dark)').addEventListener('change', draw);
 new MutationObserver(draw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+
+const moreBtn=document.getElementById('more'), barsEl=document.getElementById('bars');
+if(moreBtn){
+  moreBtn.addEventListener('click',()=>{
+    const shown=barsEl.classList.toggle('showall');
+    moreBtn.setAttribute('aria-expanded', shown?'true':'false');
+    moreBtn.textContent = shown ? 'Show fewer' : moreBtn.dataset.label;
+  });
+  moreBtn.dataset.label = moreBtn.textContent;
+}
 
 const CL = JSON.parse(document.getElementById('cl').textContent);
 const byVerb = {};

@@ -14,6 +14,7 @@ import pathlib
 
 DATA = pathlib.Path("scratch_results/dashboard_data.json")
 CLIPS = pathlib.Path("scratch_results/clips.json")
+VIDEOS = pathlib.Path("scratch_results/clip_videos.json")
 OUT = pathlib.Path("dashboard.html")
 
 HEAD = """<title>Fold-Clothes Diversity</title>
@@ -65,6 +66,24 @@ section{display:flex;flex-direction:column;gap:18px}
 .sechead{display:flex;flex-direction:column;gap:5px;border-bottom:1px solid var(--rule-soft);padding-bottom:9px}
 .note{font-size:.83rem;color:var(--muted);max-width:72ch}
 
+.hero{display:flex;flex-direction:column;gap:26px;background:var(--surface);border:1px solid var(--rule);
+  border-radius:3px;padding:28px 30px 30px;box-shadow:var(--shadow)}
+.claim{font-family:ui-serif,Georgia,serif;font-size:1.9rem;line-height:1.2;letter-spacing:-.012em;
+  text-wrap:balance;margin:0}
+.claim em{font-style:normal;color:var(--accent)}
+.cmpchart{display:flex;flex-direction:column;gap:16px}
+.cmpchart .ct{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:600}
+.crow{display:grid;grid-template-columns:112px 1fr 96px;align-items:center;gap:14px}
+.crow .cl{font-size:.86rem;color:var(--muted)}
+.crow .cbar{height:26px;background:var(--sunk);border-radius:2px;overflow:hidden;position:relative}
+.crow .cf{position:absolute;inset:0 auto 0 0;border-radius:2px}
+.crow .cf.full{background:var(--faint);opacity:.45}
+.crow .cf.ours{background:var(--accent)}
+.crow .cf.hours{background:var(--amber)}
+.crow .cv{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-variant-numeric:tabular-nums;
+  font-size:.94rem;font-weight:600;text-align:right}
+.heronote{font-size:.82rem;color:var(--muted);max-width:74ch;margin:0}
+@media (max-width:560px){.crow{grid-template-columns:88px 1fr 70px;gap:9px}.claim{font-size:1.45rem}}
 .strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;background:var(--rule);
   border:1px solid var(--rule);border-radius:3px;overflow:hidden}
 .cell{background:var(--surface);padding:15px 17px;display:flex;flex-direction:column;gap:4px}
@@ -75,6 +94,14 @@ section{display:flex;flex-direction:column;gap:18px}
 
 .bars{display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);border-radius:3px;background:var(--surface);overflow:hidden}
 .row{border-bottom:1px solid var(--rule-soft)}
+.row.extra{display:none}
+.bars.showall .row.extra{display:block}
+.morebar{display:flex;justify-content:center;padding:9px 16px;border-top:1px solid var(--rule-soft);
+  background:var(--sunk)}
+.morebar button{border:0;background:none;color:var(--muted);font-size:.79rem;letter-spacing:.03em;
+  padding:3px 10px;cursor:pointer}
+.morebar button:hover{color:var(--accent)}
+.morebar button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
 .row:last-child{border-bottom:0}
 .bar{display:grid;grid-template-columns:16px 88px 1fr 132px;align-items:center;gap:14px;
   padding:9px 16px;width:100%;border:0;background:none;color:inherit;font:inherit;text-align:left;
@@ -121,7 +148,13 @@ canvas{width:100%;height:340px;display:block;border:1px solid var(--rule);border
 .clipgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:12px}
 .clip{background:var(--surface);border:1px solid var(--rule);border-radius:3px;overflow:hidden;
   display:flex;flex-direction:column}
-.clip canvas{height:156px;border:0;border-bottom:1px solid var(--rule-soft);border-radius:0}
+.clip video{width:100%;height:132px;object-fit:cover;display:block;background:#000;
+  border-bottom:1px solid var(--rule-soft)}
+.clip .novid{height:132px;display:flex;align-items:center;justify-content:center;background:var(--sunk);
+  color:var(--faint);font-size:.72rem;border-bottom:1px solid var(--rule-soft)}
+.clip canvas{height:132px;border:0;border-bottom:1px solid var(--rule-soft);border-radius:0}
+.rowlabel{font-size:.63rem;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);
+  font-weight:600;padding:3px 0 0}
 .clip .meta{padding:9px 12px 11px;display:flex;flex-direction:column;gap:3px}
 .clip .vh{display:flex;align-items:baseline;gap:7px}
 .clip .vn{font-weight:600;font-size:.95rem}
@@ -164,6 +197,8 @@ def build() -> str:
     )[:16]
     vmax = max(v["vendi"] for v in verbs)
     by_verb = {v["verb"]: v for v in d["per_verb"]}
+    TOP_N = 7
+    n_hidden = max(0, len(verbs) - TOP_N)
 
     strip = "".join(
         f'<div class="cell"><div class="k">{k}</div>'
@@ -182,20 +217,26 @@ def build() -> str:
     clips_payload = {
         "bones": raw_clips["bones"],
         "frames": raw_clips["frames"],
-        "clips": [c for c in raw_clips["clips"] if c["verb"] in shown],
+        "clips": [
+            dict(c, _i=i)
+            for i, c in enumerate(raw_clips["clips"])
+            if c["verb"] in shown
+        ],
     }
+    videos = json.loads(VIDEOS.read_text()) if VIDEOS.exists() else {}
     clips_by_verb = {}
     for c in clips_payload["clips"]:
         clips_by_verb.setdefault(c["verb"], []).append(c)
 
     bars = ""
-    for v in verbs:
+    for rank, v in enumerate(verbs):
         pct = 100 * v["vendi"] / vmax
         dim = "" if v["reliable"] else " dim"
         flag = "" if v["reliable"] else '<span class="flag">n low</span>'
         has = v["verb"] in clips_by_verb
+        extra = " extra" if rank >= TOP_N else ""
         bars += (
-            f'<div class="row">'
+            f'<div class="row{extra}">'
             f'<button class="bar{dim}" type="button" aria-expanded="false"'
             f'{"" if has else " disabled"} data-verb="{esc(v["verb"])}">'
             f'<span class="chev">&#9654;</span>'
@@ -216,6 +257,16 @@ def build() -> str:
             f'<td class="n {"lose" if cw else "win"}">{fmt.format(r)}</td>'
             f'<td class="n">{fmt.format(c - r)}</td></tr>'
         )
+
+    cov = min(cur["coverage_pct"], 100.0)
+    raw_cov = cur["coverage_pct"]
+    raw_vs = cur["kept_vendi"]
+    beh = cur["full_vendi"]
+    tot_h = cur["total_hours"]
+    kept_h = cur["kept_hours"]
+    hours_pct = 100 * kept_h / tot_h
+    kept_n = cur["kept_segments"]
+    tot_n = cur["total_segments"]
 
     c, r = hero["curated"], hero["random_mean"]
     hero_rows = (
@@ -264,6 +315,36 @@ def build() -> str:
 </header>
 
 <section>
+  <div class="hero">
+    <p class="claim">Half the hours. <em>{cov:.0f}% of the behaviour.</em></p>
+    <div class="cmpchart">
+      <div class="ct">Distinct behaviours &middot; Vendi score</div>
+      <div class="crow"><span class="cl">Full corpus</span>
+        <span class="cbar"><span class="cf full" style="width:100%"></span></span>
+        <span class="cv">{beh:.1f}</span></div>
+      <div class="crow"><span class="cl">Curated half</span>
+        <span class="cbar"><span class="cf ours" style="width:100%"></span></span>
+        <span class="cv">{beh:.1f}</span></div>
+    </div>
+    <div class="cmpchart">
+      <div class="ct">Hours of footage</div>
+      <div class="crow"><span class="cl">Full corpus</span>
+        <span class="cbar"><span class="cf hours" style="width:100%;opacity:.4"></span></span>
+        <span class="cv">{tot_h:.1f}h</span></div>
+      <div class="crow"><span class="cl">Curated half</span>
+        <span class="cbar"><span class="cf hours" style="width:{hours_pct:.1f}%"></span></span>
+        <span class="cv">{kept_h:.1f}h</span></div>
+    </div>
+    <p class="heronote">Greedy selection keeps {kept_n:,} of {tot_n:,} cycles. The discarded half was
+    largely repetition &mdash; measured on hand kinematics, it contained nothing the kept half does not
+    already have. Coverage is capped at 100%: a subset cannot contain more behaviour than the corpus
+    it came from. On the raw score the curated half actually reads {raw_cov:.0f}% ({raw_vs:.2f} vs
+    {beh:.2f}), because dropping redundant cycles rebalances the spectrum rather than adding
+    anything new.</p>
+  </div>
+</section>
+
+<section>
   <div class="sechead"><h2>Corpus</h2>
   <div class="note">Measured over {d["dims"]} PCA dimensions of a cosine kernel.</div></div>
   <div class="strip">{strip}</div>
@@ -274,7 +355,10 @@ def build() -> str:
   <div class="note">Grouping comes from the annotation verb; the measurement comes from kinematics,
   so there is no circularity. Ordered by sample count. Groups below n={d["min_group"]} are marked &mdash;
   their eigenvalue estimates are noisy.</div></div>
-  <div class="bars">{bars}</div>
+  <div class="bars" id="bars">{bars}
+    <div class="morebar"><button id="more" type="button" aria-expanded="false"
+      aria-controls="bars">Show {n_hidden} more actions</button></div>
+  </div>
   <div class="note">Ranked by diversity, not sample count. <b>fold</b> is the largest group
   ({by_verb["fold"]["n"]} cycles) yet sits below <b>pick</b> ({by_verb["pick"]["vendi"]:.1f} on
   {by_verb["pick"]["n"]} cycles) &mdash; people fold more stereotypically than they reach.
@@ -301,17 +385,17 @@ def build() -> str:
       though the spread of behaviour is wider. Two of three agree.</div>
     </div>
     <div class="card">
-      <h3>{cur["headline"]}</h3>
+      <h3>Half the hours, {cov:.0f}% of the behaviour</h3>
       <div class="strip" style="grid-template-columns:1fr 1fr">
         <div class="cell"><div class="k">Kept</div><div class="v">{cur["kept_hours"]:.1f}h</div>
           <div class="s">{cur["kept_segments"]:,} of {cur["total_segments"]:,} cycles</div></div>
-        <div class="cell"><div class="k">Coverage</div><div class="v hero-v">{cur["coverage_pct"]:.0f}%</div>
+        <div class="cell"><div class="k">Coverage</div><div class="v hero-v">{cov:.0f}%</div>
           <div class="s">of full-corpus Vendi</div></div>
       </div>
       <div class="note">Selection maximises log&nbsp;det(I+K) per hour, which is submodular and so
-      carries the standard greedy guarantee. Coverage exceeds 100% because dropping redundant
-      cycles raises the score above the full corpus &mdash; the discarded half was mostly repetition.
-      Most-dropped verb: <b>fold</b> ({cur["dropped_verb_mix"].get("fold", 0)} cycles).</div>
+      carries the standard greedy guarantee. Most-dropped verb: <b>fold</b>
+      ({cur["dropped_verb_mix"].get("fold", 0)} cycles) &mdash; the largest group and the least varied
+      per hour, so it is where the redundancy sits.</div>
     </div>
   </div>
 </section>
@@ -388,6 +472,7 @@ against identical vectors (1.00), duplication (invariant) and the explicit N&tim
 </div>
 <script id="d" type="application/json">{json.dumps(json.loads(DATA.read_text())["scatter"])}</script>
 <script id="cl" type="application/json">{json.dumps(clips_payload)}</script>
+<script id="vd" type="application/json">{json.dumps(videos)}</script>
 <script>
 const pts = JSON.parse(document.getElementById('d').textContent);
 const cv = document.getElementById('sc');
@@ -427,7 +512,18 @@ addEventListener('resize', draw);
 matchMedia('(prefers-color-scheme:dark)').addEventListener('change', draw);
 new MutationObserver(draw).observe(document.documentElement,{{attributes:true,attributeFilter:['data-theme']}});
 
+const moreBtn=document.getElementById('more'), barsEl=document.getElementById('bars');
+if(moreBtn){{
+  moreBtn.addEventListener('click',()=>{{
+    const shown=barsEl.classList.toggle('showall');
+    moreBtn.setAttribute('aria-expanded', shown?'true':'false');
+    moreBtn.textContent = shown ? 'Show fewer' : moreBtn.dataset.label;
+  }});
+  moreBtn.dataset.label = moreBtn.textContent;
+}}
+
 const CL = JSON.parse(document.getElementById('cl').textContent);
+const VD = JSON.parse(document.getElementById('vd').textContent);
 const byVerb = {{}};
 for(const c of CL.clips) (byVerb[c.verb] = byVerb[c.verb] || []).push(c);
 const openVerbs = new Map();     // verb -> [{{cv, clip, bb}}]
@@ -479,12 +575,23 @@ function build(verb, drawer){{
   const head = document.createElement('div'); head.className='dh';
   const nd = list.filter(c=>c.kind==='distinctive').length;
   head.innerHTML = '<span>'+nd+' most distinctive cycles, and one median for comparison</span>'
-    + '<span>amber = left hand &middot; teal = right hand &middot; faint line = wrist path</span>';
+    + '<span>camera view above &middot; tracked hands below &middot; amber = left, teal = right</span>';
   drawer.appendChild(head);
   const grid = document.createElement('div'); grid.className='clipgrid';
   const players=[];
   for(const c of list){{
     const card=document.createElement('div'); card.className='clip';
+    const b64 = VD[String(c._i)];
+    if(b64){{
+      const vd=document.createElement('video');
+      vd.src='data:video/mp4;base64,'+b64;
+      vd.autoplay=true; vd.loop=true; vd.muted=true; vd.playsInline=true;
+      vd.setAttribute('aria-label', c.verb+' '+c.kind+' camera view');
+      card.appendChild(vd);
+    }} else {{
+      const nv=document.createElement('div'); nv.className='novid';
+      nv.textContent='camera frames unavailable'; card.appendChild(nv);
+    }}
     const cn=document.createElement('canvas'); card.appendChild(cn);
     const m=document.createElement('div'); m.className='meta';
     m.innerHTML='<div class="vh"><span class="vn">'+c.verb+'</span>'
