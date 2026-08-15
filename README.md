@@ -7,10 +7,7 @@ credentials.
 ## 1. Clone the repositories
 
 ```bash
-git clone https://github.com/<your-org>/<your-modal-repo>.git
 git clone https://github.com/GaTech-RL2/EgoVerse.git
-
-cd <your-modal-repo>
 ```
 
 EgoVerse is needed locally to run `setup_secret.sh`. The Modal container also
