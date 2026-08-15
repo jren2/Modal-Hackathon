@@ -9,9 +9,9 @@ Branches containing ingestion and segmentation, feature engineering, and weight 
 
 <img width="754" height="484" alt="image" src="https://github.com/user-attachments/assets/4612ce62-0086-4ebc-bd4a-141d78b10c9a" />
 
-1. Data Ingestion
+### 1. Data Ingestion
 In order to ingest EgoVerse data, we utilize Modal volumes for increased parallelization and future optimizations in data processing.
-2. Clip Segmentation
+### 2. Clip Segmentation
 We extract complete task attempts from raw EgoVerse episodes while removing setup, resets, and unrelated footage. Segmentation uses three signals:
 
 - Visual task relevance: A VLM classifies sampled RGB frames as TASK, RESET, or IRRELEVANT.
@@ -19,7 +19,7 @@ We extract complete task attempts from raw EgoVerse episodes while removing setu
 - Hand activity: Left/right hand velocity indicates whether active manipulation is occurring.
 
 These signals are combined and temporally smoothed to identify contiguous task attempts.
-3. Feature Engineering
+### 3. Feature Engineering
 Each extracted attempt is represented using features that capture how the task was physically executed:
 
 - Hand Trajectory: Head-relative left/right hand positions over normalized time.
@@ -29,7 +29,7 @@ Each extracted attempt is represented using features that capture how the task w
 - Execution Dynamics: Duration, path length, velocity, angular velocity, and pauses.
 
 These features form an interpretable physical fingerprint used to measure similarity between attempts and identify redundant demonstrations.
-4. Weight Training
+### 4. Weight Training
 Similarity combines the engineered feature groups using configurable weights:
 
 Trajectory: 45%
@@ -38,7 +38,7 @@ Bimanual Coordination: 20%
 Execution Dynamics: 10%
 
 Initial weights are heuristic and can be tuned by testing which combinations best separate clearly different executions while grouping visually redundant attempts. This provides a lightweight optimization layer without requiring a learned model.
-5. Clustering
+### 5. Clustering
 We group physically similar attempts using hierarchical clustering over our weighted similarity scores. A configurable similarity threshold controls how aggressively attempts are grouped. For each cluster, we keep the medoid (most representative attempt) and mark the remaining attempts as redundant, while unique executions naturally remain as singleton clusters.
 
 ## Results
