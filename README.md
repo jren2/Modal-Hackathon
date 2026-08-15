@@ -1,7 +1,7 @@
 # EgoTrim · Behavioral-diversity curation for EgoVerse
 
 EgoTrim is both a data pipeline and interactive demo for inspecting how much
-EgoVerse footage can be removed while retaining the behaviors that matter. The scope of the project is only on folding clothes data but with the intent to scale up to the entire EgoVerse dataset. The current app is hosted at https://jren2--egoverse-segment-browser-web.modal.run/ with a more in depth description of the pipeline below.
+EgoVerse footage can be removed while retaining the behaviors that matter. The scope of the project is only on folding clothes data but with the intent to scale up to the entire EgoVerse dataset. The current app is hosted at https://claude.ai/code/artifact/f81e53f1-88a9-49c9-9318-0e6e8e2d8c61 with a more in depth description of the pipeline below.
 
 Branches containing ingestion and segmentation, feature engineering, and weight tuning and clustering as split across the repo.
 
@@ -44,4 +44,4 @@ We group physically similar attempts using hierarchical clustering over our weig
 ## Results
 Our results show a decrease in redundancy and increase in diversity (as compared to expected diversity in the dataset) as a result of removing segments that are similar
 
-https://claude.ai/code/artifact/f81e53f1-88a9-49c9-9318-0e6e8e2d8c61
+https://jren2--egoverse-segment-browser-web.modal.run/
