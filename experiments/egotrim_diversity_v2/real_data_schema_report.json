@@ -1,0 +1,64 @@
+{
+  "status": "blocked_missing_segment_manifest",
+  "inspection_date": "2026-08-15",
+  "active_modal_workspace": "authenticated personal workspace for user treymangat",
+  "required_volumes": {
+    "egotrim-data": {
+      "exists": true,
+      "root_listing": [],
+      "contains_expected_egoverse_files": false
+    },
+    "egotrim-models": {
+      "exists": true,
+      "root_listing": []
+    }
+  },
+  "separate_observed_source": {
+    "volume": "egoverse-zarrs-v2",
+    "path_pattern": "/episodes/<episode_id>/",
+    "task_name": "fold_clothes",
+    "note": "This volume was inspected read-only and is not substituted for egotrim-data by the Modal runner.",
+    "upload_state": "The root listing changed during inspection, so no final episode count is asserted."
+  },
+  "observed_pose_schema": {
+    "format": "Zarr v3",
+    "root_attributes": [
+      "embodiment=human_bimanual",
+      "task_name=fold_clothes",
+      "fps=30",
+      "total_frames"
+    ],
+    "arrays": {
+      "left.obs_keypoints": "[storage_time, 63] canonical MANO world positions",
+      "right.obs_keypoints": "[storage_time, 63] canonical MANO world positions",
+      "left.obs_wrist_pose": "[storage_time, 7]",
+      "right.obs_wrist_pose": "[storage_time, 7]",
+      "obs_head_pose": "[storage_time, 7]",
+      "obs_rgb_timestamps_ns": "[storage_time]",
+      "annotations": "empty shape [0] in inspected samples",
+      "images.front_1": "embedded JPEG frames, not a source-video path"
+    },
+    "padding": "Storage arrays may exceed total_frames and contain trailing all-zero padding. Consumers must truncate to total_frames.",
+    "requested_joints": {
+      "wrist": "left/right obs_wrist_pose translation",
+      "fingertips": [4, 8, 12, 16, 20],
+      "fingertip_source": "canonical left/right obs_keypoints reshaped to [time,21,3]"
+    }
+  },
+  "coordinate_transform": {
+    "implemented_convention": "point_head[t] = inverse(head_to_world[t]) @ point_world[t]",
+    "pose_vector_interpretation": "[x,y,z,qw,qx,qy,qz]",
+    "evidence": "Official EgoVerse converter convention inspected alongside the volume; volume array metadata alone does not label quaternion ordering or transform direction.",
+    "guardrail": "If a future store differs from this exact schema/convention, loading must fail rather than guess."
+  },
+  "blocking_conditions": [
+    "egotrim-data is empty",
+    "no segmentation CSV, Parquet, JSON, or JSONL manifest was found",
+    "the separately observed annotations arrays do not contain action cycles",
+    "no tracking_valid_frac or confidence/mask array was found",
+    "there are no segment IDs, canonical verbs, or segment timestamps to score"
+  ],
+  "action_required": "Place or expose the real segmented-cycle manifest and its referenced pose stores under the existing egotrim-data volume, preserving episode_id, segment_id, canonical verb, start/end/duration, tracking_valid_frac, and pose references. Do not create a replacement volume. Then run the documented Modal command with those exact paths.",
+  "metrics_produced": false,
+  "reason_no_metrics": "Generating segment or episode metrics without real cycles would fabricate dataset results."
+}

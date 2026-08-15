@@ -1,0 +1,79 @@
+{
+  "budget_frac": 0.4,
+  "clips_root": "/__modal/volumes/vo-UZL6XRNnGfsFjlpmHH9EJN/segments",
+  "created_at_utc": "2026-08-15T20:28:33.985809+00:00",
+  "episode_count": 2,
+  "episode_ids": [
+    "2025-09-20-17-42-51-000000",
+    "2025-09-20-17-47-54-000000"
+  ],
+  "input_adapter": {
+    "adapter": "egoverse_fixed_window_clip_manifests_v1",
+    "clip_count": 188,
+    "episodes": [
+      {
+        "camera": "front_1",
+        "canonical_verb": "fold_clothes",
+        "clip_count": 94,
+        "episode_id": "2025-09-20-17-42-51-000000",
+        "fps": 30.0,
+        "manifest_path": "/__modal/volumes/vo-UZL6XRNnGfsFjlpmHH9EJN/segments/2025-09-20-17-42-51-000000/front_1/manifest.json",
+        "pose_path": "/__modal/volumes/vo-UZL6XRNnGfsFjlpmHH9EJN/episodes/2025-09-20-17-42-51-000000",
+        "task_name": "fold_clothes",
+        "zarr_total_frames": 2808
+      },
+      {
+        "camera": "front_1",
+        "canonical_verb": "fold_clothes",
+        "clip_count": 94,
+        "episode_id": "2025-09-20-17-47-54-000000",
+        "fps": 30.0,
+        "manifest_path": "/__modal/volumes/vo-UZL6XRNnGfsFjlpmHH9EJN/segments/2025-09-20-17-47-54-000000/front_1/manifest.json",
+        "pose_path": "/__modal/volumes/vo-UZL6XRNnGfsFjlpmHH9EJN/episodes/2025-09-20-17-47-54-000000",
+        "task_name": "fold_clothes",
+        "zarr_total_frames": 2815
+      }
+    ],
+    "input_semantics": "Fixed-window model clips; these are not semantic action-cycle annotations.",
+    "manifest_count": 2,
+    "tracking_valid_frac": "Not present in clip manifests; initialized to 1.0 only for preflight and replaced by measured pose validity during feature extraction."
+  },
+  "models_volume": "egotrim-models",
+  "output_path": "/egotrim-models/egotrim-diversity-v2/egoverse_clips_frames_20260815T202822Z",
+  "pose_root": "/__modal/volumes/vo-UZL6XRNnGfsFjlpmHH9EJN/episodes",
+  "run_id": "egoverse_clips_frames_20260815T202822Z",
+  "seed": 42,
+  "segment_columns_observed": [
+    "episode_id",
+    "segment_id",
+    "canonical_verb",
+    "start_time",
+    "end_time",
+    "duration",
+    "start_frame",
+    "end_frame_exclusive",
+    "tracking_valid_frac",
+    "pose_ref",
+    "video_path",
+    "source_data_path"
+  ],
+  "segment_schema": {
+    "duration": "duration",
+    "end_frame_exclusive": "end_frame_exclusive",
+    "end_time": "end_time",
+    "episode_id": "episode_id",
+    "pose_ref": "pose_ref",
+    "segment_id": "segment_id",
+    "source_data": "source_data_path",
+    "start_frame": "start_frame",
+    "start_time": "start_time",
+    "tracking_valid_frac": "tracking_valid_frac",
+    "verb": "canonical_verb",
+    "video_path": "video_path"
+  },
+  "segments": "/egotrim-models/egotrim-diversity-v2/egoverse_clips_frames_20260815T202822Z/inputs/egoverse_clip_segments.csv",
+  "smoke": true,
+  "smoke_episode_limit": 3,
+  "source_volume": "egoverse-zarrs-v2 (read-only mount)",
+  "status": "initialized"
+}

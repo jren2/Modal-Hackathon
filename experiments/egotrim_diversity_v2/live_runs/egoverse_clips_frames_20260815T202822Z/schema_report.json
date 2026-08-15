@@ -1,0 +1,383 @@
+{
+  "execution": "Modal parallel per-episode extraction",
+  "input_adapter": {
+    "adapter": "egoverse_fixed_window_clip_manifests_v1",
+    "clip_count": 188,
+    "episodes": [
+      {
+        "camera": "front_1",
+        "canonical_verb": "fold_clothes",
+        "clip_count": 94,
+        "episode_id": "2025-09-20-17-42-51-000000",
+        "fps": 30.0,
+        "manifest_path": "/__modal/volumes/vo-UZL6XRNnGfsFjlpmHH9EJN/segments/2025-09-20-17-42-51-000000/front_1/manifest.json",
+        "pose_path": "/__modal/volumes/vo-UZL6XRNnGfsFjlpmHH9EJN/episodes/2025-09-20-17-42-51-000000",
+        "task_name": "fold_clothes",
+        "zarr_total_frames": 2808
+      },
+      {
+        "camera": "front_1",
+        "canonical_verb": "fold_clothes",
+        "clip_count": 94,
+        "episode_id": "2025-09-20-17-47-54-000000",
+        "fps": 30.0,
+        "manifest_path": "/__modal/volumes/vo-UZL6XRNnGfsFjlpmHH9EJN/segments/2025-09-20-17-47-54-000000/front_1/manifest.json",
+        "pose_path": "/__modal/volumes/vo-UZL6XRNnGfsFjlpmHH9EJN/episodes/2025-09-20-17-47-54-000000",
+        "task_name": "fold_clothes",
+        "zarr_total_frames": 2815
+      }
+    ],
+    "input_semantics": "Fixed-window model clips; these are not semantic action-cycle annotations.",
+    "manifest_count": 2,
+    "tracking_valid_frac": "Not present in clip manifests; initialized to 1.0 only for preflight and replaced by measured pose validity during feature extraction."
+  },
+  "output_path": "/egotrim-models/egotrim-diversity-v2/egoverse_clips_frames_20260815T202822Z",
+  "pose_examples": [
+    {
+      "attrs": {
+        "embodiment": "human_bimanual",
+        "features": "{'left.obs_ee_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'left.obs_wrist_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'left.obs_aria_keypoints': {'dtype': 'float64', 'shape': [63], 'names': ['dim_0']}, 'left.obs_keypoints': {'dtype': 'float64', 'shape': [63], 'names': ['dim_0']}, 'right.obs_ee_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'right.obs_wrist_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'right.obs_aria_keypoints': {'dtype': 'float64', 'shape': [63], 'names': ['dim_0']}, 'right.obs_keypoints': {'dtype': 'float64', 'shape': [63], 'names': ['dim_0']}, 'obs_head_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'obs_eye_gaze': {'dtype': 'float64', 'shape': [3], 'names': ['dim_0']}, 'obs_rgb_timestamps_ns': {'dtype': 'int64', 'shape': [], 'names': []}, 'images.front_1': {'dtype': 'jpeg', 'shape': [480, 640, 3], 'names': ['height', 'width', 'channel']}, 'annotations': {'dtype': 'json', 'shape': [0], 'names': ['json'], 'format': 'annotation_v1'}}",
+        "fps": "30",
+        "intrinsics": "{'front_1': [[266.50860444, 0.0, 320.0, 0.0], [0.0, 266.50860444, 240.0, 0.0], [0.0, 0.0, 1.0, 0.0]]}",
+        "task_description": "folding clothes",
+        "task_name": "fold_clothes",
+        "total_frames": "2808"
+      },
+      "available_arrays": {
+        "left.obs_aria_keypoints": [
+          2900,
+          63
+        ],
+        "left.obs_ee_pose": [
+          2900,
+          7
+        ],
+        "left.obs_keypoints": [
+          2900,
+          63
+        ],
+        "left.obs_wrist_pose": [
+          2900,
+          7
+        ],
+        "obs_eye_gaze": [
+          2900,
+          3
+        ],
+        "obs_head_pose": [
+          2900,
+          7
+        ],
+        "obs_rgb_timestamps_ns": [
+          2900
+        ],
+        "right.obs_aria_keypoints": [
+          2900,
+          63
+        ],
+        "right.obs_ee_pose": [
+          2900,
+          7
+        ],
+        "right.obs_keypoints": [
+          2900,
+          63
+        ],
+        "right.obs_wrist_pose": [
+          2900,
+          7
+        ]
+      },
+      "coordinate_mode": "per_frame_inverse_head_to_world:obs_head_pose",
+      "head_pose_layout": "xyz_qw_qx_qy_qz_from_EgoVerse_converter_convention",
+      "joint_mapping": {
+        "joint_order": "canonical_MANO",
+        "left": "left.obs_keypoints",
+        "left_wrist": "left.obs_wrist_pose",
+        "right": "right.obs_keypoints",
+        "right_wrist": "right.obs_wrist_pose"
+      },
+      "pose_path": "/__modal/volumes/vo-UZL6XRNnGfsFjlpmHH9EJN/episodes/2025-09-20-17-42-51-000000",
+      "timestamp_mapping": "exact_manifest_frame_bounds:0:30",
+      "timestamp_units": "nanoseconds_normalized_to_episode_seconds"
+    },
+    {
+      "attrs": {
+        "embodiment": "human_bimanual",
+        "features": "{'left.obs_ee_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'left.obs_wrist_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'left.obs_aria_keypoints': {'dtype': 'float64', 'shape': [63], 'names': ['dim_0']}, 'left.obs_keypoints': {'dtype': 'float64', 'shape': [63], 'names': ['dim_0']}, 'right.obs_ee_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'right.obs_wrist_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'right.obs_aria_keypoints': {'dtype': 'float64', 'shape': [63], 'names': ['dim_0']}, 'right.obs_keypoints': {'dtype': 'float64', 'shape': [63], 'names': ['dim_0']}, 'obs_head_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'obs_eye_gaze': {'dtype': 'float64', 'shape': [3], 'names': ['dim_0']}, 'obs_rgb_timestamps_ns': {'dtype': 'int64', 'shape': [], 'names': []}, 'images.front_1': {'dtype': 'jpeg', 'shape': [480, 640, 3], 'names': ['height', 'width', 'channel']}, 'annotations': {'dtype': 'json', 'shape': [0], 'names': ['json'], 'format': 'annotation_v1'}}",
+        "fps": "30",
+        "intrinsics": "{'front_1': [[266.50860444, 0.0, 320.0, 0.0], [0.0, 266.50860444, 240.0, 0.0], [0.0, 0.0, 1.0, 0.0]]}",
+        "task_description": "folding clothes",
+        "task_name": "fold_clothes",
+        "total_frames": "2808"
+      },
+      "available_arrays": {
+        "left.obs_aria_keypoints": [
+          2900,
+          63
+        ],
+        "left.obs_ee_pose": [
+          2900,
+          7
+        ],
+        "left.obs_keypoints": [
+          2900,
+          63
+        ],
+        "left.obs_wrist_pose": [
+          2900,
+          7
+        ],
+        "obs_eye_gaze": [
+          2900,
+          3
+        ],
+        "obs_head_pose": [
+          2900,
+          7
+        ],
+        "obs_rgb_timestamps_ns": [
+          2900
+        ],
+        "right.obs_aria_keypoints": [
+          2900,
+          63
+        ],
+        "right.obs_ee_pose": [
+          2900,
+          7
+        ],
+        "right.obs_keypoints": [
+          2900,
+          63
+        ],
+        "right.obs_wrist_pose": [
+          2900,
+          7
+        ]
+      },
+      "coordinate_mode": "per_frame_inverse_head_to_world:obs_head_pose",
+      "head_pose_layout": "xyz_qw_qx_qy_qz_from_EgoVerse_converter_convention",
+      "joint_mapping": {
+        "joint_order": "canonical_MANO",
+        "left": "left.obs_keypoints",
+        "left_wrist": "left.obs_wrist_pose",
+        "right": "right.obs_keypoints",
+        "right_wrist": "right.obs_wrist_pose"
+      },
+      "pose_path": "/__modal/volumes/vo-UZL6XRNnGfsFjlpmHH9EJN/episodes/2025-09-20-17-42-51-000000",
+      "timestamp_mapping": "exact_manifest_frame_bounds:30:60",
+      "timestamp_units": "nanoseconds_normalized_to_episode_seconds"
+    },
+    {
+      "attrs": {
+        "embodiment": "human_bimanual",
+        "features": "{'left.obs_ee_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'left.obs_wrist_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'left.obs_aria_keypoints': {'dtype': 'float64', 'shape': [63], 'names': ['dim_0']}, 'left.obs_keypoints': {'dtype': 'float64', 'shape': [63], 'names': ['dim_0']}, 'right.obs_ee_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'right.obs_wrist_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'right.obs_aria_keypoints': {'dtype': 'float64', 'shape': [63], 'names': ['dim_0']}, 'right.obs_keypoints': {'dtype': 'float64', 'shape': [63], 'names': ['dim_0']}, 'obs_head_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'obs_eye_gaze': {'dtype': 'float64', 'shape': [3], 'names': ['dim_0']}, 'obs_rgb_timestamps_ns': {'dtype': 'int64', 'shape': [], 'names': []}, 'images.front_1': {'dtype': 'jpeg', 'shape': [480, 640, 3], 'names': ['height', 'width', 'channel']}, 'annotations': {'dtype': 'json', 'shape': [0], 'names': ['json'], 'format': 'annotation_v1'}}",
+        "fps": "30",
+        "intrinsics": "{'front_1': [[266.50860444, 0.0, 320.0, 0.0], [0.0, 266.50860444, 240.0, 0.0], [0.0, 0.0, 1.0, 0.0]]}",
+        "task_description": "folding clothes",
+        "task_name": "fold_clothes",
+        "total_frames": "2808"
+      },
+      "available_arrays": {
+        "left.obs_aria_keypoints": [
+          2900,
+          63
+        ],
+        "left.obs_ee_pose": [
+          2900,
+          7
+        ],
+        "left.obs_keypoints": [
+          2900,
+          63
+        ],
+        "left.obs_wrist_pose": [
+          2900,
+          7
+        ],
+        "obs_eye_gaze": [
+          2900,
+          3
+        ],
+        "obs_head_pose": [
+          2900,
+          7
+        ],
+        "obs_rgb_timestamps_ns": [
+          2900
+        ],
+        "right.obs_aria_keypoints": [
+          2900,
+          63
+        ],
+        "right.obs_ee_pose": [
+          2900,
+          7
+        ],
+        "right.obs_keypoints": [
+          2900,
+          63
+        ],
+        "right.obs_wrist_pose": [
+          2900,
+          7
+        ]
+      },
+      "coordinate_mode": "per_frame_inverse_head_to_world:obs_head_pose",
+      "head_pose_layout": "xyz_qw_qx_qy_qz_from_EgoVerse_converter_convention",
+      "joint_mapping": {
+        "joint_order": "canonical_MANO",
+        "left": "left.obs_keypoints",
+        "left_wrist": "left.obs_wrist_pose",
+        "right": "right.obs_keypoints",
+        "right_wrist": "right.obs_wrist_pose"
+      },
+      "pose_path": "/__modal/volumes/vo-UZL6XRNnGfsFjlpmHH9EJN/episodes/2025-09-20-17-42-51-000000",
+      "timestamp_mapping": "exact_manifest_frame_bounds:60:90",
+      "timestamp_units": "nanoseconds_normalized_to_episode_seconds"
+    },
+    {
+      "attrs": {
+        "embodiment": "human_bimanual",
+        "features": "{'left.obs_ee_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'left.obs_wrist_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'left.obs_aria_keypoints': {'dtype': 'float64', 'shape': [63], 'names': ['dim_0']}, 'left.obs_keypoints': {'dtype': 'float64', 'shape': [63], 'names': ['dim_0']}, 'right.obs_ee_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'right.obs_wrist_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'right.obs_aria_keypoints': {'dtype': 'float64', 'shape': [63], 'names': ['dim_0']}, 'right.obs_keypoints': {'dtype': 'float64', 'shape': [63], 'names': ['dim_0']}, 'obs_head_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'obs_eye_gaze': {'dtype': 'float64', 'shape': [3], 'names': ['dim_0']}, 'obs_rgb_timestamps_ns': {'dtype': 'int64', 'shape': [], 'names': []}, 'images.front_1': {'dtype': 'jpeg', 'shape': [480, 640, 3], 'names': ['height', 'width', 'channel']}, 'annotations': {'dtype': 'json', 'shape': [0], 'names': ['json'], 'format': 'annotation_v1'}}",
+        "fps": "30",
+        "intrinsics": "{'front_1': [[266.50860444, 0.0, 320.0, 0.0], [0.0, 266.50860444, 240.0, 0.0], [0.0, 0.0, 1.0, 0.0]]}",
+        "task_description": "folding clothes",
+        "task_name": "fold_clothes",
+        "total_frames": "2815"
+      },
+      "available_arrays": {
+        "left.obs_aria_keypoints": [
+          2900,
+          63
+        ],
+        "left.obs_ee_pose": [
+          2900,
+          7
+        ],
+        "left.obs_keypoints": [
+          2900,
+          63
+        ],
+        "left.obs_wrist_pose": [
+          2900,
+          7
+        ],
+        "obs_eye_gaze": [
+          2900,
+          3
+        ],
+        "obs_head_pose": [
+          2900,
+          7
+        ],
+        "obs_rgb_timestamps_ns": [
+          2900
+        ],
+        "right.obs_aria_keypoints": [
+          2900,
+          63
+        ],
+        "right.obs_ee_pose": [
+          2900,
+          7
+        ],
+        "right.obs_keypoints": [
+          2900,
+          63
+        ],
+        "right.obs_wrist_pose": [
+          2900,
+          7
+        ]
+      },
+      "coordinate_mode": "per_frame_inverse_head_to_world:obs_head_pose",
+      "head_pose_layout": "xyz_qw_qx_qy_qz_from_EgoVerse_converter_convention",
+      "joint_mapping": {
+        "joint_order": "canonical_MANO",
+        "left": "left.obs_keypoints",
+        "left_wrist": "left.obs_wrist_pose",
+        "right": "right.obs_keypoints",
+        "right_wrist": "right.obs_wrist_pose"
+      },
+      "pose_path": "/__modal/volumes/vo-UZL6XRNnGfsFjlpmHH9EJN/episodes/2025-09-20-17-47-54-000000",
+      "timestamp_mapping": "exact_manifest_frame_bounds:0:30",
+      "timestamp_units": "nanoseconds_normalized_to_episode_seconds"
+    },
+    {
+      "attrs": {
+        "embodiment": "human_bimanual",
+        "features": "{'left.obs_ee_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'left.obs_wrist_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'left.obs_aria_keypoints': {'dtype': 'float64', 'shape': [63], 'names': ['dim_0']}, 'left.obs_keypoints': {'dtype': 'float64', 'shape': [63], 'names': ['dim_0']}, 'right.obs_ee_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'right.obs_wrist_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'right.obs_aria_keypoints': {'dtype': 'float64', 'shape': [63], 'names': ['dim_0']}, 'right.obs_keypoints': {'dtype': 'float64', 'shape': [63], 'names': ['dim_0']}, 'obs_head_pose': {'dtype': 'float64', 'shape': [7], 'names': ['dim_0']}, 'obs_eye_gaze': {'dtype': 'float64', 'shape': [3], 'names': ['dim_0']}, 'obs_rgb_timestamps_ns': {'dtype': 'int64', 'shape': [], 'names': []}, 'images.front_1': {'dtype': 'jpeg', 'shape': [480, 640, 3], 'names': ['height', 'width', 'channel']}, 'annotations': {'dtype': 'json', 'shape': [0], 'names': ['json'], 'format': 'annotation_v1'}}",
+        "fps": "30",
+        "intrinsics": "{'front_1': [[266.50860444, 0.0, 320.0, 0.0], [0.0, 266.50860444, 240.0, 0.0], [0.0, 0.0, 1.0, 0.0]]}",
+        "task_description": "folding clothes",
+        "task_name": "fold_clothes",
+        "total_frames": "2815"
+      },
+      "available_arrays": {
+        "left.obs_aria_keypoints": [
+          2900,
+          63
+        ],
+        "left.obs_ee_pose": [
+          2900,
+          7
+        ],
+        "left.obs_keypoints": [
+          2900,
+          63
+        ],
+        "left.obs_wrist_pose": [
+          2900,
+          7
+        ],
+        "obs_eye_gaze": [
+          2900,
+          3
+        ],
+        "obs_head_pose": [
+          2900,
+          7
+        ],
+        "obs_rgb_timestamps_ns": [
+          2900
+        ],
+        "right.obs_aria_keypoints": [
+          2900,
+          63
+        ],
+        "right.obs_ee_pose": [
+          2900,
+          7
+        ],
+        "right.obs_keypoints": [
+          2900,
+          63
+        ],
+        "right.obs_wrist_pose": [
+          2900,
+          7
+        ]
+      },
+      "coordinate_mode": "per_frame_inverse_head_to_world:obs_head_pose",
+      "head_pose_layout": "xyz_qw_qx_qy_qz_from_EgoVerse_converter_convention",
+      "joint_mapping": {
+        "joint_order": "canonical_MANO",
+        "left": "left.obs_keypoints",
+        "left_wrist": "left.obs_wrist_pose",
+        "right": "right.obs_keypoints",
+        "right_wrist": "right.obs_wrist_pose"
+      },
+      "pose_path": "/__modal/volumes/vo-UZL6XRNnGfsFjlpmHH9EJN/episodes/2025-09-20-17-47-54-000000",
+      "timestamp_mapping": "exact_manifest_frame_bounds:30:60",
+      "timestamp_units": "nanoseconds_normalized_to_episode_seconds"
+    }
+  ],
+  "pose_root": "/__modal/volumes/vo-UZL6XRNnGfsFjlpmHH9EJN/episodes",
+  "rejected_segment_count": 0,
+  "segments_path": "/egotrim-models/egotrim-diversity-v2/egoverse_clips_frames_20260815T202822Z/inputs/egoverse_clip_segments.csv",
+  "source_mount": "egoverse-zarrs-v2 (read-only mount)",
+  "status": "mapped",
+  "valid_segment_count": 188
+}

@@ -1,0 +1,942 @@
+[
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000000"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000001"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000002"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000003"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000004"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000005"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000006"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000007"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000008"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000009"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000010"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000011"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000012"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000013"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000014"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000015"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000016"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000017"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000018"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000019"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000020"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000021"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000022"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000023"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000024"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000025"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000026"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000027"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000028"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000029"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000030"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000031"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000032"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000033"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000034"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000035"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000036"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000037"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000038"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000039"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000040"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000041"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000042"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000043"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000044"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000045"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000046"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000047"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000048"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000049"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000050"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000051"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000052"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000053"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000054"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000055"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000056"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000057"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000058"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000059"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000060"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000061"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000062"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000063"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000064"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000065"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000066"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000067"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000068"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000069"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000070"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000071"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000072"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000073"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000074"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000075"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000076"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000077"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000078"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000079"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000080"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000081"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000082"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000083"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000084"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000085"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000086"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000087"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000088"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000089"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000090"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000091"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000092"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-42-51-000000",
+    "segment_id": "2025-09-20-17-42-51-000000:front_1:000093"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000000"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000001"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000002"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000003"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000004"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000005"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000006"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000007"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000008"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000009"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000010"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000011"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000012"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000013"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000014"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000015"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000016"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000017"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000018"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000019"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000020"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000021"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000022"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000023"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000024"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000025"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000026"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000027"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000028"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000029"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000030"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000031"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000032"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000033"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000034"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000035"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000036"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000037"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000038"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000039"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000040"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000041"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000042"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000043"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000044"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000045"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000046"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000047"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000048"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000049"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000050"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000051"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000052"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000053"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000054"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000055"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000056"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000057"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000058"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000059"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000060"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000061"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000062"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000063"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000064"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000065"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000066"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000067"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000068"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000069"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000070"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000071"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000072"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000073"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000074"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000075"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000076"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000077"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000078"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000079"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000080"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000081"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000082"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000083"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000084"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000085"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000086"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000087"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000088"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000089"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000090"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000091"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000092"
+  },
+  {
+    "canonical_verb": "fold_clothes",
+    "episode_id": "2025-09-20-17-47-54-000000",
+    "segment_id": "2025-09-20-17-47-54-000000:front_1:000093"
+  }
+]

@@ -1,0 +1,3570 @@
+{
+  "baseline_runs": [
+    {
+      "baseline": "uniform_random",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 3.4441766217171375,
+        "shannon_entropy": 1.2366848691405041,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 2,
+          "fold": 1,
+          "pick": 4,
+          "smooth": 5
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": null,
+            "sample_count": 2,
+            "status": "too_few_samples",
+            "vendi": null
+          },
+          "fold": {
+            "bandwidth": null,
+            "sample_count": 1,
+            "status": "too_few_samples",
+            "vendi": null
+          },
+          "pick": {
+            "bandwidth": 2.5870206620511427,
+            "sample_count": 4,
+            "status": "ok",
+            "vendi": 2.404917658608358
+          },
+          "smooth": {
+            "bandwidth": 4.377554768629258,
+            "sample_count": 5,
+            "status": "ok",
+            "vendi": 2.4952742673579724
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.455115774580366,
+        "weighted_sample_count": 9
+      },
+      "facility_coverage": 0.915519702640401,
+      "run_index": 0,
+      "seed": 42,
+      "selected_count": 12,
+      "selected_duration": 13.439999999999998,
+      "selected_indices": [
+        31,
+        19,
+        7,
+        27,
+        26,
+        18,
+        5,
+        22,
+        28,
+        10,
+        24,
+        23
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_07_smooth_1",
+        "synthetic_ep_04_smooth_1",
+        "synthetic_ep_01_smooth_1",
+        "synthetic_ep_06_smooth_1",
+        "synthetic_ep_06_pick_2",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_01_fold_0",
+        "synthetic_ep_05_pick_2",
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_02_pick_2",
+        "synthetic_ep_06_adjust_3",
+        "synthetic_ep_05_smooth_1"
+      ]
+    },
+    {
+      "baseline": "verb_stratified_random",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 4.0,
+        "shannon_entropy": 1.3862943611198906,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 2.3793103834065725,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.2283885190518973
+          },
+          "fold": {
+            "bandwidth": 4.3142153929380775,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.6738699825895405
+          },
+          "pick": {
+            "bandwidth": 3.0668384973630105,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.0602059147839245
+          },
+          "smooth": {
+            "bandwidth": 4.5493044751536935,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.717286601032597
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 1.91993775436449,
+        "weighted_sample_count": 12
+      },
+      "facility_coverage": 0.938142943715093,
+      "run_index": 0,
+      "seed": 42,
+      "selected_count": 12,
+      "selected_duration": 13.350000000000001,
+      "selected_indices": [
+        12,
+        1,
+        22,
+        31,
+        16,
+        9,
+        30,
+        3,
+        8,
+        29,
+        10,
+        19
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_03_adjust_3",
+        "synthetic_ep_00_fold_0",
+        "synthetic_ep_05_pick_2",
+        "synthetic_ep_07_smooth_1",
+        "synthetic_ep_04_adjust_3",
+        "synthetic_ep_02_fold_0",
+        "synthetic_ep_07_pick_2",
+        "synthetic_ep_00_smooth_1",
+        "synthetic_ep_02_adjust_3",
+        "synthetic_ep_07_fold_0",
+        "synthetic_ep_02_pick_2",
+        "synthetic_ep_04_smooth_1"
+      ]
+    },
+    {
+      "baseline": "annotation_only",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 4.0,
+        "shannon_entropy": 1.3862943611198906,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.6426449833903065,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.1052036868777493
+          },
+          "fold": {
+            "bandwidth": 5.167736472547985,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.0355697756090496
+          },
+          "pick": {
+            "bandwidth": 4.0448493496208995,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.639908451271301
+          },
+          "smooth": {
+            "bandwidth": 4.620206383304367,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.9178232750949074
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 1.9246262972132515,
+        "weighted_sample_count": 12
+      },
+      "facility_coverage": 0.9325803189135881,
+      "run_index": 0,
+      "seed": 42,
+      "selected_count": 12,
+      "selected_duration": 13.320000000000002,
+      "selected_indices": [
+        4,
+        5,
+        6,
+        7,
+        16,
+        17,
+        18,
+        19,
+        28,
+        29,
+        30,
+        31
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_01_adjust_3",
+        "synthetic_ep_01_fold_0",
+        "synthetic_ep_01_pick_2",
+        "synthetic_ep_01_smooth_1",
+        "synthetic_ep_04_adjust_3",
+        "synthetic_ep_04_fold_0",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_04_smooth_1",
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_07_fold_0",
+        "synthetic_ep_07_pick_2",
+        "synthetic_ep_07_smooth_1"
+      ]
+    },
+    {
+      "baseline": "cluster_medoid",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 3.8883225944793307,
+        "shannon_entropy": 1.3579778549873243,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 4,
+          "smooth": 2
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.4456355381249073,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.5714229030636244
+          },
+          "fold": {
+            "bandwidth": 2.799333970329962,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.192748653441015
+          },
+          "pick": {
+            "bandwidth": 2.683436679546244,
+            "sample_count": 4,
+            "status": "ok",
+            "vendi": 2.483233534737969
+          },
+          "smooth": {
+            "bandwidth": null,
+            "sample_count": 2,
+            "status": "too_few_samples",
+            "vendi": null
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.422544880846579,
+        "weighted_sample_count": 10
+      },
+      "facility_coverage": 0.9587261812364594,
+      "run_index": 0,
+      "seed": 42,
+      "selected_count": 12,
+      "selected_duration": 13.200000000000001,
+      "selected_indices": [
+        28,
+        12,
+        25,
+        21,
+        26,
+        14,
+        18,
+        3,
+        15,
+        0,
+        1,
+        2
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_03_adjust_3",
+        "synthetic_ep_06_fold_0",
+        "synthetic_ep_05_fold_0",
+        "synthetic_ep_06_pick_2",
+        "synthetic_ep_03_pick_2",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_00_smooth_1",
+        "synthetic_ep_03_smooth_1",
+        "synthetic_ep_00_adjust_3",
+        "synthetic_ep_00_fold_0",
+        "synthetic_ep_00_pick_2"
+      ]
+    },
+    {
+      "baseline": "uniform_random",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 4.0,
+        "shannon_entropy": 1.3862943611198906,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 2.7603625455047456,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.2902754998735797
+          },
+          "fold": {
+            "bandwidth": 4.211312235178143,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.0663484846801894
+          },
+          "pick": {
+            "bandwidth": 3.5718887265377752,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.0237328465870443
+          },
+          "smooth": {
+            "bandwidth": 2.9121426756468445,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.208922893283681
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.1473199311061237,
+        "weighted_sample_count": 12
+      },
+      "facility_coverage": 0.930629221176354,
+      "run_index": 1,
+      "seed": 43,
+      "selected_count": 12,
+      "selected_duration": 13.26,
+      "selected_indices": [
+        13,
+        24,
+        23,
+        5,
+        10,
+        1,
+        18,
+        6,
+        7,
+        16,
+        31,
+        12
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_03_fold_0",
+        "synthetic_ep_06_adjust_3",
+        "synthetic_ep_05_smooth_1",
+        "synthetic_ep_01_fold_0",
+        "synthetic_ep_02_pick_2",
+        "synthetic_ep_00_fold_0",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_01_pick_2",
+        "synthetic_ep_01_smooth_1",
+        "synthetic_ep_04_adjust_3",
+        "synthetic_ep_07_smooth_1",
+        "synthetic_ep_03_adjust_3"
+      ]
+    },
+    {
+      "baseline": "verb_stratified_random",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 4.0,
+        "shannon_entropy": 1.3862943611198906,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.390318039281703,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.1055169056216085
+          },
+          "fold": {
+            "bandwidth": 4.409526236265581,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.6611643254609902
+          },
+          "pick": {
+            "bandwidth": 3.0668384973630105,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.9095954096009948
+          },
+          "smooth": {
+            "bandwidth": 4.16875736086273,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.9528767734105843
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 1.9072883535235448,
+        "weighted_sample_count": 12
+      },
+      "facility_coverage": 0.9435382279502501,
+      "run_index": 1,
+      "seed": 43,
+      "selected_count": 12,
+      "selected_duration": 13.47,
+      "selected_indices": [
+        28,
+        9,
+        6,
+        3,
+        8,
+        21,
+        22,
+        7,
+        20,
+        1,
+        10,
+        23
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_02_fold_0",
+        "synthetic_ep_01_pick_2",
+        "synthetic_ep_00_smooth_1",
+        "synthetic_ep_02_adjust_3",
+        "synthetic_ep_05_fold_0",
+        "synthetic_ep_05_pick_2",
+        "synthetic_ep_01_smooth_1",
+        "synthetic_ep_05_adjust_3",
+        "synthetic_ep_00_fold_0",
+        "synthetic_ep_02_pick_2",
+        "synthetic_ep_05_smooth_1"
+      ]
+    },
+    {
+      "baseline": "annotation_only",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 4.0,
+        "shannon_entropy": 1.3862943611198906,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.6426449833903065,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.1052036868777493
+          },
+          "fold": {
+            "bandwidth": 5.167736472547985,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.0355697756090496
+          },
+          "pick": {
+            "bandwidth": 4.0448493496208995,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.639908451271301
+          },
+          "smooth": {
+            "bandwidth": 4.620206383304367,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.9178232750949074
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 1.9246262972132515,
+        "weighted_sample_count": 12
+      },
+      "facility_coverage": 0.9325803189135881,
+      "run_index": 1,
+      "seed": 43,
+      "selected_count": 12,
+      "selected_duration": 13.320000000000002,
+      "selected_indices": [
+        4,
+        5,
+        6,
+        7,
+        16,
+        17,
+        18,
+        19,
+        28,
+        29,
+        30,
+        31
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_01_adjust_3",
+        "synthetic_ep_01_fold_0",
+        "synthetic_ep_01_pick_2",
+        "synthetic_ep_01_smooth_1",
+        "synthetic_ep_04_adjust_3",
+        "synthetic_ep_04_fold_0",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_04_smooth_1",
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_07_fold_0",
+        "synthetic_ep_07_pick_2",
+        "synthetic_ep_07_smooth_1"
+      ]
+    },
+    {
+      "baseline": "cluster_medoid",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 3.8883225944793307,
+        "shannon_entropy": 1.3579778549873243,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 4,
+          "smooth": 2
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.4456355381249073,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.5714229030636244
+          },
+          "fold": {
+            "bandwidth": 2.799333970329962,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.192748653441015
+          },
+          "pick": {
+            "bandwidth": 2.683436679546244,
+            "sample_count": 4,
+            "status": "ok",
+            "vendi": 2.483233534737969
+          },
+          "smooth": {
+            "bandwidth": null,
+            "sample_count": 2,
+            "status": "too_few_samples",
+            "vendi": null
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.422544880846579,
+        "weighted_sample_count": 10
+      },
+      "facility_coverage": 0.9587261812364594,
+      "run_index": 1,
+      "seed": 43,
+      "selected_count": 12,
+      "selected_duration": 13.200000000000001,
+      "selected_indices": [
+        28,
+        12,
+        25,
+        21,
+        26,
+        14,
+        18,
+        3,
+        15,
+        0,
+        1,
+        2
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_03_adjust_3",
+        "synthetic_ep_06_fold_0",
+        "synthetic_ep_05_fold_0",
+        "synthetic_ep_06_pick_2",
+        "synthetic_ep_03_pick_2",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_00_smooth_1",
+        "synthetic_ep_03_smooth_1",
+        "synthetic_ep_00_adjust_3",
+        "synthetic_ep_00_fold_0",
+        "synthetic_ep_00_pick_2"
+      ]
+    },
+    {
+      "baseline": "uniform_random",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 2.930401147318948,
+        "shannon_entropy": 1.0751393240053735,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 7,
+          "fold": 3,
+          "pick": 1,
+          "smooth": 1
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.8927724174578158,
+            "sample_count": 7,
+            "status": "ok",
+            "vendi": 3.242412295768365
+          },
+          "fold": {
+            "bandwidth": 4.3142153929380775,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.7790777321946176
+          },
+          "pick": {
+            "bandwidth": null,
+            "sample_count": 1,
+            "status": "too_few_samples",
+            "vendi": null
+          },
+          "smooth": {
+            "bandwidth": null,
+            "sample_count": 1,
+            "status": "too_few_samples",
+            "vendi": null
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.803411926696241,
+        "weighted_sample_count": 10
+      },
+      "facility_coverage": 0.905406896929312,
+      "run_index": 2,
+      "seed": 44,
+      "selected_count": 12,
+      "selected_duration": 13.95,
+      "selected_indices": [
+        8,
+        12,
+        16,
+        26,
+        15,
+        24,
+        20,
+        25,
+        0,
+        28,
+        9,
+        29
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_02_adjust_3",
+        "synthetic_ep_03_adjust_3",
+        "synthetic_ep_04_adjust_3",
+        "synthetic_ep_06_pick_2",
+        "synthetic_ep_03_smooth_1",
+        "synthetic_ep_06_adjust_3",
+        "synthetic_ep_05_adjust_3",
+        "synthetic_ep_06_fold_0",
+        "synthetic_ep_00_adjust_3",
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_02_fold_0",
+        "synthetic_ep_07_fold_0"
+      ]
+    },
+    {
+      "baseline": "verb_stratified_random",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 4.0,
+        "shannon_entropy": 1.3862943611198906,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.4056712487535923,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.5812882392635395
+          },
+          "fold": {
+            "bandwidth": 2.880789733233921,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.1810482831403952
+          },
+          "pick": {
+            "bandwidth": 3.269701734236841,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.8983515663908457
+          },
+          "smooth": {
+            "bandwidth": 4.171914901551779,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.9701366385398271
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.157706181833652,
+        "weighted_sample_count": 12
+      },
+      "facility_coverage": 0.9498624614234596,
+      "run_index": 2,
+      "seed": 44,
+      "selected_count": 12,
+      "selected_duration": 13.260000000000002,
+      "selected_indices": [
+        12,
+        1,
+        6,
+        11,
+        0,
+        5,
+        30,
+        15,
+        8,
+        25,
+        22,
+        19
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_03_adjust_3",
+        "synthetic_ep_00_fold_0",
+        "synthetic_ep_01_pick_2",
+        "synthetic_ep_02_smooth_1",
+        "synthetic_ep_00_adjust_3",
+        "synthetic_ep_01_fold_0",
+        "synthetic_ep_07_pick_2",
+        "synthetic_ep_03_smooth_1",
+        "synthetic_ep_02_adjust_3",
+        "synthetic_ep_06_fold_0",
+        "synthetic_ep_05_pick_2",
+        "synthetic_ep_04_smooth_1"
+      ]
+    },
+    {
+      "baseline": "annotation_only",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 4.0,
+        "shannon_entropy": 1.3862943611198906,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.6426449833903065,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.1052036868777493
+          },
+          "fold": {
+            "bandwidth": 5.167736472547985,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.0355697756090496
+          },
+          "pick": {
+            "bandwidth": 4.0448493496208995,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.639908451271301
+          },
+          "smooth": {
+            "bandwidth": 4.620206383304367,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.9178232750949074
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 1.9246262972132515,
+        "weighted_sample_count": 12
+      },
+      "facility_coverage": 0.9325803189135881,
+      "run_index": 2,
+      "seed": 44,
+      "selected_count": 12,
+      "selected_duration": 13.320000000000002,
+      "selected_indices": [
+        4,
+        5,
+        6,
+        7,
+        16,
+        17,
+        18,
+        19,
+        28,
+        29,
+        30,
+        31
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_01_adjust_3",
+        "synthetic_ep_01_fold_0",
+        "synthetic_ep_01_pick_2",
+        "synthetic_ep_01_smooth_1",
+        "synthetic_ep_04_adjust_3",
+        "synthetic_ep_04_fold_0",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_04_smooth_1",
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_07_fold_0",
+        "synthetic_ep_07_pick_2",
+        "synthetic_ep_07_smooth_1"
+      ]
+    },
+    {
+      "baseline": "cluster_medoid",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 3.8883225944793307,
+        "shannon_entropy": 1.3579778549873243,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 4,
+          "smooth": 2
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.4456355381249073,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.5714229030636244
+          },
+          "fold": {
+            "bandwidth": 2.799333970329962,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.192748653441015
+          },
+          "pick": {
+            "bandwidth": 2.683436679546244,
+            "sample_count": 4,
+            "status": "ok",
+            "vendi": 2.483233534737969
+          },
+          "smooth": {
+            "bandwidth": null,
+            "sample_count": 2,
+            "status": "too_few_samples",
+            "vendi": null
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.422544880846579,
+        "weighted_sample_count": 10
+      },
+      "facility_coverage": 0.9587261812364594,
+      "run_index": 2,
+      "seed": 44,
+      "selected_count": 12,
+      "selected_duration": 13.200000000000001,
+      "selected_indices": [
+        28,
+        12,
+        25,
+        21,
+        26,
+        14,
+        18,
+        3,
+        15,
+        0,
+        1,
+        2
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_03_adjust_3",
+        "synthetic_ep_06_fold_0",
+        "synthetic_ep_05_fold_0",
+        "synthetic_ep_06_pick_2",
+        "synthetic_ep_03_pick_2",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_00_smooth_1",
+        "synthetic_ep_03_smooth_1",
+        "synthetic_ep_00_adjust_3",
+        "synthetic_ep_00_fold_0",
+        "synthetic_ep_00_pick_2"
+      ]
+    },
+    {
+      "baseline": "uniform_random",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 3.7010086375868205,
+        "shannon_entropy": 1.308605387253449,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 2,
+          "fold": 3,
+          "pick": 5,
+          "smooth": 2
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": null,
+            "sample_count": 2,
+            "status": "too_few_samples",
+            "vendi": null
+          },
+          "fold": {
+            "bandwidth": 4.211312235178143,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.967297692295979
+          },
+          "pick": {
+            "bandwidth": 2.6452102175589944,
+            "sample_count": 5,
+            "status": "ok",
+            "vendi": 2.6455892003690034
+          },
+          "smooth": {
+            "bandwidth": null,
+            "sample_count": 2,
+            "status": "too_few_samples",
+            "vendi": null
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.391229884841619,
+        "weighted_sample_count": 8
+      },
+      "facility_coverage": 0.9373851842937541,
+      "run_index": 3,
+      "seed": 45,
+      "selected_count": 12,
+      "selected_duration": 13.290000000000001,
+      "selected_indices": [
+        29,
+        2,
+        13,
+        16,
+        6,
+        30,
+        23,
+        11,
+        4,
+        10,
+        14,
+        1
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_07_fold_0",
+        "synthetic_ep_00_pick_2",
+        "synthetic_ep_03_fold_0",
+        "synthetic_ep_04_adjust_3",
+        "synthetic_ep_01_pick_2",
+        "synthetic_ep_07_pick_2",
+        "synthetic_ep_05_smooth_1",
+        "synthetic_ep_02_smooth_1",
+        "synthetic_ep_01_adjust_3",
+        "synthetic_ep_02_pick_2",
+        "synthetic_ep_03_pick_2",
+        "synthetic_ep_00_fold_0"
+      ]
+    },
+    {
+      "baseline": "verb_stratified_random",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 4.0,
+        "shannon_entropy": 1.3862943611198906,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.9389209188760985,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.190749624571897
+          },
+          "fold": {
+            "bandwidth": 2.8766604758374887,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.0487328388123958
+          },
+          "pick": {
+            "bandwidth": 3.5718887265377752,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.023732846587045
+          },
+          "smooth": {
+            "bandwidth": 3.0143885568198234,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.895260142420814
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.0396188630980383,
+        "weighted_sample_count": 12
+      },
+      "facility_coverage": 0.9040368770745386,
+      "run_index": 3,
+      "seed": 45,
+      "selected_count": 12,
+      "selected_duration": 13.379999999999999,
+      "selected_indices": [
+        24,
+        21,
+        10,
+        3,
+        8,
+        29,
+        6,
+        11,
+        20,
+        5,
+        18,
+        27
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_06_adjust_3",
+        "synthetic_ep_05_fold_0",
+        "synthetic_ep_02_pick_2",
+        "synthetic_ep_00_smooth_1",
+        "synthetic_ep_02_adjust_3",
+        "synthetic_ep_07_fold_0",
+        "synthetic_ep_01_pick_2",
+        "synthetic_ep_02_smooth_1",
+        "synthetic_ep_05_adjust_3",
+        "synthetic_ep_01_fold_0",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_06_smooth_1"
+      ]
+    },
+    {
+      "baseline": "annotation_only",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 4.0,
+        "shannon_entropy": 1.3862943611198906,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.6426449833903065,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.1052036868777493
+          },
+          "fold": {
+            "bandwidth": 5.167736472547985,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.0355697756090496
+          },
+          "pick": {
+            "bandwidth": 4.0448493496208995,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.639908451271301
+          },
+          "smooth": {
+            "bandwidth": 4.620206383304367,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.9178232750949074
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 1.9246262972132515,
+        "weighted_sample_count": 12
+      },
+      "facility_coverage": 0.9325803189135881,
+      "run_index": 3,
+      "seed": 45,
+      "selected_count": 12,
+      "selected_duration": 13.320000000000002,
+      "selected_indices": [
+        4,
+        5,
+        6,
+        7,
+        16,
+        17,
+        18,
+        19,
+        28,
+        29,
+        30,
+        31
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_01_adjust_3",
+        "synthetic_ep_01_fold_0",
+        "synthetic_ep_01_pick_2",
+        "synthetic_ep_01_smooth_1",
+        "synthetic_ep_04_adjust_3",
+        "synthetic_ep_04_fold_0",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_04_smooth_1",
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_07_fold_0",
+        "synthetic_ep_07_pick_2",
+        "synthetic_ep_07_smooth_1"
+      ]
+    },
+    {
+      "baseline": "cluster_medoid",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 3.8883225944793307,
+        "shannon_entropy": 1.3579778549873243,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 4,
+          "smooth": 2
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.4456355381249073,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.5714229030636244
+          },
+          "fold": {
+            "bandwidth": 2.799333970329962,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.192748653441015
+          },
+          "pick": {
+            "bandwidth": 2.683436679546244,
+            "sample_count": 4,
+            "status": "ok",
+            "vendi": 2.483233534737969
+          },
+          "smooth": {
+            "bandwidth": null,
+            "sample_count": 2,
+            "status": "too_few_samples",
+            "vendi": null
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.422544880846579,
+        "weighted_sample_count": 10
+      },
+      "facility_coverage": 0.9587261812364594,
+      "run_index": 3,
+      "seed": 45,
+      "selected_count": 12,
+      "selected_duration": 13.200000000000001,
+      "selected_indices": [
+        28,
+        12,
+        25,
+        21,
+        26,
+        14,
+        18,
+        3,
+        15,
+        0,
+        1,
+        2
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_03_adjust_3",
+        "synthetic_ep_06_fold_0",
+        "synthetic_ep_05_fold_0",
+        "synthetic_ep_06_pick_2",
+        "synthetic_ep_03_pick_2",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_00_smooth_1",
+        "synthetic_ep_03_smooth_1",
+        "synthetic_ep_00_adjust_3",
+        "synthetic_ep_00_fold_0",
+        "synthetic_ep_00_pick_2"
+      ]
+    },
+    {
+      "baseline": "uniform_random",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 3.8883225944793316,
+        "shannon_entropy": 1.3579778549873245,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 2,
+          "fold": 4,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": null,
+            "sample_count": 2,
+            "status": "too_few_samples",
+            "vendi": null
+          },
+          "fold": {
+            "bandwidth": 4.401618403637017,
+            "sample_count": 4,
+            "status": "ok",
+            "vendi": 2.4702778478467877
+          },
+          "pick": {
+            "bandwidth": 3.0668384973630105,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.860556233740479
+          },
+          "smooth": {
+            "bandwidth": 4.620206383304367,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.9178232750949071
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.121624991789331,
+        "weighted_sample_count": 10
+      },
+      "facility_coverage": 0.9504001568899747,
+      "run_index": 4,
+      "seed": 46,
+      "selected_count": 12,
+      "selected_duration": 12.870000000000001,
+      "selected_indices": [
+        13,
+        17,
+        10,
+        31,
+        7,
+        29,
+        22,
+        0,
+        1,
+        14,
+        19,
+        24
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_03_fold_0",
+        "synthetic_ep_04_fold_0",
+        "synthetic_ep_02_pick_2",
+        "synthetic_ep_07_smooth_1",
+        "synthetic_ep_01_smooth_1",
+        "synthetic_ep_07_fold_0",
+        "synthetic_ep_05_pick_2",
+        "synthetic_ep_00_adjust_3",
+        "synthetic_ep_00_fold_0",
+        "synthetic_ep_03_pick_2",
+        "synthetic_ep_04_smooth_1",
+        "synthetic_ep_06_adjust_3"
+      ]
+    },
+    {
+      "baseline": "verb_stratified_random",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 4.0,
+        "shannon_entropy": 1.3862943611198906,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.7338910792840025,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.1815667336418993
+          },
+          "fold": {
+            "bandwidth": 2.8766604758374887,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.048732838812396
+          },
+          "pick": {
+            "bandwidth": 2.6452102175589944,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.879114740769122
+          },
+          "smooth": {
+            "bandwidth": 4.62293561525986,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.980131805516026
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.022386529684861,
+        "weighted_sample_count": 12
+      },
+      "facility_coverage": 0.9202433984754842,
+      "run_index": 4,
+      "seed": 46,
+      "selected_count": 12,
+      "selected_duration": 13.2,
+      "selected_indices": [
+        24,
+        5,
+        2,
+        15,
+        16,
+        21,
+        26,
+        31,
+        0,
+        29,
+        14,
+        11
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_06_adjust_3",
+        "synthetic_ep_01_fold_0",
+        "synthetic_ep_00_pick_2",
+        "synthetic_ep_03_smooth_1",
+        "synthetic_ep_04_adjust_3",
+        "synthetic_ep_05_fold_0",
+        "synthetic_ep_06_pick_2",
+        "synthetic_ep_07_smooth_1",
+        "synthetic_ep_00_adjust_3",
+        "synthetic_ep_07_fold_0",
+        "synthetic_ep_03_pick_2",
+        "synthetic_ep_02_smooth_1"
+      ]
+    },
+    {
+      "baseline": "annotation_only",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 4.0,
+        "shannon_entropy": 1.3862943611198906,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.6426449833903065,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.1052036868777493
+          },
+          "fold": {
+            "bandwidth": 5.167736472547985,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.0355697756090496
+          },
+          "pick": {
+            "bandwidth": 4.0448493496208995,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.639908451271301
+          },
+          "smooth": {
+            "bandwidth": 4.620206383304367,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.9178232750949074
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 1.9246262972132515,
+        "weighted_sample_count": 12
+      },
+      "facility_coverage": 0.9325803189135881,
+      "run_index": 4,
+      "seed": 46,
+      "selected_count": 12,
+      "selected_duration": 13.320000000000002,
+      "selected_indices": [
+        4,
+        5,
+        6,
+        7,
+        16,
+        17,
+        18,
+        19,
+        28,
+        29,
+        30,
+        31
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_01_adjust_3",
+        "synthetic_ep_01_fold_0",
+        "synthetic_ep_01_pick_2",
+        "synthetic_ep_01_smooth_1",
+        "synthetic_ep_04_adjust_3",
+        "synthetic_ep_04_fold_0",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_04_smooth_1",
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_07_fold_0",
+        "synthetic_ep_07_pick_2",
+        "synthetic_ep_07_smooth_1"
+      ]
+    },
+    {
+      "baseline": "cluster_medoid",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 3.8883225944793307,
+        "shannon_entropy": 1.3579778549873243,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 4,
+          "smooth": 2
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.4456355381249073,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.5714229030636244
+          },
+          "fold": {
+            "bandwidth": 2.799333970329962,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.192748653441015
+          },
+          "pick": {
+            "bandwidth": 2.683436679546244,
+            "sample_count": 4,
+            "status": "ok",
+            "vendi": 2.483233534737969
+          },
+          "smooth": {
+            "bandwidth": null,
+            "sample_count": 2,
+            "status": "too_few_samples",
+            "vendi": null
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.422544880846579,
+        "weighted_sample_count": 10
+      },
+      "facility_coverage": 0.9587261812364594,
+      "run_index": 4,
+      "seed": 46,
+      "selected_count": 12,
+      "selected_duration": 13.200000000000001,
+      "selected_indices": [
+        28,
+        12,
+        25,
+        21,
+        26,
+        14,
+        18,
+        3,
+        15,
+        0,
+        1,
+        2
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_03_adjust_3",
+        "synthetic_ep_06_fold_0",
+        "synthetic_ep_05_fold_0",
+        "synthetic_ep_06_pick_2",
+        "synthetic_ep_03_pick_2",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_00_smooth_1",
+        "synthetic_ep_03_smooth_1",
+        "synthetic_ep_00_adjust_3",
+        "synthetic_ep_00_fold_0",
+        "synthetic_ep_00_pick_2"
+      ]
+    },
+    {
+      "baseline": "uniform_random",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 3.3162987042769267,
+        "shannon_entropy": 1.1988493129136213,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 6,
+          "fold": 2,
+          "pick": 3,
+          "smooth": 1
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.5680065804537597,
+            "sample_count": 6,
+            "status": "ok",
+            "vendi": 3.2044111586889468
+          },
+          "fold": {
+            "bandwidth": null,
+            "sample_count": 2,
+            "status": "too_few_samples",
+            "vendi": null
+          },
+          "pick": {
+            "bandwidth": 3.280196955674293,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.05657578010846
+          },
+          "smooth": {
+            "bandwidth": null,
+            "sample_count": 1,
+            "status": "too_few_samples",
+            "vendi": null
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.8217993658287845,
+        "weighted_sample_count": 9
+      },
+      "facility_coverage": 0.9120653992045515,
+      "run_index": 5,
+      "seed": 47,
+      "selected_count": 12,
+      "selected_duration": 14.069999999999999,
+      "selected_indices": [
+        6,
+        8,
+        5,
+        1,
+        18,
+        2,
+        23,
+        28,
+        4,
+        24,
+        12,
+        0
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_01_pick_2",
+        "synthetic_ep_02_adjust_3",
+        "synthetic_ep_01_fold_0",
+        "synthetic_ep_00_fold_0",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_00_pick_2",
+        "synthetic_ep_05_smooth_1",
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_01_adjust_3",
+        "synthetic_ep_06_adjust_3",
+        "synthetic_ep_03_adjust_3",
+        "synthetic_ep_00_adjust_3"
+      ]
+    },
+    {
+      "baseline": "verb_stratified_random",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 4.0,
+        "shannon_entropy": 1.3862943611198906,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 0.7023771678210523,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.607792294573287
+          },
+          "fold": {
+            "bandwidth": 2.799333970329962,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.1927486534410146
+          },
+          "pick": {
+            "bandwidth": 2.4906046445560417,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.0218719814879305
+          },
+          "smooth": {
+            "bandwidth": 3.1315473504423372,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.7375855326362346
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.139999615534617,
+        "weighted_sample_count": 12
+      },
+      "facility_coverage": 0.9238559374988851,
+      "run_index": 5,
+      "seed": 47,
+      "selected_count": 12,
+      "selected_duration": 13.290000000000003,
+      "selected_indices": [
+        28,
+        21,
+        18,
+        15,
+        0,
+        25,
+        10,
+        23,
+        8,
+        1,
+        2,
+        31
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_05_fold_0",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_03_smooth_1",
+        "synthetic_ep_00_adjust_3",
+        "synthetic_ep_06_fold_0",
+        "synthetic_ep_02_pick_2",
+        "synthetic_ep_05_smooth_1",
+        "synthetic_ep_02_adjust_3",
+        "synthetic_ep_00_fold_0",
+        "synthetic_ep_00_pick_2",
+        "synthetic_ep_07_smooth_1"
+      ]
+    },
+    {
+      "baseline": "annotation_only",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 4.0,
+        "shannon_entropy": 1.3862943611198906,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.6426449833903065,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.1052036868777493
+          },
+          "fold": {
+            "bandwidth": 5.167736472547985,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.0355697756090496
+          },
+          "pick": {
+            "bandwidth": 4.0448493496208995,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.639908451271301
+          },
+          "smooth": {
+            "bandwidth": 4.620206383304367,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.9178232750949074
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 1.9246262972132515,
+        "weighted_sample_count": 12
+      },
+      "facility_coverage": 0.9325803189135881,
+      "run_index": 5,
+      "seed": 47,
+      "selected_count": 12,
+      "selected_duration": 13.320000000000002,
+      "selected_indices": [
+        4,
+        5,
+        6,
+        7,
+        16,
+        17,
+        18,
+        19,
+        28,
+        29,
+        30,
+        31
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_01_adjust_3",
+        "synthetic_ep_01_fold_0",
+        "synthetic_ep_01_pick_2",
+        "synthetic_ep_01_smooth_1",
+        "synthetic_ep_04_adjust_3",
+        "synthetic_ep_04_fold_0",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_04_smooth_1",
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_07_fold_0",
+        "synthetic_ep_07_pick_2",
+        "synthetic_ep_07_smooth_1"
+      ]
+    },
+    {
+      "baseline": "cluster_medoid",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 3.8883225944793307,
+        "shannon_entropy": 1.3579778549873243,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 4,
+          "smooth": 2
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.4456355381249073,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.5714229030636244
+          },
+          "fold": {
+            "bandwidth": 2.799333970329962,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.192748653441015
+          },
+          "pick": {
+            "bandwidth": 2.683436679546244,
+            "sample_count": 4,
+            "status": "ok",
+            "vendi": 2.483233534737969
+          },
+          "smooth": {
+            "bandwidth": null,
+            "sample_count": 2,
+            "status": "too_few_samples",
+            "vendi": null
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.422544880846579,
+        "weighted_sample_count": 10
+      },
+      "facility_coverage": 0.9587261812364594,
+      "run_index": 5,
+      "seed": 47,
+      "selected_count": 12,
+      "selected_duration": 13.200000000000001,
+      "selected_indices": [
+        28,
+        12,
+        25,
+        21,
+        26,
+        14,
+        18,
+        3,
+        15,
+        0,
+        1,
+        2
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_03_adjust_3",
+        "synthetic_ep_06_fold_0",
+        "synthetic_ep_05_fold_0",
+        "synthetic_ep_06_pick_2",
+        "synthetic_ep_03_pick_2",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_00_smooth_1",
+        "synthetic_ep_03_smooth_1",
+        "synthetic_ep_00_adjust_3",
+        "synthetic_ep_00_fold_0",
+        "synthetic_ep_00_pick_2"
+      ]
+    },
+    {
+      "baseline": "uniform_random",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 3.8883225944793316,
+        "shannon_entropy": 1.3579778549873245,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 2,
+          "fold": 4,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": null,
+            "sample_count": 2,
+            "status": "too_few_samples",
+            "vendi": null
+          },
+          "fold": {
+            "bandwidth": 3.1604375670889606,
+            "sample_count": 4,
+            "status": "ok",
+            "vendi": 2.7822833647190324
+          },
+          "pick": {
+            "bandwidth": 2.3407384133452047,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.073080811655264
+          },
+          "smooth": {
+            "bandwidth": 4.586581485264151,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.138992013445823
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.376535193417939,
+        "weighted_sample_count": 10
+      },
+      "facility_coverage": 0.9418873415843952,
+      "run_index": 6,
+      "seed": 48,
+      "selected_count": 12,
+      "selected_duration": 12.96,
+      "selected_indices": [
+        6,
+        27,
+        11,
+        13,
+        29,
+        20,
+        2,
+        12,
+        21,
+        1,
+        23,
+        10
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_01_pick_2",
+        "synthetic_ep_06_smooth_1",
+        "synthetic_ep_02_smooth_1",
+        "synthetic_ep_03_fold_0",
+        "synthetic_ep_07_fold_0",
+        "synthetic_ep_05_adjust_3",
+        "synthetic_ep_00_pick_2",
+        "synthetic_ep_03_adjust_3",
+        "synthetic_ep_05_fold_0",
+        "synthetic_ep_00_fold_0",
+        "synthetic_ep_05_smooth_1",
+        "synthetic_ep_02_pick_2"
+      ]
+    },
+    {
+      "baseline": "verb_stratified_random",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 4.0,
+        "shannon_entropy": 1.3862943611198906,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 2.3793103834065725,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.228388519051897
+          },
+          "fold": {
+            "bandwidth": 4.211312235178143,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.9672976922959784
+          },
+          "pick": {
+            "bandwidth": 3.2238254272958238,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.143893404246426
+          },
+          "smooth": {
+            "bandwidth": 4.8257925438325975,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.9753726246200998
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.0787380600536003,
+        "weighted_sample_count": 12
+      },
+      "facility_coverage": 0.9461945602775349,
+      "run_index": 6,
+      "seed": 48,
+      "selected_count": 12,
+      "selected_duration": 13.14,
+      "selected_indices": [
+        16,
+        1,
+        14,
+        27,
+        8,
+        13,
+        26,
+        15,
+        12,
+        29,
+        30,
+        31
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_04_adjust_3",
+        "synthetic_ep_00_fold_0",
+        "synthetic_ep_03_pick_2",
+        "synthetic_ep_06_smooth_1",
+        "synthetic_ep_02_adjust_3",
+        "synthetic_ep_03_fold_0",
+        "synthetic_ep_06_pick_2",
+        "synthetic_ep_03_smooth_1",
+        "synthetic_ep_03_adjust_3",
+        "synthetic_ep_07_fold_0",
+        "synthetic_ep_07_pick_2",
+        "synthetic_ep_07_smooth_1"
+      ]
+    },
+    {
+      "baseline": "annotation_only",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 4.0,
+        "shannon_entropy": 1.3862943611198906,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.6426449833903065,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.1052036868777493
+          },
+          "fold": {
+            "bandwidth": 5.167736472547985,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.0355697756090496
+          },
+          "pick": {
+            "bandwidth": 4.0448493496208995,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.639908451271301
+          },
+          "smooth": {
+            "bandwidth": 4.620206383304367,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.9178232750949074
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 1.9246262972132515,
+        "weighted_sample_count": 12
+      },
+      "facility_coverage": 0.9325803189135881,
+      "run_index": 6,
+      "seed": 48,
+      "selected_count": 12,
+      "selected_duration": 13.320000000000002,
+      "selected_indices": [
+        4,
+        5,
+        6,
+        7,
+        16,
+        17,
+        18,
+        19,
+        28,
+        29,
+        30,
+        31
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_01_adjust_3",
+        "synthetic_ep_01_fold_0",
+        "synthetic_ep_01_pick_2",
+        "synthetic_ep_01_smooth_1",
+        "synthetic_ep_04_adjust_3",
+        "synthetic_ep_04_fold_0",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_04_smooth_1",
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_07_fold_0",
+        "synthetic_ep_07_pick_2",
+        "synthetic_ep_07_smooth_1"
+      ]
+    },
+    {
+      "baseline": "cluster_medoid",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 3.8883225944793307,
+        "shannon_entropy": 1.3579778549873243,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 4,
+          "smooth": 2
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.4456355381249073,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.5714229030636244
+          },
+          "fold": {
+            "bandwidth": 2.799333970329962,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.192748653441015
+          },
+          "pick": {
+            "bandwidth": 2.683436679546244,
+            "sample_count": 4,
+            "status": "ok",
+            "vendi": 2.483233534737969
+          },
+          "smooth": {
+            "bandwidth": null,
+            "sample_count": 2,
+            "status": "too_few_samples",
+            "vendi": null
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.422544880846579,
+        "weighted_sample_count": 10
+      },
+      "facility_coverage": 0.9587261812364594,
+      "run_index": 6,
+      "seed": 48,
+      "selected_count": 12,
+      "selected_duration": 13.200000000000001,
+      "selected_indices": [
+        28,
+        12,
+        25,
+        21,
+        26,
+        14,
+        18,
+        3,
+        15,
+        0,
+        1,
+        2
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_03_adjust_3",
+        "synthetic_ep_06_fold_0",
+        "synthetic_ep_05_fold_0",
+        "synthetic_ep_06_pick_2",
+        "synthetic_ep_03_pick_2",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_00_smooth_1",
+        "synthetic_ep_03_smooth_1",
+        "synthetic_ep_00_adjust_3",
+        "synthetic_ep_00_fold_0",
+        "synthetic_ep_00_pick_2"
+      ]
+    },
+    {
+      "baseline": "uniform_random",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 3.444176621717137,
+        "shannon_entropy": 1.236684869140504,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 1,
+          "fold": 4,
+          "pick": 5,
+          "smooth": 2
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": null,
+            "sample_count": 1,
+            "status": "too_few_samples",
+            "vendi": null
+          },
+          "fold": {
+            "bandwidth": 4.482142417252625,
+            "sample_count": 4,
+            "status": "ok",
+            "vendi": 2.303568608239834
+          },
+          "pick": {
+            "bandwidth": 2.6013603100116365,
+            "sample_count": 5,
+            "status": "ok",
+            "vendi": 2.4389531568853844
+          },
+          "smooth": {
+            "bandwidth": null,
+            "sample_count": 2,
+            "status": "too_few_samples",
+            "vendi": null
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.3787822463762507,
+        "weighted_sample_count": 9
+      },
+      "facility_coverage": 0.916930051175764,
+      "run_index": 7,
+      "seed": 49,
+      "selected_count": 12,
+      "selected_duration": 12.989999999999998,
+      "selected_indices": [
+        7,
+        10,
+        18,
+        17,
+        26,
+        21,
+        1,
+        30,
+        4,
+        31,
+        5,
+        22
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_01_smooth_1",
+        "synthetic_ep_02_pick_2",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_04_fold_0",
+        "synthetic_ep_06_pick_2",
+        "synthetic_ep_05_fold_0",
+        "synthetic_ep_00_fold_0",
+        "synthetic_ep_07_pick_2",
+        "synthetic_ep_01_adjust_3",
+        "synthetic_ep_07_smooth_1",
+        "synthetic_ep_01_fold_0",
+        "synthetic_ep_05_pick_2"
+      ]
+    },
+    {
+      "baseline": "verb_stratified_random",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 4.0,
+        "shannon_entropy": 1.3862943611198906,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.9389209188760985,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.1907496245718976
+          },
+          "fold": {
+            "bandwidth": 3.782141058633261,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.05212519556651
+          },
+          "pick": {
+            "bandwidth": 3.5718887265377752,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.005218316802686
+          },
+          "smooth": {
+            "bandwidth": 4.620206383304367,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.9178232750949071
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.0414791030090003,
+        "weighted_sample_count": 12
+      },
+      "facility_coverage": 0.9530910879891434,
+      "run_index": 7,
+      "seed": 49,
+      "selected_count": 12,
+      "selected_duration": 13.38,
+      "selected_indices": [
+        24,
+        29,
+        10,
+        31,
+        20,
+        21,
+        30,
+        7,
+        8,
+        25,
+        6,
+        19
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_06_adjust_3",
+        "synthetic_ep_07_fold_0",
+        "synthetic_ep_02_pick_2",
+        "synthetic_ep_07_smooth_1",
+        "synthetic_ep_05_adjust_3",
+        "synthetic_ep_05_fold_0",
+        "synthetic_ep_07_pick_2",
+        "synthetic_ep_01_smooth_1",
+        "synthetic_ep_02_adjust_3",
+        "synthetic_ep_06_fold_0",
+        "synthetic_ep_01_pick_2",
+        "synthetic_ep_04_smooth_1"
+      ]
+    },
+    {
+      "baseline": "annotation_only",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 4.0,
+        "shannon_entropy": 1.3862943611198906,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.6426449833903065,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.1052036868777493
+          },
+          "fold": {
+            "bandwidth": 5.167736472547985,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.0355697756090496
+          },
+          "pick": {
+            "bandwidth": 4.0448493496208995,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.639908451271301
+          },
+          "smooth": {
+            "bandwidth": 4.620206383304367,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.9178232750949074
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 1.9246262972132515,
+        "weighted_sample_count": 12
+      },
+      "facility_coverage": 0.9325803189135881,
+      "run_index": 7,
+      "seed": 49,
+      "selected_count": 12,
+      "selected_duration": 13.320000000000002,
+      "selected_indices": [
+        4,
+        5,
+        6,
+        7,
+        16,
+        17,
+        18,
+        19,
+        28,
+        29,
+        30,
+        31
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_01_adjust_3",
+        "synthetic_ep_01_fold_0",
+        "synthetic_ep_01_pick_2",
+        "synthetic_ep_01_smooth_1",
+        "synthetic_ep_04_adjust_3",
+        "synthetic_ep_04_fold_0",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_04_smooth_1",
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_07_fold_0",
+        "synthetic_ep_07_pick_2",
+        "synthetic_ep_07_smooth_1"
+      ]
+    },
+    {
+      "baseline": "cluster_medoid",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 3.8883225944793307,
+        "shannon_entropy": 1.3579778549873243,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 4,
+          "smooth": 2
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.4456355381249073,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.5714229030636244
+          },
+          "fold": {
+            "bandwidth": 2.799333970329962,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.192748653441015
+          },
+          "pick": {
+            "bandwidth": 2.683436679546244,
+            "sample_count": 4,
+            "status": "ok",
+            "vendi": 2.483233534737969
+          },
+          "smooth": {
+            "bandwidth": null,
+            "sample_count": 2,
+            "status": "too_few_samples",
+            "vendi": null
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.422544880846579,
+        "weighted_sample_count": 10
+      },
+      "facility_coverage": 0.9587261812364594,
+      "run_index": 7,
+      "seed": 49,
+      "selected_count": 12,
+      "selected_duration": 13.200000000000001,
+      "selected_indices": [
+        28,
+        12,
+        25,
+        21,
+        26,
+        14,
+        18,
+        3,
+        15,
+        0,
+        1,
+        2
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_03_adjust_3",
+        "synthetic_ep_06_fold_0",
+        "synthetic_ep_05_fold_0",
+        "synthetic_ep_06_pick_2",
+        "synthetic_ep_03_pick_2",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_00_smooth_1",
+        "synthetic_ep_03_smooth_1",
+        "synthetic_ep_00_adjust_3",
+        "synthetic_ep_00_fold_0",
+        "synthetic_ep_00_pick_2"
+      ]
+    },
+    {
+      "baseline": "uniform_random",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 3.8883225944793316,
+        "shannon_entropy": 1.3579778549873245,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 2,
+          "fold": 3,
+          "pick": 4,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": null,
+            "sample_count": 2,
+            "status": "too_few_samples",
+            "vendi": null
+          },
+          "fold": {
+            "bandwidth": 5.167736472547985,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.0355697756090496
+          },
+          "pick": {
+            "bandwidth": 2.9597564420643074,
+            "sample_count": 4,
+            "status": "ok",
+            "vendi": 2.249558632203701
+          },
+          "smooth": {
+            "bandwidth": 4.62293561525986,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.6617631928871424
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.009023343430338,
+        "weighted_sample_count": 10
+      },
+      "facility_coverage": 0.9323984213426804,
+      "run_index": 8,
+      "seed": 50,
+      "selected_count": 12,
+      "selected_duration": 13.23,
+      "selected_indices": [
+        5,
+        11,
+        14,
+        26,
+        20,
+        18,
+        17,
+        29,
+        15,
+        23,
+        30,
+        8
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_01_fold_0",
+        "synthetic_ep_02_smooth_1",
+        "synthetic_ep_03_pick_2",
+        "synthetic_ep_06_pick_2",
+        "synthetic_ep_05_adjust_3",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_04_fold_0",
+        "synthetic_ep_07_fold_0",
+        "synthetic_ep_03_smooth_1",
+        "synthetic_ep_05_smooth_1",
+        "synthetic_ep_07_pick_2",
+        "synthetic_ep_02_adjust_3"
+      ]
+    },
+    {
+      "baseline": "verb_stratified_random",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 4.0,
+        "shannon_entropy": 1.3862943611198906,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.5680065804537597,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.6200487555139995
+          },
+          "fold": {
+            "bandwidth": 4.482142417252625,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.8295470226515058
+          },
+          "pick": {
+            "bandwidth": 2.3407384133452047,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.9476185175907073
+          },
+          "smooth": {
+            "bandwidth": 4.620206383304367,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.9416424138813777
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.084714177409398,
+        "weighted_sample_count": 12
+      },
+      "facility_coverage": 0.925341572031761,
+      "run_index": 8,
+      "seed": 50,
+      "selected_count": 12,
+      "selected_duration": 13.229999999999999,
+      "selected_indices": [
+        12,
+        21,
+        6,
+        19,
+        8,
+        17,
+        2,
+        31,
+        24,
+        5,
+        26,
+        27
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_03_adjust_3",
+        "synthetic_ep_05_fold_0",
+        "synthetic_ep_01_pick_2",
+        "synthetic_ep_04_smooth_1",
+        "synthetic_ep_02_adjust_3",
+        "synthetic_ep_04_fold_0",
+        "synthetic_ep_00_pick_2",
+        "synthetic_ep_07_smooth_1",
+        "synthetic_ep_06_adjust_3",
+        "synthetic_ep_01_fold_0",
+        "synthetic_ep_06_pick_2",
+        "synthetic_ep_06_smooth_1"
+      ]
+    },
+    {
+      "baseline": "annotation_only",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 4.0,
+        "shannon_entropy": 1.3862943611198906,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.6426449833903065,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.1052036868777493
+          },
+          "fold": {
+            "bandwidth": 5.167736472547985,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.0355697756090496
+          },
+          "pick": {
+            "bandwidth": 4.0448493496208995,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.639908451271301
+          },
+          "smooth": {
+            "bandwidth": 4.620206383304367,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.9178232750949074
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 1.9246262972132515,
+        "weighted_sample_count": 12
+      },
+      "facility_coverage": 0.9325803189135881,
+      "run_index": 8,
+      "seed": 50,
+      "selected_count": 12,
+      "selected_duration": 13.320000000000002,
+      "selected_indices": [
+        4,
+        5,
+        6,
+        7,
+        16,
+        17,
+        18,
+        19,
+        28,
+        29,
+        30,
+        31
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_01_adjust_3",
+        "synthetic_ep_01_fold_0",
+        "synthetic_ep_01_pick_2",
+        "synthetic_ep_01_smooth_1",
+        "synthetic_ep_04_adjust_3",
+        "synthetic_ep_04_fold_0",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_04_smooth_1",
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_07_fold_0",
+        "synthetic_ep_07_pick_2",
+        "synthetic_ep_07_smooth_1"
+      ]
+    },
+    {
+      "baseline": "cluster_medoid",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 3.8883225944793307,
+        "shannon_entropy": 1.3579778549873243,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 4,
+          "smooth": 2
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.4456355381249073,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.5714229030636244
+          },
+          "fold": {
+            "bandwidth": 2.799333970329962,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.192748653441015
+          },
+          "pick": {
+            "bandwidth": 2.683436679546244,
+            "sample_count": 4,
+            "status": "ok",
+            "vendi": 2.483233534737969
+          },
+          "smooth": {
+            "bandwidth": null,
+            "sample_count": 2,
+            "status": "too_few_samples",
+            "vendi": null
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.422544880846579,
+        "weighted_sample_count": 10
+      },
+      "facility_coverage": 0.9587261812364594,
+      "run_index": 8,
+      "seed": 50,
+      "selected_count": 12,
+      "selected_duration": 13.200000000000001,
+      "selected_indices": [
+        28,
+        12,
+        25,
+        21,
+        26,
+        14,
+        18,
+        3,
+        15,
+        0,
+        1,
+        2
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_03_adjust_3",
+        "synthetic_ep_06_fold_0",
+        "synthetic_ep_05_fold_0",
+        "synthetic_ep_06_pick_2",
+        "synthetic_ep_03_pick_2",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_00_smooth_1",
+        "synthetic_ep_03_smooth_1",
+        "synthetic_ep_00_adjust_3",
+        "synthetic_ep_00_fold_0",
+        "synthetic_ep_00_pick_2"
+      ]
+    },
+    {
+      "baseline": "uniform_random",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 3.8883225944793316,
+        "shannon_entropy": 1.3579778549873245,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 2,
+          "smooth": 4
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.4056712487535923,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.3628750103202516
+          },
+          "fold": {
+            "bandwidth": 4.384178090392712,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.8949995499422663
+          },
+          "pick": {
+            "bandwidth": null,
+            "sample_count": 2,
+            "status": "too_few_samples",
+            "vendi": null
+          },
+          "smooth": {
+            "bandwidth": 4.396060642428074,
+            "sample_count": 4,
+            "status": "ok",
+            "vendi": 2.2682628196727808
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.184667495947868,
+        "weighted_sample_count": 10
+      },
+      "facility_coverage": 0.9493761216482798,
+      "run_index": 9,
+      "seed": 51,
+      "selected_count": 12,
+      "selected_duration": 13.08,
+      "selected_indices": [
+        18,
+        8,
+        13,
+        26,
+        11,
+        19,
+        0,
+        25,
+        31,
+        29,
+        24,
+        15
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_02_adjust_3",
+        "synthetic_ep_03_fold_0",
+        "synthetic_ep_06_pick_2",
+        "synthetic_ep_02_smooth_1",
+        "synthetic_ep_04_smooth_1",
+        "synthetic_ep_00_adjust_3",
+        "synthetic_ep_06_fold_0",
+        "synthetic_ep_07_smooth_1",
+        "synthetic_ep_07_fold_0",
+        "synthetic_ep_06_adjust_3",
+        "synthetic_ep_03_smooth_1"
+      ]
+    },
+    {
+      "baseline": "verb_stratified_random",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 4.0,
+        "shannon_entropy": 1.3862943611198906,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 2.1316199500062263,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.2729549372969546
+          },
+          "fold": {
+            "bandwidth": 4.742622519999999,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.634697652401336
+          },
+          "pick": {
+            "bandwidth": 3.927566238663221,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.9435194181481492
+          },
+          "smooth": {
+            "bandwidth": 4.620206383304367,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.9178232750949067
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 1.9422488207353368,
+        "weighted_sample_count": 12
+      },
+      "facility_coverage": 0.9451851648343649,
+      "run_index": 9,
+      "seed": 51,
+      "selected_count": 12,
+      "selected_duration": 13.260000000000002,
+      "selected_indices": [
+        12,
+        5,
+        30,
+        19,
+        4,
+        9,
+        10,
+        7,
+        0,
+        1,
+        14,
+        31
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_03_adjust_3",
+        "synthetic_ep_01_fold_0",
+        "synthetic_ep_07_pick_2",
+        "synthetic_ep_04_smooth_1",
+        "synthetic_ep_01_adjust_3",
+        "synthetic_ep_02_fold_0",
+        "synthetic_ep_02_pick_2",
+        "synthetic_ep_01_smooth_1",
+        "synthetic_ep_00_adjust_3",
+        "synthetic_ep_00_fold_0",
+        "synthetic_ep_03_pick_2",
+        "synthetic_ep_07_smooth_1"
+      ]
+    },
+    {
+      "baseline": "annotation_only",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 4.0,
+        "shannon_entropy": 1.3862943611198906,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 3,
+          "smooth": 3
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.6426449833903065,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.1052036868777493
+          },
+          "fold": {
+            "bandwidth": 5.167736472547985,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.0355697756090496
+          },
+          "pick": {
+            "bandwidth": 4.0448493496208995,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.639908451271301
+          },
+          "smooth": {
+            "bandwidth": 4.620206383304367,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 1.9178232750949074
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 1.9246262972132515,
+        "weighted_sample_count": 12
+      },
+      "facility_coverage": 0.9325803189135881,
+      "run_index": 9,
+      "seed": 51,
+      "selected_count": 12,
+      "selected_duration": 13.320000000000002,
+      "selected_indices": [
+        4,
+        5,
+        6,
+        7,
+        16,
+        17,
+        18,
+        19,
+        28,
+        29,
+        30,
+        31
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_01_adjust_3",
+        "synthetic_ep_01_fold_0",
+        "synthetic_ep_01_pick_2",
+        "synthetic_ep_01_smooth_1",
+        "synthetic_ep_04_adjust_3",
+        "synthetic_ep_04_fold_0",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_04_smooth_1",
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_07_fold_0",
+        "synthetic_ep_07_pick_2",
+        "synthetic_ep_07_smooth_1"
+      ]
+    },
+    {
+      "baseline": "cluster_medoid",
+      "composition": {
+        "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+        "shannon_effective_number_of_verbs": 3.8883225944793307,
+        "shannon_entropy": 1.3579778549873243,
+        "verb_coverage": 4,
+        "verb_distribution": {
+          "adjust": 3,
+          "fold": 3,
+          "pick": 4,
+          "smooth": 2
+        }
+      },
+      "execution": {
+        "by_verb": {
+          "adjust": {
+            "bandwidth": 1.4456355381249073,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.5714229030636244
+          },
+          "fold": {
+            "bandwidth": 2.799333970329962,
+            "sample_count": 3,
+            "status": "ok",
+            "vendi": 2.192748653441015
+          },
+          "pick": {
+            "bandwidth": 2.683436679546244,
+            "sample_count": 4,
+            "status": "ok",
+            "vendi": 2.483233534737969
+          },
+          "smooth": {
+            "bandwidth": null,
+            "sample_count": 2,
+            "status": "too_few_samples",
+            "vendi": null
+          }
+        },
+        "minimum_reliable_samples": 3,
+        "weighted_mean_execution_vendi": 2.422544880846579,
+        "weighted_sample_count": 10
+      },
+      "facility_coverage": 0.9587261812364594,
+      "run_index": 9,
+      "seed": 51,
+      "selected_count": 12,
+      "selected_duration": 13.200000000000001,
+      "selected_indices": [
+        28,
+        12,
+        25,
+        21,
+        26,
+        14,
+        18,
+        3,
+        15,
+        0,
+        1,
+        2
+      ],
+      "selected_segment_ids": [
+        "synthetic_ep_07_adjust_3",
+        "synthetic_ep_03_adjust_3",
+        "synthetic_ep_06_fold_0",
+        "synthetic_ep_05_fold_0",
+        "synthetic_ep_06_pick_2",
+        "synthetic_ep_03_pick_2",
+        "synthetic_ep_04_pick_2",
+        "synthetic_ep_00_smooth_1",
+        "synthetic_ep_03_smooth_1",
+        "synthetic_ep_00_adjust_3",
+        "synthetic_ep_00_fold_0",
+        "synthetic_ep_00_pick_2"
+      ]
+    }
+  ],
+  "baselines": {
+    "annotation_only": {
+      "facility_coverage": {
+        "mean": 0.9325803189135881,
+        "std": 0.0
+      },
+      "runs": 10,
+      "shannon_effective_verbs": {
+        "mean": 4.0,
+        "std": 0.0
+      },
+      "verb_coverage": {
+        "mean": 4.0,
+        "std": 0.0
+      },
+      "weighted_execution_vendi": {
+        "mean": 1.9246262972132517,
+        "std": 2.220446049250313e-16
+      }
+    },
+    "cluster_medoid": {
+      "facility_coverage": {
+        "mean": 0.9587261812364594,
+        "std": 0.0
+      },
+      "runs": 10,
+      "shannon_effective_verbs": {
+        "mean": 3.888322594479331,
+        "std": 4.440892098500626e-16
+      },
+      "verb_coverage": {
+        "mean": 4.0,
+        "std": 0.0
+      },
+      "weighted_execution_vendi": {
+        "mean": 2.422544880846579,
+        "std": 0.0
+      }
+    },
+    "uniform_random": {
+      "facility_coverage": {
+        "mean": 0.9291998496885467,
+        "std": 0.01514651598720338
+      },
+      "runs": 10,
+      "shannon_effective_verbs": {
+        "mean": 3.63893521105343,
+        "std": 0.3263393649813438
+      },
+      "verb_coverage": {
+        "mean": 4.0,
+        "std": 0.0
+      },
+      "weighted_execution_vendi": {
+        "mean": 2.3689510154014863,
+        "std": 0.25994261724635775
+      }
+    },
+    "verb_stratified_random": {
+      "facility_coverage": {
+        "mean": 0.9349492231270515,
+        "std": 0.015013118480917622
+      },
+      "runs": 10,
+      "shannon_effective_verbs": {
+        "mean": 4.0,
+        "std": 0.0
+      },
+      "verb_coverage": {
+        "mean": 4.0,
+        "std": 0.0
+      },
+      "weighted_execution_vendi": {
+        "mean": 2.0334117459246537,
+        "std": 0.08295528718664487
+      }
+    }
+  },
+  "budget_fraction": 0.4,
+  "claims_guardrail": "Metrics describe measured composition and execution coverage only; no downstream robot-policy improvement is claimed.",
+  "clustering": {
+    "global_audit": {
+      "cluster_count": 4,
+      "interpretation_guardrail": "High alignment indicates the global embedding recovers verbs; lower alignment can indicate cross-verb motion similarity but is not, by itself, a behavioral conclusion.",
+      "normalized_mutual_information_with_verb": 1.0,
+      "verb_purity": 1.0
+    },
+    "per_verb": {
+      "adjust": {
+        "chosen_k": 2,
+        "noise_count": 0,
+        "sample_count": 8,
+        "silhouette": 0.4013155944671552
+      },
+      "fold": {
+        "chosen_k": 2,
+        "noise_count": 0,
+        "sample_count": 8,
+        "silhouette": 0.3863683510230298
+      },
+      "pick": {
+        "chosen_k": 3,
+        "noise_count": 0,
+        "sample_count": 8,
+        "silhouette": 0.5330012140273119
+      },
+      "smooth": {
+        "chosen_k": 2,
+        "noise_count": 0,
+        "sample_count": 8,
+        "silhouette": 0.43777598751056335
+      }
+    }
+  },
+  "composition_diversity": {
+    "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+    "shannon_effective_number_of_verbs": 4.0,
+    "shannon_entropy": 1.3862943611198906,
+    "verb_coverage": 4,
+    "verb_distribution": {
+      "adjust": 8,
+      "fold": 8,
+      "pick": 8,
+      "smooth": 8
+    }
+  },
+  "coverage_curve": [
+    {
+      "budget_frac": 0.1,
+      "facility_coverage": 0.8297215719027804,
+      "is_primary": false,
+      "method": "egotrim"
+    },
+    {
+      "budget_frac": 0.1,
+      "facility_coverage": 0.7460306585222527,
+      "is_primary": false,
+      "method": "uniform_random_mean"
+    },
+    {
+      "budget_frac": 0.2,
+      "facility_coverage": 0.9260956818643942,
+      "is_primary": false,
+      "method": "egotrim"
+    },
+    {
+      "budget_frac": 0.2,
+      "facility_coverage": 0.838968501272291,
+      "is_primary": false,
+      "method": "uniform_random_mean"
+    },
+    {
+      "budget_frac": 0.3,
+      "facility_coverage": 0.9512914178177787,
+      "is_primary": false,
+      "method": "egotrim"
+    },
+    {
+      "budget_frac": 0.3,
+      "facility_coverage": 0.8990648331450105,
+      "is_primary": false,
+      "method": "uniform_random_mean"
+    },
+    {
+      "budget_frac": 0.4,
+      "facility_coverage": 0.9661712806653475,
+      "is_primary": true,
+      "method": "egotrim"
+    },
+    {
+      "budget_frac": 0.4,
+      "facility_coverage": 0.9274119790929675,
+      "is_primary": true,
+      "method": "uniform_random_mean"
+    },
+    {
+      "budget_frac": 0.6,
+      "facility_coverage": 0.9887603775637472,
+      "is_primary": false,
+      "method": "egotrim"
+    },
+    {
+      "budget_frac": 0.6,
+      "facility_coverage": 0.9661878755202981,
+      "is_primary": false,
+      "method": "uniform_random_mean"
+    },
+    {
+      "budget_frac": 0.8,
+      "facility_coverage": 0.9962723453671816,
+      "is_primary": false,
+      "method": "egotrim"
+    },
+    {
+      "budget_frac": 0.8,
+      "facility_coverage": 0.9863705996216081,
+      "is_primary": false,
+      "method": "uniform_random_mean"
+    },
+    {
+      "budget_frac": 1.0,
+      "facility_coverage": 1.0,
+      "is_primary": false,
+      "method": "egotrim"
+    },
+    {
+      "budget_frac": 1.0,
+      "facility_coverage": 1.0,
+      "is_primary": false,
+      "method": "uniform_random_mean"
+    }
+  ],
+  "curation": {
+    "count_budget": 12,
+    "duration_budget": 14.160000000000004,
+    "eligible_populated_verbs": [
+      "adjust",
+      "fold",
+      "pick",
+      "smooth"
+    ],
+    "excluded_tracking_outlier_count": 0,
+    "facility_value": 30.91748098129112,
+    "facility_value_normalized": 0.9661712806653475,
+    "objective": "monotonic facility location; duration-aware marginal gain with tracking guardrail",
+    "preserved_populated_verbs": [
+      "adjust",
+      "fold",
+      "pick",
+      "smooth"
+    ],
+    "selected_count": 12,
+    "selected_duration": 12.51,
+    "similarity_bandwidth": 5.108802108013455,
+    "verb_preservation_feasible": true
+  },
+  "data_sanity": {
+    "coordinate_modes": {
+      "source_declared_head_frame": 32
+    },
+    "duration_distribution_seconds": {
+      "max": 1.32,
+      "median": 1.1099999999999999,
+      "min": 0.9,
+      "p25": 1.005,
+      "p75": 1.215
+    },
+    "final_embedding_dimensions": 12,
+    "fingertip_pca_dimensions": 3,
+    "fold_cycles_per_episode": {
+      "distribution": {
+        "synthetic_ep_00": 1,
+        "synthetic_ep_01": 1,
+        "synthetic_ep_02": 1,
+        "synthetic_ep_03": 1,
+        "synthetic_ep_04": 1,
+        "synthetic_ep_05": 1,
+        "synthetic_ep_06": 1,
+        "synthetic_ep_07": 1
+      },
+      "median": 1.0
+    },
+    "mean_missing_value_rate": 6.200396825396825e-05,
+    "median_cycles_per_episode": 4.0,
+    "missing_value_rate_distribution": {
+      "max": 0.001984126984126984,
+      "median": 0.0,
+      "min": 0.0,
+      "p25": 0.0,
+      "p75": 0.0
+    },
+    "number_of_episodes_input": 8,
+    "number_of_episodes_with_valid_cycles": 8,
+    "number_of_rejected_cycles": 0,
+    "number_of_valid_cycles": 32,
+    "tracking_valid_distribution": {
+      "max": 0.98,
+      "median": 0.98,
+      "min": 0.9761904761904762,
+      "p25": 0.98,
+      "p75": 0.98
+    },
+    "trajectory_pca_dimensions": 8,
+    "verb_distribution": {
+      "adjust": 8,
+      "fold": 8,
+      "pick": 8,
+      "smooth": 8
+    }
+  },
+  "execution_diversity": {
+    "by_verb": {
+      "adjust": {
+        "bandwidth": 1.8583593541859136,
+        "sample_count": 8,
+        "status": "ok",
+        "vendi": 3.4521559407926845
+      },
+      "fold": {
+        "bandwidth": 4.152122202704272,
+        "sample_count": 8,
+        "status": "ok",
+        "vendi": 2.8182322802536803
+      },
+      "pick": {
+        "bandwidth": 2.683436679546244,
+        "sample_count": 8,
+        "status": "ok",
+        "vendi": 2.887047913460355
+      },
+      "smooth": {
+        "bandwidth": 4.16875736086273,
+        "sample_count": 8,
+        "status": "ok",
+        "vendi": 2.7327157816394814
+      }
+    },
+    "minimum_reliable_samples": 3,
+    "weighted_mean_execution_vendi": 2.97253797903655,
+    "weighted_sample_count": 32
+  },
+  "experiment": "egotrim-diversity-v2",
+  "feature_ablations": {
+    "combined": {
+      "dimensions": 12,
+      "same_verb_nearest_neighbor_rate": 1.0,
+      "weighted_mean_execution_vendi": 2.97253797903655
+    },
+    "duration": {
+      "dimensions": 1,
+      "same_verb_nearest_neighbor_rate": 1.0,
+      "weighted_mean_execution_vendi": 2.222039734571686
+    },
+    "fingertips": {
+      "dimensions": 3,
+      "same_verb_nearest_neighbor_rate": 1.0,
+      "weighted_mean_execution_vendi": 2.2848298366461863
+    },
+    "trajectory": {
+      "dimensions": 8,
+      "same_verb_nearest_neighbor_rate": 1.0,
+      "weighted_mean_execution_vendi": 2.929852802456948
+    }
+  },
+  "feature_balance": {
+    "blocks_standardized_independently": true,
+    "duration_dimensions": 1,
+    "final_embedding_standardized": true,
+    "fingertip_raw_dimensions": 900,
+    "fingertip_retained_components": 3,
+    "trajectory_raw_dimensions": 180,
+    "trajectory_retained_components": 8
+  },
+  "nearest_neighbors": {
+    "representative_query_count": 20,
+    "same_verb_nearest_neighbor_rate": 1.0
+  },
+  "seed": 42,
+  "selected_subset_evaluation": {
+    "composition": {
+      "definition_note": "Histogram entropy is reported as Shannon effective verbs, not Vendi.",
+      "shannon_effective_number_of_verbs": 3.618491900178948,
+      "shannon_entropy": 1.286057336874379,
+      "verb_coverage": 4,
+      "verb_distribution": {
+        "adjust": 1,
+        "fold": 4,
+        "pick": 3,
+        "smooth": 4
+      }
+    },
+    "execution": {
+      "by_verb": {
+        "adjust": {
+          "bandwidth": null,
+          "sample_count": 1,
+          "status": "too_few_samples",
+          "vendi": null
+        },
+        "fold": {
+          "bandwidth": 3.782141058633261,
+          "sample_count": 4,
+          "status": "ok",
+          "vendi": 2.531080356081401
+        },
+        "pick": {
+          "bandwidth": 3.280196955674293,
+          "sample_count": 3,
+          "status": "ok",
+          "vendi": 2.1361564190653124
+        },
+        "smooth": {
+          "bandwidth": 4.12180097168074,
+          "sample_count": 4,
+          "status": "ok",
+          "vendi": 2.444365380563469
+        }
+      },
+      "minimum_reliable_samples": 3,
+      "weighted_mean_execution_vendi": 2.3918411094341288,
+      "weighted_sample_count": 11
+    },
+    "facility_coverage": 0.9661712806653475,
+    "selected_count": 12,
+    "selected_duration": 12.51
+  }
+}

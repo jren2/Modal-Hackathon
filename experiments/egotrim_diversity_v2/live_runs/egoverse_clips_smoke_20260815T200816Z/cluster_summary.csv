@@ -1,0 +1,5 @@
+canonical_verb,cluster_id,cluster_size,is_noise,dominant_episode_id,dominant_episode_count,representative_segment_id,representative_episode_id,representative_start_time,silhouette_for_verb
+fold_clothes,fold_clothes__0,15,False,2025-09-20-17-42-51-000000,11,2025-09-20-17-42-51-000000:front_1:000026,2025-09-20-17-42-51-000000,26.0,0.0886220210517568
+fold_clothes,fold_clothes__1,65,False,2025-09-20-17-47-54-000000,39,2025-09-20-17-47-54-000000:front_1:000001,2025-09-20-17-47-54-000000,1.0,0.0886220210517568
+fold_clothes,fold_clothes__2,10,False,2025-09-20-17-47-54-000000,6,2025-09-20-17-47-54-000000:front_1:000040,2025-09-20-17-47-54-000000,40.0,0.0886220210517568
+fold_clothes,fold_clothes__3,11,False,2025-09-20-17-42-51-000000,8,2025-09-20-17-42-51-000000:front_1:000080,2025-09-20-17-42-51-000000,80.0,0.0886220210517568

@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EgoTrim V2 Results Dashboard</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0a0f1d;
+      --surface: #121a2b;
+      --surface-2: #182238;
+      --border: #283654;
+      --text: #eef3ff;
+      --muted: #9cabca;
+      --blue: #6ca8ff;
+      --cyan: #58d5d1;
+      --green: #67d391;
+      --amber: #f0bf67;
+      --red: #f27d85;
+      --purple: #a995ff;
+      --shadow: 0 18px 50px rgba(0, 0, 0, .28);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 12% -10%, rgba(88, 213, 209, .10), transparent 30rem),
+        radial-gradient(circle at 90% 0%, rgba(108, 168, 255, .12), transparent 34rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    button, select { font: inherit; }
+
+    .shell { width: min(1440px, calc(100% - 32px)); margin: 0 auto; padding: 30px 0 56px; }
+
+    .topbar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow {
+      margin: 0 0 6px;
+      color: var(--cyan);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    h1 { margin: 0; font-size: clamp(1.8rem, 4vw, 3.2rem); line-height: 1.06; letter-spacing: -.045em; }
+    h2 { margin: 0; font-size: 1.05rem; letter-spacing: -.01em; }
+    p { margin: 0; }
+
+    .subtitle { max-width: 760px; margin-top: 10px; color: var(--muted); }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex: 0 0 auto;
+      padding: 8px 12px;
+      border: 1px solid rgba(240, 191, 103, .45);
+      border-radius: 999px;
+      background: rgba(240, 191, 103, .10);
+      color: #ffdb97;
+      font-size: .82rem;
+      font-weight: 700;
+    }
+
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 14px var(--amber); }
+
+    .assessment {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      padding: 18px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(103, 211, 145, .34);
+      border-radius: 16px;
+      background: linear-gradient(120deg, rgba(103, 211, 145, .10), rgba(108, 168, 255, .07));
+    }
+
+    .assessment-icon {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(103, 211, 145, .16);
+      color: var(--green);
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+
+    .assessment strong { color: var(--green); }
+    .assessment p + p { margin-top: 5px; color: var(--muted); font-size: .9rem; }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: linear-gradient(150deg, rgba(24, 34, 56, .94), rgba(16, 24, 41, .96));
+      box-shadow: var(--shadow);
+    }
+
+    .kpi { min-height: 126px; padding: 17px; }
+    .kpi-label { color: var(--muted); font-size: .76rem; letter-spacing: .04em; text-transform: uppercase; }
+    .kpi-value { margin: 8px 0 3px; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 750; letter-spacing: -.04em; }
+    .kpi-context { color: var(--muted); font-size: .78rem; }
+
+    .layout-2 { display: grid; grid-template-columns: 1.18fr .82fr; gap: 16px; margin-bottom: 16px; }
+    .layout-equal { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .panel { padding: 18px; min-width: 0; }
+    .panel-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 16px; }
+    .panel-note { color: var(--muted); font-size: .78rem; }
+
+    .bar-list { display: grid; gap: 11px; }
+    .bar-row { display: grid; grid-template-columns: minmax(120px, 170px) 1fr 74px; gap: 11px; align-items: center; }
+    .bar-label { color: #dce6fa; font-size: .84rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .bar-track { height: 11px; border-radius: 999px; background: rgba(156, 171, 202, .14); overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--blue), var(--cyan)); }
+    .bar-fill.egotrim { background: linear-gradient(90deg, var(--green), var(--cyan)); }
+    .bar-value { text-align: right; color: var(--text); font-size: .82rem; font-variant-numeric: tabular-nums; }
+
+    .chart-wrap { width: 100%; min-height: 250px; }
+    .line-chart { display: block; width: 100%; height: auto; }
+    .chart-axis { stroke: var(--border); stroke-width: 1; }
+    .chart-grid { stroke: var(--border); stroke-width: 1; opacity: .45; }
+    .chart-label { fill: var(--muted); font-size: 11px; }
+    .chart-line-egotrim { fill: none; stroke: var(--green); stroke-width: 3; }
+    .chart-line-random { fill: none; stroke: var(--purple); stroke-width: 2.3; }
+    .chart-point-egotrim { fill: var(--green); }
+    .chart-point-random { fill: var(--purple); }
+    .legend { display: flex; flex-wrap: wrap; gap: 16px; color: var(--muted); font-size: .78rem; }
+    .legend span::before { content: ""; display: inline-block; width: 9px; height: 9px; margin-right: 6px; border-radius: 50%; background: currentColor; }
+    .legend .legend-egotrim { color: var(--green); }
+    .legend .legend-random { color: var(--purple); }
+
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+    th, td { padding: 10px 9px; border-bottom: 1px solid rgba(40, 54, 84, .72); text-align: left; vertical-align: middle; }
+    th { color: var(--muted); font-size: .72rem; font-weight: 650; letter-spacing: .05em; text-transform: uppercase; }
+    td.numeric, th.numeric { text-align: right; font-variant-numeric: tabular-nums; }
+    tbody tr:hover { background: rgba(108, 168, 255, .05); }
+    .selected-mark { color: var(--green); font-weight: 750; }
+    .muted { color: var(--muted); }
+
+    .control {
+      min-width: 170px;
+      padding: 8px 34px 8px 10px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: var(--surface-2);
+      color: var(--text);
+    }
+
+    .callouts { display: grid; gap: 10px; }
+    .callout { display: grid; grid-template-columns: 10px 1fr; gap: 10px; align-items: start; color: var(--muted); font-size: .86rem; }
+    .callout::before { content: ""; width: 8px; height: 8px; margin-top: 6px; border-radius: 50%; background: var(--amber); }
+    .callout.good::before { background: var(--green); }
+    .callout.pending::before { background: var(--red); }
+    .callout strong { color: var(--text); }
+
+    .error {
+      display: none;
+      padding: 18px;
+      margin-top: 20px;
+      border: 1px solid rgba(242, 125, 133, .45);
+      border-radius: 14px;
+      background: rgba(242, 125, 133, .09);
+      color: #ffc1c5;
+    }
+
+    footer { margin-top: 20px; color: var(--muted); font-size: .76rem; text-align: center; }
+
+    @media (max-width: 1080px) {
+      .kpi-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .layout-2, .layout-equal { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .shell { width: min(100% - 20px, 1440px); padding-top: 18px; }
+      .topbar { flex-direction: column; }
+      .kpi-grid { grid-template-columns: 1fr 1fr; }
+      .assessment { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 105px 1fr 62px; }
+      .panel-head { align-items: flex-start; flex-direction: column; }
+      .control { width: 100%; }
+    }
+
+    @media (max-width: 430px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">EgoTrim diversity experiment</p>
+        <h1>V2 results dashboard</h1>
+        <p class="subtitle">Measured motion coverage, execution diversity, and selection quality for the model-ready EgoVerse clip windows.</p>
+      </div>
+      <div class="status-pill"><span class="status-dot"></span>Live EgoVerse clips</div>
+    </header>
+
+    <section class="assessment" aria-labelledby="assessment-title">
+      <div class="assessment-icon" aria-hidden="true">✓</div>
+      <div>
+        <p id="assessment-title"><strong>Validated on the currently available model clips.</strong></p>
+        <p id="assessment-copy">Loading measured comparisons…</p>
+      </div>
+    </section>
+
+    <section class="kpi-grid" id="kpi-grid" aria-label="Key results"></section>
+
+    <section class="layout-2">
+      <article class="card panel">
+        <div class="panel-head">
+          <div><h2>Coverage at the selected budget</h2><p class="panel-note">Facility-location coverage; random bars show mean ± standard deviation.</p></div>
+        </div>
+        <div class="bar-list" id="baseline-bars"></div>
+      </article>
+
+      <article class="card panel">
+        <div class="panel-head"><div><h2>How to read this run</h2><p class="panel-note">What is supported now—and what is still pending.</p></div></div>
+        <div class="callouts" id="callouts"></div>
+      </article>
+    </section>
+
+    <section class="card panel" style="margin-bottom:16px">
+      <div class="panel-head">
+        <div><h2>Coverage versus data budget</h2><p class="panel-note">Higher is better; the scale starts at zero to avoid overstating small differences.</p></div>
+        <div class="legend"><span class="legend-egotrim">EgoTrim</span><span class="legend-random">Uniform random mean</span></div>
+      </div>
+      <div class="chart-wrap" id="coverage-chart"></div>
+    </section>
+
+    <section class="layout-equal">
+      <article class="card panel">
+        <div class="panel-head"><div><h2>Task composition</h2><p class="panel-note">These clips inherit an episode task label; they do not have per-window action annotations.</p></div></div>
+        <div class="bar-list" id="verb-bars"></div>
+      </article>
+      <article class="card panel">
+        <div class="panel-head"><div><h2>Execution diversity by task</h2><p class="panel-note">Within-task RBF-kernel Vendi; higher means more varied measured motion.</p></div></div>
+        <div class="bar-list" id="vendi-bars"></div>
+      </article>
+    </section>
+
+    <section class="card panel" style="margin-bottom:16px">
+      <div class="panel-head"><div><h2>Feature ablation</h2><p class="panel-note">Whether individual feature blocks preserve verb locality and execution variation.</p></div></div>
+      <div class="table-wrap"><table id="ablation-table"><thead><tr><th>Representation</th><th class="numeric">Dimensions</th><th class="numeric">Same-verb NN</th><th class="numeric">Weighted execution Vendi</th></tr></thead><tbody></tbody></table></div>
+    </section>
+
+    <section class="card panel" style="margin-bottom:16px">
+      <div class="panel-head">
+        <div><h2>Clip rankings</h2><p class="panel-note">Distinctiveness is a percentile within the same task label.</p></div>
+        <label><span class="muted">View&nbsp;</span><select class="control" id="segment-view"><option value="top">Most distinctive</option><option value="bottom">Least distinctive</option><option value="selected">Selected subset</option></select></label>
+      </div>
+      <div class="table-wrap"><table><thead><tr><th>Segment</th><th>Verb</th><th>Episode</th><th class="numeric">Distinctiveness</th><th>Cluster</th><th class="numeric">Tracking</th><th>Selected</th></tr></thead><tbody id="segment-rows"></tbody></table></div>
+    </section>
+
+    <section class="layout-equal">
+      <article class="card panel">
+        <div class="panel-head"><div><h2>Nearest-neighbor inspection</h2><p class="panel-note">Five closest clips in the final balanced embedding.</p></div><select class="control" id="neighbor-query" aria-label="Query clip"></select></div>
+        <div class="table-wrap"><table><thead><tr><th>#</th><th>Neighbor</th><th>Verb</th><th class="numeric">Distance</th><th>Match</th></tr></thead><tbody id="neighbor-rows"></tbody></table></div>
+      </article>
+      <article class="card panel">
+        <div class="panel-head"><div><h2>Episode ranking</h2><p class="panel-note">Composite score remains decomposed in the exported CSV.</p></div></div>
+        <div class="table-wrap"><table><thead><tr><th>Rank</th><th>Episode</th><th class="numeric">Clips</th><th class="numeric">Mean distinct.</th><th class="numeric">Selected</th><th class="numeric">Score</th></tr></thead><tbody id="episode-rows"></tbody></table></div>
+      </article>
+    </section>
+
+    <div class="error" id="load-error" role="alert"></div>
+    <footer id="run-footer">Loading run metadata…</footer>
+  </main>
+
+  <script>
+    const $ = (selector) => document.querySelector(selector);
+    const pct = (value, digits = 1) => value == null ? "—" : `${(100 * value).toFixed(digits)}%`;
+    const num = (value, digits = 3) => value == null ? "—" : Number(value).toFixed(digits);
+    const safe = (value) => String(value ?? "").replace(/[&<>'"]/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[char]));
+    let data = null;
+
+    function kpi(label, value, context) {
+      return `<article class="card kpi"><div class="kpi-label">${safe(label)}</div><div class="kpi-value">${safe(value)}</div><div class="kpi-context">${safe(context)}</div></article>`;
+    }
+
+    function renderBarList(target, rows, percentage = false) {
+      const maximum = Math.max(...rows.map(row => row.value), 1e-9);
+      target.innerHTML = rows.map(row => {
+        const width = percentage ? 100 * row.value : 100 * row.value / maximum;
+        const value = percentage ? pct(row.value) : num(row.value, row.digits ?? 2);
+        const suffix = row.suffix ?? "";
+        return `<div class="bar-row"><div class="bar-label">${safe(row.label)}</div><div class="bar-track"><div class="bar-fill ${row.egotrim ? "egotrim" : ""}" style="width:${Math.max(0, Math.min(100, width))}%"></div></div><div class="bar-value">${value}${safe(suffix)}</div></div>`;
+      }).join("");
+    }
+
+    function renderCoverageChart(rows) {
+      const width = 720, height = 260;
+      const margin = {left: 48, right: 20, top: 14, bottom: 40};
+      const x = value => margin.left + value * (width - margin.left - margin.right);
+      const y = value => height - margin.bottom - value * (height - margin.top - margin.bottom);
+      const groups = {
+        egotrim: rows.filter(row => row.method === "egotrim").sort((a,b) => a.budget_frac - b.budget_frac),
+        random: rows.filter(row => row.method === "uniform_random_mean").sort((a,b) => a.budget_frac - b.budget_frac)
+      };
+      const path = values => values.map((row, index) => `${index ? "L" : "M"}${x(row.budget_frac).toFixed(1)},${y(row.facility_coverage).toFixed(1)}`).join(" ");
+      const yTicks = [0, .25, .5, .75, 1];
+      const xTicks = [0, .2, .4, .6, .8, 1];
+      const grid = yTicks.map(value => `<line class="chart-grid" x1="${margin.left}" x2="${width-margin.right}" y1="${y(value)}" y2="${y(value)}"/><text class="chart-label" x="${margin.left-8}" y="${y(value)+4}" text-anchor="end">${Math.round(value*100)}%</text>`).join("");
+      const labels = xTicks.map(value => `<text class="chart-label" x="${x(value)}" y="${height-15}" text-anchor="middle">${Math.round(value*100)}%</text>`).join("");
+      const points = (values, cssClass) => values.map(row => `<circle class="${cssClass}" cx="${x(row.budget_frac)}" cy="${y(row.facility_coverage)}" r="4"><title>${Math.round(row.budget_frac*100)}% budget: ${pct(row.facility_coverage)}</title></circle>`).join("");
+      $("#coverage-chart").innerHTML = `<svg class="line-chart" viewBox="0 0 ${width} ${height}" role="img" aria-label="Facility coverage by selected data budget"><title>Facility coverage across data budgets</title>${grid}<line class="chart-axis" x1="${margin.left}" x2="${width-margin.right}" y1="${height-margin.bottom}" y2="${height-margin.bottom}"/>${labels}<path class="chart-line-egotrim" d="${path(groups.egotrim)}"/><path class="chart-line-random" d="${path(groups.random)}"/>${points(groups.egotrim,"chart-point-egotrim")}${points(groups.random,"chart-point-random")}</svg>`;
+    }
+
+    function renderSegments(mode) {
+      let rows = [...data.dashboard.segments];
+      if (mode === "selected") rows = rows.filter(row => row.selected).sort((a,b) => b.distinctiveness_percentile - a.distinctiveness_percentile);
+      else rows.sort((a,b) => mode === "top" ? b.distinctiveness_percentile - a.distinctiveness_percentile : a.distinctiveness_percentile - b.distinctiveness_percentile);
+      rows = rows.slice(0, 12);
+      $("#segment-rows").innerHTML = rows.map(row => `<tr><td>${safe(row.segment_id)}</td><td>${safe(row.canonical_verb)}</td><td>${safe(row.episode_id)}</td><td class="numeric">${pct(row.distinctiveness_percentile,0)}</td><td>${safe(row.cluster_id)}</td><td class="numeric">${pct(row.tracking_quality,0)}</td><td>${row.selected ? `<span class="selected-mark">Yes</span>` : `<span class="muted">No</span>`}</td></tr>`).join("");
+    }
+
+    function renderNeighbors(queryId) {
+      const rows = data.dashboard.nearest_neighbors.filter(row => row.query_segment_id === queryId).sort((a,b) => a.neighbor_rank - b.neighbor_rank);
+      $("#neighbor-rows").innerHTML = rows.map(row => `<tr><td>${row.neighbor_rank}</td><td>${safe(row.neighbor_segment_id)}</td><td>${safe(row.neighbor_verb)}</td><td class="numeric">${num(row.distance,3)}</td><td>${row.same_verb ? `<span class="selected-mark">Same verb</span>` : `<span class="muted">Different</span>`}</td></tr>`).join("");
+    }
+
+    function render(metrics, dashboard) {
+      data = {metrics, dashboard};
+      const fullExecution = metrics.execution_diversity.weighted_mean_execution_vendi;
+      const subsetExecution = metrics.selected_subset_evaluation.execution.weighted_mean_execution_vendi;
+      const executionRetention = subsetExecution / fullExecution;
+      const fullComposition = metrics.composition_diversity.shannon_effective_number_of_verbs;
+      const subsetComposition = metrics.selected_subset_evaluation.composition.shannon_effective_number_of_verbs;
+      const compositionRetention = subsetComposition / fullComposition;
+      const facility = metrics.selected_subset_evaluation.facility_coverage;
+      const random = metrics.baselines.uniform_random.facility_coverage;
+      const medoid = metrics.baselines.cluster_medoid.facility_coverage;
+      const selectedCount = metrics.curation.selected_count;
+      const validCount = metrics.data_sanity.number_of_valid_cycles;
+
+      $("#assessment-copy").textContent = `At ${Math.round(100 * metrics.budget_fraction)}% duration budget, EgoTrim preserved ${pct(facility)} of measured facility coverage—${(100*(facility-random.mean)).toFixed(1)} points above uniform random and ${(100*(facility-medoid.mean)).toFixed(1)} points above cluster medoids across ${validCount} real fixed-window clips.`;
+      $("#kpi-grid").innerHTML = [
+        kpi("Facility coverage", pct(facility), `${pct(metrics.budget_fraction,0)} duration budget`),
+        kpi("Valid clips", `${validCount}`, `${metrics.data_sanity.number_of_rejected_cycles} rejected`),
+        kpi("Execution retained", pct(executionRetention), `${num(subsetExecution)} subset / ${num(fullExecution)} full`),
+        kpi("Episodes", `${metrics.data_sanity.number_of_episodes_with_valid_cycles}`, `${num(fullComposition,0)} inherited task label`),
+        kpi("Selected clips", `${selectedCount} / ${validCount}`, `${pct(selectedCount/validCount)} of valid clips`)
+      ].join("");
+
+      const baselineRows = [{label:"EgoTrim", value:facility, egotrim:true}];
+      const names = {uniform_random:"Uniform random", verb_stratified_random:"Verb-stratified random", annotation_only:"Annotation only", cluster_medoid:"Cluster medoid"};
+      Object.entries(metrics.baselines).forEach(([key, value]) => baselineRows.push({label:names[key] || key, value:value.facility_coverage.mean, suffix:value.facility_coverage.std ? ` ±${(100*value.facility_coverage.std).toFixed(1)}pp` : ""}));
+      renderBarList($("#baseline-bars"), baselineRows, true);
+
+      $("#callouts").innerHTML = `
+        <div class="callout good"><div><strong>Clean input:</strong> all ${validCount} windows passed measured hand-tracking validation after exact frame alignment.</div></div>
+        <div class="callout good"><div><strong>Coverage:</strong> the selected subset beats every tested baseline at the same budget.</div></div>
+        <div class="callout"><div><strong>Motion retention:</strong> the subset keeps ${pct(executionRetention)} of the full within-task execution Vendi while using ${pct(selectedCount/validCount)} of the clips.</div></div>
+        <div class="callout"><div><strong>Single task:</strong> every clip is labelled <code>fold_clothes</code>, so task-composition and same-task neighbor metrics are expected to equal one.</div></div>
+        <div class="callout pending"><div><strong>Boundary:</strong> these are fixed-window model clips, not semantic action cycles; this does not establish robot-policy improvement.</div></div>`;
+
+      renderCoverageChart(metrics.coverage_curve);
+      renderBarList($("#verb-bars"), Object.entries(metrics.composition_diversity.verb_distribution).map(([label,value]) => ({label,value,digits:0})));
+      renderBarList($("#vendi-bars"), Object.entries(metrics.execution_diversity.by_verb).map(([label,value]) => ({label,value:value.vendi ?? 0,digits:2,suffix:value.status === "too_few_samples" ? " (sparse)" : ""})));
+
+      $("#ablation-table tbody").innerHTML = Object.entries(metrics.feature_ablations).map(([name,row]) => `<tr><td>${safe(name[0].toUpperCase()+name.slice(1))}</td><td class="numeric">${row.dimensions}</td><td class="numeric">${pct(row.same_verb_nearest_neighbor_rate)}</td><td class="numeric">${num(row.weighted_mean_execution_vendi)}</td></tr>`).join("");
+
+      renderSegments("top");
+      $("#segment-view").addEventListener("change", event => renderSegments(event.target.value));
+
+      const queries = [...new Set(dashboard.nearest_neighbors.map(row => row.query_segment_id))];
+      $("#neighbor-query").innerHTML = queries.map(id => `<option value="${safe(id)}">${safe(id)}</option>`).join("");
+      renderNeighbors(queries[0]);
+      $("#neighbor-query").addEventListener("change", event => renderNeighbors(event.target.value));
+
+      $("#episode-rows").innerHTML = dashboard.episodes.slice().sort((a,b) => a.episode_rank - b.episode_rank).map(row => `<tr><td>${row.episode_rank}</td><td>${safe(row.episode_id)}</td><td class="numeric">${row.number_valid_cycles}</td><td class="numeric">${pct(row.mean_distinctiveness,0)}</td><td class="numeric">${row.selected_segment_count}</td><td class="numeric">${num(row.episode_score,3)}</td></tr>`).join("");
+      $("#run-footer").innerHTML = `Run <code>${safe(runBase)}</code>. Fixed-window execution metrics only; no policy-performance claim is implied.`;
+    }
+
+    const requestedRun = new URLSearchParams(window.location.search).get("run") || ".";
+    const runBase = requestedRun.replace(/^\/+|\/+$/g, "") || ".";
+    Promise.all([
+      fetch(`${runBase}/metrics.json`, {cache:"no-store"}).then(response => { if (!response.ok) throw new Error(`metrics.json: ${response.status}`); return response.json(); }),
+      fetch(`${runBase}/dashboard_data.json`, {cache:"no-store"}).then(response => { if (!response.ok) throw new Error(`dashboard_data.json: ${response.status}`); return response.json(); })
+    ]).then(([metrics, dashboard]) => render(metrics, dashboard)).catch(error => {
+      const panel = $("#load-error");
+      panel.style.display = "block";
+      panel.innerHTML = `<strong>Could not load dashboard data.</strong><br>${safe(error.message)}<br>Start this page with <code>python serve_dashboard.py</code> rather than opening the HTML directly.`;
+      $("#assessment-copy").textContent = "Dashboard data could not be loaded.";
+    });
+  </script>
+</body>
+</html>

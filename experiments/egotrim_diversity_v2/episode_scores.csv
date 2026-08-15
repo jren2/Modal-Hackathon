@@ -1,0 +1,9 @@
+episode_id,number_valid_cycles,verbs_represented,verb_count,mean_distinctiveness,maximum_distinctiveness,rare_cluster_coverage,total_usable_duration,tracking_quality,selected_segment_count,episode_score,episode_rank
+synthetic_ep_03,4,adjust|fold|pick|smooth,4,0.65625,1.0,1.0,4.32,0.98,3,0.8766875,1
+synthetic_ep_04,4,adjust|fold|pick|smooth,4,0.75,1.0,0.75,4.44,0.98,2,0.8720000000000001,2
+synthetic_ep_07,4,adjust|fold|pick|smooth,4,0.6875,0.875,0.75,4.44,0.98,1,0.831375,3
+synthetic_ep_06,4,adjust|fold|pick|smooth,4,0.53125,1.0,0.75,4.32,0.98,2,0.7954375,4
+synthetic_ep_01,4,adjust|fold|pick|smooth,4,0.625,0.75,0.75,4.44,0.98,0,0.7907500000000001,5
+synthetic_ep_05,4,adjust|fold|pick|smooth,4,0.5625,0.875,0.75,4.5600000000000005,0.98,1,0.787625,6
+synthetic_ep_02,4,adjust|fold|pick|smooth,4,0.4375,0.75,0.75,4.5600000000000005,0.98,0,0.725125,7
+synthetic_ep_00,4,adjust|fold|pick|smooth,4,0.25,0.375,0.75,4.32,0.979047619047619,3,0.6031071428571428,8

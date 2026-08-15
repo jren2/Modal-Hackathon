@@ -1,0 +1,162 @@
+[
+  {
+    "canonical_verb": "adjust",
+    "episode_id": "synthetic_ep_00",
+    "segment_id": "synthetic_ep_00_adjust_3"
+  },
+  {
+    "canonical_verb": "fold",
+    "episode_id": "synthetic_ep_00",
+    "segment_id": "synthetic_ep_00_fold_0"
+  },
+  {
+    "canonical_verb": "pick",
+    "episode_id": "synthetic_ep_00",
+    "segment_id": "synthetic_ep_00_pick_2"
+  },
+  {
+    "canonical_verb": "smooth",
+    "episode_id": "synthetic_ep_00",
+    "segment_id": "synthetic_ep_00_smooth_1"
+  },
+  {
+    "canonical_verb": "adjust",
+    "episode_id": "synthetic_ep_01",
+    "segment_id": "synthetic_ep_01_adjust_3"
+  },
+  {
+    "canonical_verb": "fold",
+    "episode_id": "synthetic_ep_01",
+    "segment_id": "synthetic_ep_01_fold_0"
+  },
+  {
+    "canonical_verb": "pick",
+    "episode_id": "synthetic_ep_01",
+    "segment_id": "synthetic_ep_01_pick_2"
+  },
+  {
+    "canonical_verb": "smooth",
+    "episode_id": "synthetic_ep_01",
+    "segment_id": "synthetic_ep_01_smooth_1"
+  },
+  {
+    "canonical_verb": "adjust",
+    "episode_id": "synthetic_ep_02",
+    "segment_id": "synthetic_ep_02_adjust_3"
+  },
+  {
+    "canonical_verb": "fold",
+    "episode_id": "synthetic_ep_02",
+    "segment_id": "synthetic_ep_02_fold_0"
+  },
+  {
+    "canonical_verb": "pick",
+    "episode_id": "synthetic_ep_02",
+    "segment_id": "synthetic_ep_02_pick_2"
+  },
+  {
+    "canonical_verb": "smooth",
+    "episode_id": "synthetic_ep_02",
+    "segment_id": "synthetic_ep_02_smooth_1"
+  },
+  {
+    "canonical_verb": "adjust",
+    "episode_id": "synthetic_ep_03",
+    "segment_id": "synthetic_ep_03_adjust_3"
+  },
+  {
+    "canonical_verb": "fold",
+    "episode_id": "synthetic_ep_03",
+    "segment_id": "synthetic_ep_03_fold_0"
+  },
+  {
+    "canonical_verb": "pick",
+    "episode_id": "synthetic_ep_03",
+    "segment_id": "synthetic_ep_03_pick_2"
+  },
+  {
+    "canonical_verb": "smooth",
+    "episode_id": "synthetic_ep_03",
+    "segment_id": "synthetic_ep_03_smooth_1"
+  },
+  {
+    "canonical_verb": "adjust",
+    "episode_id": "synthetic_ep_04",
+    "segment_id": "synthetic_ep_04_adjust_3"
+  },
+  {
+    "canonical_verb": "fold",
+    "episode_id": "synthetic_ep_04",
+    "segment_id": "synthetic_ep_04_fold_0"
+  },
+  {
+    "canonical_verb": "pick",
+    "episode_id": "synthetic_ep_04",
+    "segment_id": "synthetic_ep_04_pick_2"
+  },
+  {
+    "canonical_verb": "smooth",
+    "episode_id": "synthetic_ep_04",
+    "segment_id": "synthetic_ep_04_smooth_1"
+  },
+  {
+    "canonical_verb": "adjust",
+    "episode_id": "synthetic_ep_05",
+    "segment_id": "synthetic_ep_05_adjust_3"
+  },
+  {
+    "canonical_verb": "fold",
+    "episode_id": "synthetic_ep_05",
+    "segment_id": "synthetic_ep_05_fold_0"
+  },
+  {
+    "canonical_verb": "pick",
+    "episode_id": "synthetic_ep_05",
+    "segment_id": "synthetic_ep_05_pick_2"
+  },
+  {
+    "canonical_verb": "smooth",
+    "episode_id": "synthetic_ep_05",
+    "segment_id": "synthetic_ep_05_smooth_1"
+  },
+  {
+    "canonical_verb": "adjust",
+    "episode_id": "synthetic_ep_06",
+    "segment_id": "synthetic_ep_06_adjust_3"
+  },
+  {
+    "canonical_verb": "fold",
+    "episode_id": "synthetic_ep_06",
+    "segment_id": "synthetic_ep_06_fold_0"
+  },
+  {
+    "canonical_verb": "pick",
+    "episode_id": "synthetic_ep_06",
+    "segment_id": "synthetic_ep_06_pick_2"
+  },
+  {
+    "canonical_verb": "smooth",
+    "episode_id": "synthetic_ep_06",
+    "segment_id": "synthetic_ep_06_smooth_1"
+  },
+  {
+    "canonical_verb": "adjust",
+    "episode_id": "synthetic_ep_07",
+    "segment_id": "synthetic_ep_07_adjust_3"
+  },
+  {
+    "canonical_verb": "fold",
+    "episode_id": "synthetic_ep_07",
+    "segment_id": "synthetic_ep_07_fold_0"
+  },
+  {
+    "canonical_verb": "pick",
+    "episode_id": "synthetic_ep_07",
+    "segment_id": "synthetic_ep_07_pick_2"
+  },
+  {
+    "canonical_verb": "smooth",
+    "episode_id": "synthetic_ep_07",
+    "segment_id": "synthetic_ep_07_smooth_1"
+  }
+]

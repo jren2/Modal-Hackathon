@@ -1,0 +1,14 @@
+{
+  "combined_dimensions": 31,
+  "feature_order": {
+    "fingertips": "[time, fingertip(4,8,12,16,20), xyz, hand(left,right)]",
+    "trajectory": "[time, xyz, hand(left,right)]"
+  },
+  "fingertip_components": 15,
+  "fingertip_input_dimensions": 900,
+  "model_version": "egotrim-diversity-v2",
+  "pca_component_cap": 15,
+  "pca_variance_target": 0.99,
+  "trajectory_components": 15,
+  "trajectory_input_dimensions": 180
+}

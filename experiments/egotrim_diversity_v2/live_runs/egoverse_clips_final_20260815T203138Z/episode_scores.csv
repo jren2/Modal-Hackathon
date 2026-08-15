@@ -1,0 +1,3 @@
+episode_id,number_valid_cycles,verbs_represented,verb_count,mean_distinctiveness,maximum_distinctiveness,rare_cluster_coverage,total_usable_duration,tracking_quality,selected_segment_count,episode_score,episode_rank
+2025-09-20-17-42-51-000000,94,fold_clothes,1,0.5140334993209598,0.9946808510638298,1.0,93.6,1.0,35,0.8291138524219104,1
+2025-09-20-17-47-54-000000,94,fold_clothes,1,0.4912856496152105,1.0,1.0,93.83333333333333,1.0,40,0.8219499773653237,2

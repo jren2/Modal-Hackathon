@@ -1,0 +1,10 @@
+canonical_verb,cluster_id,cluster_size,is_noise,dominant_episode_id,dominant_episode_count,representative_segment_id,representative_episode_id,representative_start_time,silhouette_for_verb
+adjust,adjust__0,7,False,synthetic_ep_00,1,synthetic_ep_07_adjust_3,synthetic_ep_07,0.0,0.4013155944671552
+adjust,adjust__1,1,False,synthetic_ep_03,1,synthetic_ep_03_adjust_3,synthetic_ep_03,0.0,0.4013155944671552
+fold,fold__0,4,False,synthetic_ep_00,1,synthetic_ep_06_fold_0,synthetic_ep_06,0.0,0.3863683510230298
+fold,fold__1,4,False,synthetic_ep_01,1,synthetic_ep_05_fold_0,synthetic_ep_05,0.0,0.3863683510230298
+pick,pick__0,3,False,synthetic_ep_00,1,synthetic_ep_06_pick_2,synthetic_ep_06,0.0,0.5330012140273119
+pick,pick__1,3,False,synthetic_ep_01,1,synthetic_ep_03_pick_2,synthetic_ep_03,0.0,0.5330012140273119
+pick,pick__2,2,False,synthetic_ep_04,1,synthetic_ep_04_pick_2,synthetic_ep_04,0.0,0.5330012140273119
+smooth,smooth__0,4,False,synthetic_ep_00,1,synthetic_ep_00_smooth_1,synthetic_ep_00,0.0,0.43777598751056335
+smooth,smooth__1,4,False,synthetic_ep_01,1,synthetic_ep_03_smooth_1,synthetic_ep_03,0.0,0.43777598751056335

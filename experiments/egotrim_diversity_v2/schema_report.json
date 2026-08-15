@@ -1,0 +1,134 @@
+{
+  "pose_examples": [
+    {
+      "attrs": {
+        "coordinate_frame": "head"
+      },
+      "available_arrays": {
+        "hand_joints": [
+          42,
+          2,
+          21,
+          3
+        ],
+        "timestamps": [
+          42
+        ]
+      },
+      "coordinate_mode": "source_declared_head_frame",
+      "joint_mapping": "hand_joints",
+      "pose_path": "C:\\Users\\trey2\\Desktop\\ny_hackathon\\NY-Hackathon-2026\\experiments\\egotrim_diversity_v2\\synthetic_inputs\\poses\\synthetic_ep_00_adjust_3.npz",
+      "timestamp_mapping": "timestamps"
+    },
+    {
+      "attrs": {
+        "coordinate_frame": "head"
+      },
+      "available_arrays": {
+        "hand_joints": [
+          42,
+          2,
+          21,
+          3
+        ],
+        "timestamps": [
+          42
+        ]
+      },
+      "coordinate_mode": "source_declared_head_frame",
+      "joint_mapping": "hand_joints",
+      "pose_path": "C:\\Users\\trey2\\Desktop\\ny_hackathon\\NY-Hackathon-2026\\experiments\\egotrim_diversity_v2\\synthetic_inputs\\poses\\synthetic_ep_00_fold_0.npz",
+      "timestamp_mapping": "timestamps"
+    },
+    {
+      "attrs": {
+        "coordinate_frame": "head"
+      },
+      "available_arrays": {
+        "hand_joints": [
+          42,
+          2,
+          21,
+          3
+        ],
+        "timestamps": [
+          42
+        ]
+      },
+      "coordinate_mode": "source_declared_head_frame",
+      "joint_mapping": "hand_joints",
+      "pose_path": "C:\\Users\\trey2\\Desktop\\ny_hackathon\\NY-Hackathon-2026\\experiments\\egotrim_diversity_v2\\synthetic_inputs\\poses\\synthetic_ep_00_pick_2.npz",
+      "timestamp_mapping": "timestamps"
+    },
+    {
+      "attrs": {
+        "coordinate_frame": "head"
+      },
+      "available_arrays": {
+        "hand_joints": [
+          42,
+          2,
+          21,
+          3
+        ],
+        "timestamps": [
+          42
+        ]
+      },
+      "coordinate_mode": "source_declared_head_frame",
+      "joint_mapping": "hand_joints",
+      "pose_path": "C:\\Users\\trey2\\Desktop\\ny_hackathon\\NY-Hackathon-2026\\experiments\\egotrim_diversity_v2\\synthetic_inputs\\poses\\synthetic_ep_00_smooth_1.npz",
+      "timestamp_mapping": "timestamps"
+    },
+    {
+      "attrs": {
+        "coordinate_frame": "head"
+      },
+      "available_arrays": {
+        "hand_joints": [
+          43,
+          2,
+          21,
+          3
+        ],
+        "timestamps": [
+          43
+        ]
+      },
+      "coordinate_mode": "source_declared_head_frame",
+      "joint_mapping": "hand_joints",
+      "pose_path": "C:\\Users\\trey2\\Desktop\\ny_hackathon\\NY-Hackathon-2026\\experiments\\egotrim_diversity_v2\\synthetic_inputs\\poses\\synthetic_ep_01_adjust_3.npz",
+      "timestamp_mapping": "timestamps"
+    }
+  ],
+  "pose_root": "C:\\Users\\trey2\\Desktop\\ny_hackathon\\NY-Hackathon-2026\\experiments\\egotrim_diversity_v2\\synthetic_inputs\\poses",
+  "rejected_segment_count": 0,
+  "repository_convention": "No pre-existing repository code was present. Supported EgoVerse Zarr handling follows the discovered canonical obs_keypoints/obs_wrist_pose schema and per-frame inverse obs_head_pose convention.",
+  "segment_columns_observed": [
+    "episode_id",
+    "segment_id",
+    "canonical_verb",
+    "start_time",
+    "end_time",
+    "duration",
+    "tracking_valid_frac",
+    "pose_ref",
+    "video_path",
+    "source_data_path"
+  ],
+  "segment_mapping": {
+    "duration": "duration",
+    "end_time": "end_time",
+    "episode_id": "episode_id",
+    "pose_ref": "pose_ref",
+    "segment_id": "segment_id",
+    "source_data": "source_data_path",
+    "start_time": "start_time",
+    "tracking_valid_frac": "tracking_valid_frac",
+    "verb": "canonical_verb",
+    "video_path": "video_path"
+  },
+  "segments_path": "C:\\Users\\trey2\\Desktop\\ny_hackathon\\NY-Hackathon-2026\\experiments\\egotrim_diversity_v2\\synthetic_inputs\\segments.csv",
+  "status": "mapped",
+  "valid_segment_count": 32
+}

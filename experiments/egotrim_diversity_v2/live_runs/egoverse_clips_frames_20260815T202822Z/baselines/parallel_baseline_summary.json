@@ -1,0 +1,97 @@
+{
+  "budgets": [
+    0.4
+  ],
+  "job_count": 2,
+  "run_id": "egoverse_clips_frames_20260815T202822Z",
+  "seeds": [
+    42,
+    43
+  ],
+  "summaries": [
+    {
+      "baseline": "annotation_only",
+      "budget_frac": 0.4,
+      "facility_coverage": {
+        "mean": 0.8638502356928879,
+        "std": 0.0
+      },
+      "run_count": 2,
+      "shannon_effective_verbs": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "verb_coverage": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "weighted_execution_vendi": {
+        "mean": 6.727025322592295,
+        "std": 0.0
+      }
+    },
+    {
+      "baseline": "cluster_medoid",
+      "budget_frac": 0.4,
+      "facility_coverage": {
+        "mean": 0.8710450782825704,
+        "std": 0.0
+      },
+      "run_count": 2,
+      "shannon_effective_verbs": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "verb_coverage": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "weighted_execution_vendi": {
+        "mean": 6.819952772738214,
+        "std": 0.0
+      }
+    },
+    {
+      "baseline": "uniform_random",
+      "budget_frac": 0.4,
+      "facility_coverage": {
+        "mean": 0.9129911090460905,
+        "std": 0.00035040146432890884
+      },
+      "run_count": 2,
+      "shannon_effective_verbs": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "verb_coverage": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "weighted_execution_vendi": {
+        "mean": 7.70615703173109,
+        "std": 0.011737799198201948
+      }
+    },
+    {
+      "baseline": "verb_stratified_random",
+      "budget_frac": 0.4,
+      "facility_coverage": {
+        "mean": 0.9129911090460905,
+        "std": 0.00035040146432890884
+      },
+      "run_count": 2,
+      "shannon_effective_verbs": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "verb_coverage": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "weighted_execution_vendi": {
+        "mean": 7.70615703173109,
+        "std": 0.011737799198201948
+      }
+    }
+  ]
+}
