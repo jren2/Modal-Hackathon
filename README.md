@@ -42,3 +42,6 @@ Initial weights are heuristic and can be tuned by testing which combinations bes
 We group physically similar attempts using hierarchical clustering over our weighted similarity scores. A configurable similarity threshold controls how aggressively attempts are grouped. For each cluster, we keep the medoid (most representative attempt) and mark the remaining attempts as redundant, while unique executions naturally remain as singleton clusters.
 
 ## Results
+Our results show a decrease in redundancy and increase in diversity (as compared to expected diversity in the dataset) as a result of removing segments that are similar
+
+https://claude.ai/code/artifact/f81e53f1-88a9-49c9-9318-0e6e8e2d8c61
