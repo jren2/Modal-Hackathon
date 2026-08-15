@@ -64,7 +64,11 @@ egoverse_secret = modal.Secret.from_dotenv(
     cpu=4,
     memory=8192,
 )
-def sync(filter_name: str = "aria-fold-clothes", workers: int = 32):
+def sync(
+    filter_name: str = "aria-fold-clothes",
+    workers: int = 32,
+    skip_images: bool = True,
+):
     # The upstream preset predates the 2026 human-embodiment collapse. Preserve
     # the named filter's intent by identifying Aria through the current rig field.
     sync_script = "/opt/EgoVerse/egomimic/scripts/data_download/sync_s3.py"
@@ -88,6 +92,17 @@ def sync(filter_name: str = "aria-fold-clothes", workers: int = 32):
         "def _episode_already_present(cls, local_dir: Path, episode_hash: str) -> bool:\n"
         "        return False  # integrity-safe resume on Modal\n",
     )
+    # Video is ~97% of an episode's bytes (an Aria episode is ~187 MB, of which
+    # ~182 MB is the images.front_1 chunk) and carries none of the hand-motion
+    # signal. Excluding it takes the aria-fold-clothes pull from ~130 GB to
+    # ~3.3 GB. Drop skip_images=False to fetch the video too.
+    if skip_images:
+        resolver_text = resolver_text.replace(
+            "lines.append(f'sync \"{src_prefix}\" \"{str(dst)}/\"')",
+            "lines.append(f'sync --exclude \"*images*\" "
+            '"{src_prefix}" "{str(dst)}/"\')',
+        )
+
     with open(resolver_script, "w") as resolver_file:
         resolver_file.write(resolver_text)
 
@@ -146,5 +161,9 @@ def registry_summary():
 
 
 @app.local_entrypoint()
-def main(filter_name: str = "aria-fold-clothes", workers: int = 32):
-    print(sync.remote(filter_name, workers))
+def main(
+    filter_name: str = "aria-fold-clothes",
+    workers: int = 32,
+    skip_images: bool = True,
+):
+    print(sync.remote(filter_name, workers, skip_images))
