@@ -5,6 +5,7 @@ EgoVerse footage can be removed while retaining the behaviors that matter. The c
 
 ## Methodology
 
+<img width="754" height="484" alt="image" src="https://github.com/user-attachments/assets/4612ce62-0086-4ebc-bd4a-141d78b10c9a" />
 
 
 ## Dashboard
