@@ -77,6 +77,17 @@ def sync(
         "row.get('embodiment') == 'aria'",
         "row.get('rig_name') == 'aria_gen1'",
     )
+    # Same staleness in the mecka preset: vendor identity moved from `embodiment`
+    # to `lab` in the 2026 collapse, so `embodiment == 'mecka'` now matches nothing.
+    # Widen the task match too — mecka splits folding across `fold_clothes` (1,607)
+    # and `folding_clothes` (462) plus compounds, and the segment-labelled episodes
+    # are spread across all of them.
+    script_text = script_text.replace(
+        "\"lambda row: row.get('embodiment') == 'mecka'\",\n"
+        "            \"lambda row: row.get('task') == 'fold_clothes'\",",
+        "\"lambda row: row.get('lab') == 'mecka'\",\n"
+        "            \"lambda row: 'fold' in (row.get('task') or '').lower()\",",
+    )
     with open(sync_script, "w") as script_file:
         script_file.write(script_text)
 
