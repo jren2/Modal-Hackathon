@@ -30,6 +30,8 @@ MOUNT = Path("/egoverse")
 EPISODES = MOUNT / "episodes"
 META = MOUNT / "metadata"
 DERIVED = MOUNT / "derived"
+RESULTS_DIR = DERIVED / "results"
+MIN_CLIP_GROUP = 40
 
 app = modal.App(APP_NAME)
 volume = modal.Volume.from_name(VOLUME_NAME, version=2)
@@ -576,3 +578,112 @@ def featurize(
 @app.local_entrypoint()
 def main(min_duration: float = 0.5, drop_compound: bool = False):
     print(json.dumps(segment.remote(min_duration, drop_compound), indent=2))
+
+
+# ---------------------------------------------------------------- clips
+
+# MANO bone connectivity for drawing a hand: wrist to each finger base, then
+# along each finger.
+BONES = [
+    (0, 1), (1, 2), (2, 3), (3, 4),
+    (0, 5), (5, 6), (6, 7), (7, 8),
+    (0, 9), (9, 10), (10, 11), (11, 12),
+    (0, 13), (13, 14), (14, 15), (15, 16),
+    (0, 17), (17, 18), (18, 19), (19, 20),
+]
+CLIP_FRAMES = 44
+
+
+@app.function(image=image, volumes={str(MOUNT): volume}, timeout=60 * 60, memory=16384)
+def export_clips(
+    verbs_wanted: int = 12, n_distinctive: int = 3, w_last: bool = True
+) -> dict:
+    """Export hand-skeleton clips for the most distinctive and a typical cycle per verb.
+
+    The dashboard has no video (images were excluded from the sync), so a "clip"
+    here is the kinematics itself: both hands' 21 MANO keypoints over time,
+    projected into the head frame at t=0. Coordinates are emitted in millimetres
+    as integers to keep the payload small enough to inline.
+    """
+    import numpy as np
+    import pandas as pd
+    import zarr
+
+    volume.reload()
+    seg = pd.read_parquet(RESULTS_DIR / "segments_scored.parquet")
+    seg = seg[seg.contribution_pct.notna()]
+
+    counts = seg.verb.value_counts()
+    verbs = [v for v in counts.index if counts[v] >= MIN_CLIP_GROUP][:verbs_wanted]
+
+    # Top-k by within-group contribution percentile, plus one median cycle as a
+    # baseline: "distinctive" only means anything next to what is ordinary.
+    picks = []
+    for verb in verbs:
+        g = seg[seg.verb == verb].sort_values("contribution_pct")
+        for rank in range(min(n_distinctive, len(g))):
+            picks.append((verb, f"distinctive", g.iloc[-(rank + 1)]))
+        picks.append((verb, "typical", g.iloc[len(g) // 2]))
+
+    clips = []
+    for verb, kind, row in picks:
+        path = EPISODES / row.episode_hash
+        try:
+            g = zarr.open_group(str(path), mode="r")
+            fps = float(dict(g.attrs).get("fps", 30))
+            left = np.asarray(g["left.obs_keypoints"][:]).reshape(-1, 21, 3)
+            right = np.asarray(g["right.obs_keypoints"][:]).reshape(-1, 21, 3)
+            head = np.asarray(g["obs_head_pose"][:])
+        except Exception as exc:  # noqa: BLE001
+            print(f"  skip {verb}/{kind}: {exc}")
+            continue
+
+        n = min(len(left), len(right), len(head))
+        a = max(0, int(round(row.start_seconds * fps)))
+        b = min(n, int(round(row.end_seconds * fps)))
+        if b - a < 5:
+            continue
+        hp, lh, rh = head[a:b], left[a:b], right[a:b]
+        ok = np.isfinite(hp).all(1) & np.isfinite(lh).all((1, 2)) & np.isfinite(rh).all((1, 2))
+        if ok.sum() < 5:
+            continue
+        hp, lh, rh = hp[ok], lh[ok], rh[ok]
+
+        R = _quat_to_matrix(hp[:, 3:7], w_last)
+        R0t, p0 = R[0].T, hp[0, :3]
+        both = []
+        for hand in (lh, rh):
+            world = np.einsum("tij,tkj->tki", R, hand) + hp[:, None, :3]
+            both.append(np.einsum("ij,tkj->tki", R0t, world - p0))
+        stacked = np.stack(both, axis=1)  # T x 2 x 21 x 3
+        stacked = _resample(stacked, CLIP_FRAMES)
+
+        # A stable 2D view: project on the two principal axes of the whole clip,
+        # so the plane of the motion faces the reader regardless of head pose.
+        flat = stacked.reshape(-1, 3)
+        centre = flat.mean(0)
+        _, _, vt = np.linalg.svd(flat - centre, full_matrices=False)
+        basis = vt[:2]
+        proj = np.einsum("ad,thkd->thka", basis, stacked - centre)
+
+        clips.append(
+            {
+                "verb": verb,
+                "kind": kind,
+                "episode": row.episode_hash[:10],
+                "task": str(row.task),
+                "scene": str(row.scene),
+                "operator": str(row.operator)[:8],
+                "duration": round(float(row.duration), 2),
+                "pct": round(float(row.contribution_pct), 1),
+                "xy": np.round(proj * 1000).astype(int).tolist(),
+            }
+        )
+        print(f"  {verb}/{kind}: {row.episode_hash[:10]} {row.duration:.1f}s pct={row.contribution_pct:.0f}")
+
+    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+    (RESULTS_DIR / "clips.json").write_text(
+        json.dumps({"bones": BONES, "frames": CLIP_FRAMES, "clips": clips})
+    )
+    volume.commit()
+    return {"clips": len(clips), "verbs": verbs}

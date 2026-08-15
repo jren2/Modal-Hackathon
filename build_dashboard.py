@@ -13,6 +13,7 @@ import json
 import pathlib
 
 DATA = pathlib.Path("scratch_results/dashboard_data.json")
+CLIPS = pathlib.Path("scratch_results/clips.json")
 OUT = pathlib.Path("dashboard.html")
 
 HEAD = """<title>Fold-Clothes Diversity</title>
@@ -73,8 +74,24 @@ section{display:flex;flex-direction:column;gap:18px}
 .hero-v{color:var(--accent)}
 
 .bars{display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);border-radius:3px;background:var(--surface);overflow:hidden}
-.bar{display:grid;grid-template-columns:88px 1fr 132px;align-items:center;gap:14px;padding:9px 16px;border-bottom:1px solid var(--rule-soft)}
-.bar:last-child{border-bottom:0}
+.row{border-bottom:1px solid var(--rule-soft)}
+.row:last-child{border-bottom:0}
+.bar{display:grid;grid-template-columns:16px 88px 1fr 132px;align-items:center;gap:14px;
+  padding:9px 16px;width:100%;border:0;background:none;color:inherit;font:inherit;text-align:left;
+  cursor:pointer}
+.bar:hover{background:var(--sunk)}
+.bar:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.bar[disabled]{cursor:default}
+.bar[disabled]:hover{background:none}
+.chev{color:var(--faint);font-size:.7rem;transition:transform .16s ease;line-height:1}
+.bar[aria-expanded="true"] .chev{transform:rotate(90deg);color:var(--accent)}
+.bar[disabled] .chev{opacity:0}
+.drawer{display:none;padding:4px 16px 18px;background:var(--sunk);
+  border-top:1px solid var(--rule-soft)}
+.drawer.open{display:flex;flex-direction:column;gap:12px}
+.drawer .dh{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;
+  font-size:.79rem;color:var(--muted);padding-top:11px}
+@media (prefers-reduced-motion:reduce){.chev{transition:none}}
 .bar .vb{font-weight:600;font-size:.92rem}
 .track{position:relative;height:16px;background:var(--sunk);border-radius:2px;overflow:hidden}
 .fill{position:absolute;inset:0 auto 0 0;background:var(--accent);opacity:.86}
@@ -101,6 +118,24 @@ tr:last-child td{border-bottom:0}
   color:var(--muted);margin:0 3px 3px 0;white-space:nowrap}
 canvas{width:100%;height:340px;display:block;border:1px solid var(--rule);border-radius:3px;background:var(--surface)}
 .legend{display:flex;gap:18px;font-size:.78rem;color:var(--muted);flex-wrap:wrap}
+.clipgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:12px}
+.clip{background:var(--surface);border:1px solid var(--rule);border-radius:3px;overflow:hidden;
+  display:flex;flex-direction:column}
+.clip canvas{height:156px;border:0;border-bottom:1px solid var(--rule-soft);border-radius:0}
+.clip .meta{padding:9px 12px 11px;display:flex;flex-direction:column;gap:3px}
+.clip .vh{display:flex;align-items:baseline;gap:7px}
+.clip .vn{font-weight:600;font-size:.95rem}
+.clip .kind{font-size:.63rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+  padding:1px 5px;border-radius:2px}
+.clip .kind.d{color:var(--accent);background:var(--accent-soft)}
+.clip .kind.t{color:var(--muted);background:var(--sunk)}
+.clip .sub{font-size:.74rem;color:var(--muted)}
+.clip .sub span{font-family:ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+.ctrl{display:flex;gap:10px;align-items:center;font-size:.8rem;color:var(--muted)}
+button{font:inherit;font-size:.8rem;padding:5px 12px;border:1px solid var(--rule);border-radius:2px;
+  background:var(--surface);color:var(--ink);cursor:pointer}
+button:hover{border-color:var(--accent);color:var(--accent)}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:6px}
 .dot.amber{background:var(--amber)}
 .caveat{border-left:2px solid var(--amber);padding:2px 0 2px 15px;display:flex;flex-direction:column;gap:9px}
@@ -124,8 +159,11 @@ def build() -> str:
     g = d["global"]
     hero = d["hero"]
     cur = d["curation"]
-    verbs = [v for v in d["per_verb"] if v["n"] >= 25][:16]
+    verbs = sorted(
+        (v for v in d["per_verb"] if v["n"] >= 25), key=lambda v: -v["vendi"]
+    )[:16]
     vmax = max(v["vendi"] for v in verbs)
+    by_verb = {v["verb"]: v for v in d["per_verb"]}
 
     strip = "".join(
         f'<div class="cell"><div class="k">{k}</div>'
@@ -139,17 +177,35 @@ def build() -> str:
         ]
     )
 
+    shown = {v["verb"] for v in verbs}
+    raw_clips = json.loads(CLIPS.read_text())
+    clips_payload = {
+        "bones": raw_clips["bones"],
+        "frames": raw_clips["frames"],
+        "clips": [c for c in raw_clips["clips"] if c["verb"] in shown],
+    }
+    clips_by_verb = {}
+    for c in clips_payload["clips"]:
+        clips_by_verb.setdefault(c["verb"], []).append(c)
+
     bars = ""
     for v in verbs:
         pct = 100 * v["vendi"] / vmax
         dim = "" if v["reliable"] else " dim"
         flag = "" if v["reliable"] else '<span class="flag">n low</span>'
+        has = v["verb"] in clips_by_verb
         bars += (
-            f'<div class="bar{dim}"><div class="vb">{esc(v["verb"])}{flag}</div>'
-            f'<div class="track"><div class="fill" style="width:{pct:.1f}%"></div></div>'
-            f'<div class="rt"><span>n <b class="num">{v["n"]}</b></span>'
+            f'<div class="row">'
+            f'<button class="bar{dim}" type="button" aria-expanded="false"'
+            f'{"" if has else " disabled"} data-verb="{esc(v["verb"])}">'
+            f'<span class="chev">&#9654;</span>'
+            f'<span class="vb">{esc(v["verb"])}{flag}</span>'
+            f'<span class="track"><span class="fill" style="width:{pct:.1f}%"></span></span>'
+            f'<span class="rt"><span>n <b class="num">{v["n"]}</b></span>'
             f'<span>VS <b class="num">{v["vendi"]:.2f}</b></span>'
-            f'<span>/h <b class="num">{v["vendi_per_hour"]:.0f}</b></span></div></div>'
+            f'<span>/h <b class="num">{v["vendi_per_hour"]:.1f}</b></span></span></button>'
+            f'<div class="drawer" data-drawer="{esc(v["verb"])}"></div>'
+            f'</div>'
         )
 
     def cmp_row(label, c, r, fmt="{:.3f}", higher_better=True):
@@ -219,10 +275,13 @@ def build() -> str:
   so there is no circularity. Ordered by sample count. Groups below n={d["min_group"]} are marked &mdash;
   their eigenvalue estimates are noisy.</div></div>
   <div class="bars">{bars}</div>
-  <div class="note"><b>fold</b> is the largest group ({verbs[0]["n"]} cycles) yet scores
-  {verbs[0]["vendi"]:.1f}, below <b>pick</b> at {verbs[1]["vendi"]:.1f} on fewer samples &mdash; people fold more
-  stereotypically than they reach. <b>smooth</b> is the most repetitive frequent action at
-  {[v for v in verbs if v["verb"]=="smooth"][0]["vendi"]:.1f}.</div>
+  <div class="note">Ranked by diversity, not sample count. <b>fold</b> is the largest group
+  ({by_verb["fold"]["n"]} cycles) yet sits below <b>pick</b> ({by_verb["pick"]["vendi"]:.1f} on
+  {by_verb["pick"]["n"]} cycles) &mdash; people fold more stereotypically than they reach.
+  <b>smooth</b> is the most repetitive frequent action at {by_verb["smooth"]["vendi"]:.1f}.
+  Open a row to replay its three most distinctive cycles against a median one &mdash; both hands,
+  21 MANO keypoints, in the head frame. Video was excluded from this pull, so these are the
+  kinematics the score is computed from, not a camera view.</div>
 </section>
 
 <section>
@@ -328,6 +387,7 @@ def build() -> str:
 against identical vectors (1.00), duplication (invariant) and the explicit N&times;N kernel (1e-14).</footer>
 </div>
 <script id="d" type="application/json">{json.dumps(json.loads(DATA.read_text())["scatter"])}</script>
+<script id="cl" type="application/json">{json.dumps(clips_payload)}</script>
 <script>
 const pts = JSON.parse(document.getElementById('d').textContent);
 const cv = document.getElementById('sc');
@@ -366,6 +426,107 @@ draw();
 addEventListener('resize', draw);
 matchMedia('(prefers-color-scheme:dark)').addEventListener('change', draw);
 new MutationObserver(draw).observe(document.documentElement,{{attributes:true,attributeFilter:['data-theme']}});
+
+const CL = JSON.parse(document.getElementById('cl').textContent);
+const byVerb = {{}};
+for(const c of CL.clips) (byVerb[c.verb] = byVerb[c.verb] || []).push(c);
+const openVerbs = new Map();     // verb -> [{{cv, clip, bb}}]
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function bounds(xy){{
+  let a=1e9,b=-1e9,c2=1e9,d2=-1e9;
+  for(const f of xy) for(const hnd of f) for(const j of hnd){{
+    if(j[0]<a)a=j[0]; if(j[0]>b)b=j[0]; if(j[1]<c2)c2=j[1]; if(j[1]>d2)d2=j[1];
+  }}
+  return [a,b,c2,d2];
+}}
+function drawClip(p, t){{
+  const cv=p.cv, c=p.clip, dpr=window.devicePixelRatio||1;
+  const w=cv.clientWidth, h=cv.clientHeight;
+  if(!w||!h) return;
+  if(cv.width!==Math.round(w*dpr)||cv.height!==Math.round(h*dpr)){{
+    cv.width=Math.round(w*dpr); cv.height=Math.round(h*dpr);
+  }}
+  const x=cv.getContext('2d'); x.setTransform(dpr,0,0,dpr,0,0);
+  x.fillStyle=css('--surface'); x.fillRect(0,0,w,h);
+  if(!p.bb) p.bb=bounds(c.xy);
+  const [x0,x1,y0,y1]=p.bb, pad=14;
+  const sc=Math.min((w-2*pad)/Math.max(x1-x0,1),(h-2*pad)/Math.max(y1-y0,1));
+  const ox=(w-(x1-x0)*sc)/2-x0*sc, oy=(h-(y1-y0)*sc)/2-y0*sc;
+  const px=v=>v*sc+ox, py=v=>h-(v*sc+oy);
+  const acc=css('--accent'), am=css('--amber'), ru=css('--rule');
+  for(let hi=0;hi<2;hi++){{
+    x.strokeStyle=ru; x.lineWidth=1; x.beginPath();
+    for(let f=0;f<=t;f++){{
+      const wj=c.xy[f][hi][0];
+      if(f===0)x.moveTo(px(wj[0]),py(wj[1])); else x.lineTo(px(wj[0]),py(wj[1]));
+    }}
+    x.stroke();
+    const col = hi===0?am:acc;
+    x.strokeStyle=col; x.lineWidth=1.7; x.beginPath();
+    for(const [i,j] of CL.bones){{
+      const A=c.xy[t][hi][i], B=c.xy[t][hi][j];
+      x.moveTo(px(A[0]),py(A[1])); x.lineTo(px(B[0]),py(B[1]));
+    }}
+    x.stroke();
+    x.fillStyle=col;
+    const wj=c.xy[t][hi][0];
+    x.beginPath(); x.arc(px(wj[0]),py(wj[1]),2.6,0,6.284); x.fill();
+  }}
+}}
+function build(verb, drawer){{
+  const list = byVerb[verb] || [];
+  const head = document.createElement('div'); head.className='dh';
+  const nd = list.filter(c=>c.kind==='distinctive').length;
+  head.innerHTML = '<span>'+nd+' most distinctive cycles, and one median for comparison</span>'
+    + '<span>amber = left hand &middot; teal = right hand &middot; faint line = wrist path</span>';
+  drawer.appendChild(head);
+  const grid = document.createElement('div'); grid.className='clipgrid';
+  const players=[];
+  for(const c of list){{
+    const card=document.createElement('div'); card.className='clip';
+    const cn=document.createElement('canvas'); card.appendChild(cn);
+    const m=document.createElement('div'); m.className='meta';
+    m.innerHTML='<div class="vh"><span class="vn">'+c.verb+'</span>'
+      +'<span class="kind '+(c.kind==='distinctive'?'d':'t')+'">'+c.kind+'</span></div>'
+      +'<div class="sub">'+c.task+' &middot; '+c.scene+'</div>'
+      +'<div class="sub"><span>'+c.duration.toFixed(1)+'s</span> &middot; percentile '
+      +'<span>'+c.pct.toFixed(0)+'</span></div>';
+    card.appendChild(m); grid.appendChild(card);
+    players.push({{cv:cn, clip:c}});
+  }}
+  drawer.appendChild(grid);
+  return players;
+}}
+// With reduced motion we hold the final frame rather than the first: the wrist
+// trail is fully drawn and the hand sits at its end pose, which is the most
+// informative single frame. Animating would otherwise be the only way to see it.
+let frame = reduce ? CL.frames - 1 : 0;
+function tick(){{
+  for(const players of openVerbs.values()) for(const p of players) drawClip(p, frame);
+  if(!reduce) frame=(frame+1)%CL.frames;
+}}
+if(!reduce) setInterval(tick, 90);
+for(const btn of document.querySelectorAll('.bar[data-verb]')){{
+  if(btn.disabled) continue;
+  btn.addEventListener('click', ()=>{{
+    const verb=btn.dataset.verb;
+    const drawer=document.querySelector('.drawer[data-drawer="'+verb+'"]');
+    const isOpen=btn.getAttribute('aria-expanded')==='true';
+    if(isOpen){{
+      btn.setAttribute('aria-expanded','false');
+      drawer.classList.remove('open'); openVerbs.delete(verb);
+    }} else {{
+      if(!drawer.dataset.built){{ openVerbs.set(verb, build(verb, drawer)); drawer.dataset.built='1'; }}
+      else {{ openVerbs.set(verb, drawer._players); }}
+      drawer._players = openVerbs.get(verb);
+      btn.setAttribute('aria-expanded','true');
+      drawer.classList.add('open');
+      requestAnimationFrame(()=>{{ for(const p of openVerbs.get(verb)) drawClip(p, frame); }});
+    }}
+  }});
+}}
+addEventListener('resize',()=>{{for(const ps of openVerbs.values()) for(const p of ps) drawClip(p,frame);}});
 </script>"""
 
 
