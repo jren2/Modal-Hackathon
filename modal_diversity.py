@@ -270,15 +270,25 @@ def _quat_to_matrix(quaternions, w_last: bool):
 
 
 def _resample(array, n: int):
-    """Linear resample along axis 0 to exactly n samples."""
+    """Linear resample along axis 0 to exactly n samples.
+
+    Vectorised across columns — a per-column ``np.interp`` loop costs ~36 calls
+    per cycle and dominates runtime once you are doing thousands of cycles.
+    """
     import numpy as np
 
-    t_old = np.linspace(0.0, 1.0, len(array))
+    m = len(array)
+    flat = array.reshape(m, -1)
+    if m == 1:
+        return np.repeat(flat, n, axis=0).reshape((n,) + array.shape[1:])
+    t_old = np.linspace(0.0, 1.0, m)
     t_new = np.linspace(0.0, 1.0, n)
-    flat = array.reshape(len(array), -1)
-    out = np.empty((n, flat.shape[1]), dtype=float)
-    for j in range(flat.shape[1]):
-        out[:, j] = np.interp(t_new, t_old, flat[:, j])
+    hi = np.searchsorted(t_old, t_new).clip(1, m - 1)
+    lo = hi - 1
+    span = t_old[hi] - t_old[lo]
+    span[span == 0] = 1.0
+    w = ((t_new - t_old[lo]) / span)[:, None]
+    out = flat[lo] * (1.0 - w) + flat[hi] * w
     return out.reshape((n,) + array.shape[1:])
 
 
@@ -336,24 +346,33 @@ def check_quaternion_layout(n_episodes: int = 25) -> dict:
 @app.function(
     image=image,
     volumes={str(MOUNT): volume},
-    timeout=60 * 60 * 4,
-    cpu=4,
-    memory=16384,
+    timeout=60 * 60,
+    cpu=2,
+    memory=8192,
+    max_containers=50,
+    retries=modal.Retries(max_retries=2, initial_delay=2.0),
 )
-def featurize(
-    w_last: bool = True,
-    min_valid_frac: float = 0.7,
-    n_resample: int = N_RESAMPLE,
-    pca_dims: int = 30,
+def _featurize_shard(
+    shard_index: int,
+    episode_hashes: list[str],
+    w_last: bool,
+    min_valid_frac: float,
+    n_resample: int,
 ) -> dict:
-    """Step 2: per-cycle wrist trajectory + fingertip configuration -> PCA."""
+    """Featurise the cycles belonging to a batch of episodes.
+
+    Reading zarr off a network-backed Volume is the bottleneck (several object
+    fetches per episode), so episodes are spread across containers. Each shard
+    writes its own .npz rather than returning ~40 MB of floats through the
+    control plane; the caller fits one PCA over the concatenation.
+    """
     import numpy as np
     import pandas as pd
     import zarr
-    from sklearn.decomposition import PCA
 
     volume.reload()
     cycles = pd.read_parquet(DERIVED / "cycles.parquet")
+    cycles = cycles[cycles.episode_hash.isin(set(episode_hashes))]
 
     rows, feats = [], []
     skipped = {"missing_episode": 0, "missing_array": 0, "too_short": 0, "low_valid": 0}
@@ -441,28 +460,98 @@ def featurize(
                 }
             )
 
-    if not feats:
-        raise RuntimeError(f"No usable cycles. skipped={skipped}")
+    shard_dir = DERIVED / "shards"
+    shard_dir.mkdir(parents=True, exist_ok=True)
+    path = shard_dir / f"{shard_index:04d}.npz"
+    if feats:
+        np.savez_compressed(path, X=np.asarray(feats, dtype=np.float32))
+        pd.DataFrame(rows).to_parquet(shard_dir / f"{shard_index:04d}.parquet", index=False)
+    volume.commit()
 
-    X = np.asarray(feats)
-    meta = pd.DataFrame(rows)
+    print(
+        f"[shard {shard_index}] episodes={len(episode_hashes)} "
+        f"cycles={len(feats)} skipped={skipped}",
+        flush=True,
+    )
+    return {"shard": shard_index, "cycles": len(feats), "skipped": skipped}
 
-    # Standardise the three blocks so a 900-dim configuration block cannot
+
+@app.function(
+    image=image,
+    volumes={str(MOUNT): volume},
+    timeout=60 * 60 * 2,
+    cpu=4,
+    memory=16384,
+)
+def featurize(
+    w_last: bool = True,
+    min_valid_frac: float = 0.7,
+    n_resample: int = N_RESAMPLE,
+    pca_dims: int = 30,
+    episodes_per_shard: int = 20,
+) -> dict:
+    """Step 2: fan out featurisation, then fit one PCA over every cycle."""
+    import shutil
+
+    import numpy as np
+    import pandas as pd
+    from sklearn.decomposition import PCA
+
+    volume.reload()
+    cycles = pd.read_parquet(DERIVED / "cycles.parquet")
+    episodes = sorted(cycles.episode_hash.unique())
+
+    shard_dir = DERIVED / "shards"
+    if shard_dir.exists():
+        shutil.rmtree(shard_dir)
+    shard_dir.mkdir(parents=True, exist_ok=True)
+    volume.commit()
+
+    batches = [
+        episodes[i : i + episodes_per_shard]
+        for i in range(0, len(episodes), episodes_per_shard)
+    ]
+    print(f"{len(cycles)} cycles over {len(episodes)} episodes -> {len(batches)} shards",
+          flush=True)
+
+    skipped_total: dict[str, int] = {}
+    done = 0
+    args = [
+        (i, batch, w_last, min_valid_frac, n_resample)
+        for i, batch in enumerate(batches)
+    ]
+    for res in _featurize_shard.starmap(args, order_outputs=False):
+        done += 1
+        for key, value in res["skipped"].items():
+            skipped_total[key] = skipped_total.get(key, 0) + value
+        if done % 10 == 0 or done == len(batches):
+            print(f"  {done}/{len(batches)} shards", flush=True)
+
+    volume.reload()
+    Xs_parts, meta_parts = [], []
+    for npz in sorted(shard_dir.glob("*.npz")):
+        Xs_parts.append(np.load(npz)["X"])
+        meta_parts.append(pd.read_parquet(npz.with_suffix(".parquet")))
+    if not Xs_parts:
+        raise RuntimeError(f"No usable cycles. skipped={skipped_total}")
+
+    X = np.concatenate(Xs_parts).astype(np.float64)
+    meta = pd.concat(meta_parts, ignore_index=True)
+
+    # Standardise the three blocks so the 900-dim configuration block cannot
     # drown out the 180-dim trajectory block or the single duration scalar.
     n_wrist = n_resample * 3 * 2
     n_tips = n_resample * len(FINGERTIPS) * 3 * 2
     blocks = [(0, n_wrist), (n_wrist, n_wrist + n_tips), (n_wrist + n_tips, X.shape[1])]
-    Xs = X.copy()
     for lo, hi in blocks:
-        block = Xs[:, lo:hi]
+        block = X[:, lo:hi]
         scale = block.std() or 1.0
-        Xs[:, lo:hi] = (block - block.mean(0)) / scale
+        X[:, lo:hi] = (block - block.mean(0)) / scale
 
-    dims = min(pca_dims, Xs.shape[0], Xs.shape[1])
+    dims = int(min(pca_dims, X.shape[0], X.shape[1]))
     pca = PCA(n_components=dims, random_state=0)
-    Z = pca.fit_transform(Xs)
+    Z = pca.fit_transform(X)
 
-    DERIVED.mkdir(parents=True, exist_ok=True)
     np.save(DERIVED / "features.npy", Z)
     meta.to_parquet(DERIVED / "features_meta.parquet", index=False)
     volume.commit()
@@ -470,14 +559,17 @@ def featurize(
     report = {
         "cycles_in": len(cycles),
         "cycles_featurised": len(meta),
-        "skipped": skipped,
+        "skipped": skipped_total,
         "raw_dims": int(X.shape[1]),
         "pca_dims": dims,
         "explained_variance": round(float(pca.explained_variance_ratio_.sum()), 3),
         "median_valid_frac": round(float(meta.valid_frac.median()), 3),
+        "episodes": int(meta.episode_hash.nunique()),
+        "operators": int(meta.operator.nunique()),
+        "scenes": int(meta.scene.nunique()),
         "verbs": meta.verb.value_counts().head(15).to_dict(),
     }
-    print(json.dumps(report, indent=2))
+    print(json.dumps(report, indent=2), flush=True)
     return report
 
 
