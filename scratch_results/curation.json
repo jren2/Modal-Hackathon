@@ -1,0 +1,39 @@
+{
+  "budget_fraction": 0.5,
+  "total_hours": 17.992,
+  "kept_hours": 8.996,
+  "kept_segments": 3943,
+  "total_segments": 4878,
+  "full_vendi": 13.9126,
+  "kept_vendi": 14.8903,
+  "coverage_pct": 107.0,
+  "headline": "50% of the hours, 107% of the behavioural coverage",
+  "kept_verb_mix": {
+    "pick": 818,
+    "fold": 626,
+    "place": 598,
+    "adjust": 491,
+    "smooth": 228,
+    "move": 224,
+    "flip": 115,
+    "spread": 68,
+    "unfold": 54,
+    "apply": 49,
+    "press": 40,
+    "insert": 38
+  },
+  "dropped_verb_mix": {
+    "fold": 384,
+    "pick": 121,
+    "adjust": 93,
+    "smooth": 43,
+    "assemble": 35,
+    "place": 32,
+    "move": 14,
+    "spread": 13,
+    "apply": 11,
+    "roll": 11,
+    "straighten": 11,
+    "clean": 10
+  }
+}

@@ -1,0 +1,1156 @@
+{
+  "feature_dims": 30,
+  "rank_cap": 30,
+  "global": {
+    "n": 4878,
+    "vendi": 13.912625797996931,
+    "nn_distance": 0.14486263049324488,
+    "log_det": 0.9490197024761196,
+    "hours": 17.992,
+    "vendi_per_hour": 0.7733
+  },
+  "per_verb": [
+    {
+      "n": 1010,
+      "vendi": 12.959993392672192,
+      "nn_distance": 0.16823087393646602,
+      "log_det": 0.9446778447455737,
+      "hours": 6.169,
+      "vendi_per_hour": 2.1008,
+      "verb": "fold",
+      "reliable": true
+    },
+    {
+      "n": 939,
+      "vendi": 14.834931035963418,
+      "nn_distance": 0.18427337026615462,
+      "log_det": 0.9520622160666025,
+      "hours": 2.767,
+      "vendi_per_hour": 5.3609,
+      "verb": "pick",
+      "reliable": true
+    },
+    {
+      "n": 630,
+      "vendi": 13.929082280244774,
+      "nn_distance": 0.18286444930719162,
+      "log_det": 0.9493698935046209,
+      "hours": 1.129,
+      "vendi_per_hour": 12.3413,
+      "verb": "place",
+      "reliable": true
+    },
+    {
+      "n": 584,
+      "vendi": 13.033652967435202,
+      "nn_distance": 0.19544447785321134,
+      "log_det": 0.945339206775083,
+      "hours": 1.856,
+      "vendi_per_hour": 7.0223,
+      "verb": "adjust",
+      "reliable": true
+    },
+    {
+      "n": 271,
+      "vendi": 10.106616705674394,
+      "nn_distance": 0.16678790982580527,
+      "log_det": 0.9275766203812115,
+      "hours": 0.859,
+      "vendi_per_hour": 11.7677,
+      "verb": "smooth",
+      "reliable": true
+    },
+    {
+      "n": 238,
+      "vendi": 14.416536222411684,
+      "nn_distance": 0.23071155173253424,
+      "log_det": 0.951403817715343,
+      "hours": 0.492,
+      "vendi_per_hour": 29.3154,
+      "verb": "move",
+      "reliable": true
+    },
+    {
+      "n": 120,
+      "vendi": 12.597824348190468,
+      "nn_distance": 0.2515327743718145,
+      "log_det": 0.9455116038583534,
+      "hours": 0.26,
+      "vendi_per_hour": 48.434,
+      "verb": "flip",
+      "reliable": true
+    },
+    {
+      "n": 81,
+      "vendi": 12.594995177032741,
+      "nn_distance": 0.2573680294264336,
+      "log_det": 0.945725084602857,
+      "hours": 0.322,
+      "vendi_per_hour": 39.1507,
+      "verb": "spread",
+      "reliable": true
+    },
+    {
+      "n": 64,
+      "vendi": 9.977495981532783,
+      "nn_distance": 0.25721540145737387,
+      "log_det": 0.9313491801288022,
+      "hours": 0.164,
+      "vendi_per_hour": 60.8496,
+      "verb": "unfold",
+      "reliable": true
+    },
+    {
+      "n": 60,
+      "vendi": 9.795830453751245,
+      "nn_distance": 0.18580063912506342,
+      "log_det": 0.9314263346716993,
+      "hours": 0.235,
+      "vendi_per_hour": 41.773,
+      "verb": "apply",
+      "reliable": true
+    },
+    {
+      "n": 59,
+      "vendi": 8.44836210372903,
+      "nn_distance": 0.21135315070334443,
+      "log_det": 0.9134937177727789,
+      "hours": 0.563,
+      "vendi_per_hour": 15.0121,
+      "verb": "assemble",
+      "reliable": true
+    },
+    {
+      "n": 49,
+      "vendi": 7.780049227888359,
+      "nn_distance": 0.17232861399225,
+      "log_det": 0.9188848494161896,
+      "hours": 0.123,
+      "vendi_per_hour": 63.3759,
+      "verb": "press",
+      "reliable": false
+    },
+    {
+      "n": 47,
+      "vendi": 11.463587127504852,
+      "nn_distance": 0.29474799572569693,
+      "log_det": 0.9412858264416503,
+      "hours": 0.213,
+      "vendi_per_hour": 53.7426,
+      "verb": "insert",
+      "reliable": false
+    },
+    {
+      "n": 42,
+      "vendi": 10.473714863654687,
+      "nn_distance": 0.2984408254683006,
+      "log_det": 0.9331498432047892,
+      "hours": 0.206,
+      "vendi_per_hour": 50.7429,
+      "verb": "straighten",
+      "reliable": false
+    },
+    {
+      "n": 40,
+      "vendi": 6.441371604848391,
+      "nn_distance": 0.18152507716261096,
+      "log_det": 0.8906769057214983,
+      "hours": 0.089,
+      "vendi_per_hour": 72.0045,
+      "verb": "close",
+      "reliable": false
+    },
+    {
+      "n": 39,
+      "vendi": 9.060019414999791,
+      "nn_distance": 0.262092519496024,
+      "log_det": 0.9278307673109056,
+      "hours": 0.113,
+      "vendi_per_hour": 80.4389,
+      "verb": "rotate",
+      "reliable": false
+    },
+    {
+      "n": 38,
+      "vendi": 7.383337627415685,
+      "nn_distance": 0.1960198216487586,
+      "log_det": 0.9109120556522883,
+      "hours": 0.188,
+      "vendi_per_hour": 39.2921,
+      "verb": "clean",
+      "reliable": false
+    },
+    {
+      "n": 35,
+      "vendi": 7.253718413654119,
+      "nn_distance": 0.19246639695853482,
+      "log_det": 0.9127834620511797,
+      "hours": 0.103,
+      "vendi_per_hour": 70.4539,
+      "verb": "cut",
+      "reliable": false
+    },
+    {
+      "n": 33,
+      "vendi": 7.871472861628773,
+      "nn_distance": 0.23142352003332237,
+      "log_det": 0.9161768496227782,
+      "hours": 0.121,
+      "vendi_per_hour": 65.0318,
+      "verb": "align",
+      "reliable": false
+    },
+    {
+      "n": 29,
+      "vendi": 6.706383807820496,
+      "nn_distance": 0.20948789198576773,
+      "log_det": 0.9043367433955691,
+      "hours": 0.144,
+      "vendi_per_hour": 46.4658,
+      "verb": "crease",
+      "reliable": false
+    },
+    {
+      "n": 27,
+      "vendi": 8.020873676342585,
+      "nn_distance": 0.32451069899072066,
+      "log_det": 0.9194865649806921,
+      "hours": 0.073,
+      "vendi_per_hour": 109.4863,
+      "verb": "open",
+      "reliable": false
+    },
+    {
+      "n": 26,
+      "vendi": 9.905020494893964,
+      "nn_distance": 0.3370031277163996,
+      "log_det": 0.9370531830189162,
+      "hours": 0.159,
+      "vendi_per_hour": 62.2569,
+      "verb": "iron",
+      "reliable": false
+    },
+    {
+      "n": 26,
+      "vendi": 5.296752833454952,
+      "nn_distance": 0.10789301618565125,
+      "log_det": 0.8880813362707884,
+      "hours": 0.128,
+      "vendi_per_hour": 41.4858,
+      "verb": "roll",
+      "reliable": false
+    },
+    {
+      "n": 23,
+      "vendi": 8.061758835745822,
+      "nn_distance": 0.27913458812929254,
+      "log_det": 0.9247623317608917,
+      "hours": 0.063,
+      "vendi_per_hour": 127.284,
+      "verb": "hold",
+      "reliable": false
+    },
+    {
+      "n": 23,
+      "vendi": 11.084616120456413,
+      "nn_distance": 0.440148904516193,
+      "log_det": 0.9437580158046696,
+      "hours": 0.045,
+      "vendi_per_hour": 243.9501,
+      "verb": "remove",
+      "reliable": false
+    },
+    {
+      "n": 20,
+      "vendi": 8.932180935661522,
+      "nn_distance": 0.36116893426861846,
+      "log_det": 0.9317300458817663,
+      "hours": 0.032,
+      "vendi_per_hour": 278.5069,
+      "verb": "reposition",
+      "reliable": false
+    },
+    {
+      "n": 19,
+      "vendi": 7.017065840280139,
+      "nn_distance": 0.30831355020590445,
+      "log_det": 0.9120274523682761,
+      "hours": 0.094,
+      "vendi_per_hour": 75.037,
+      "verb": "tuck",
+      "reliable": false
+    },
+    {
+      "n": 18,
+      "vendi": 8.243733167327173,
+      "nn_distance": 0.3707269814340592,
+      "log_det": 0.9296514337857639,
+      "hours": 0.033,
+      "vendi_per_hour": 252.8235,
+      "verb": "seal",
+      "reliable": false
+    },
+    {
+      "n": 16,
+      "vendi": 8.162161959256506,
+      "nn_distance": 0.4055253792411922,
+      "log_det": 0.9305011552288658,
+      "hours": 0.081,
+      "vendi_per_hour": 100.9383,
+      "verb": "pull",
+      "reliable": false
+    },
+    {
+      "n": 15,
+      "vendi": 6.056545943488854,
+      "nn_distance": 0.3544101306346292,
+      "log_det": 0.9034337423314471,
+      "hours": 0.1,
+      "vendi_per_hour": 60.4273,
+      "verb": "button",
+      "reliable": false
+    },
+    {
+      "n": 14,
+      "vendi": 8.166341730699994,
+      "nn_distance": 0.4596413757725265,
+      "log_det": 0.9284165286751137,
+      "hours": 0.053,
+      "vendi_per_hour": 154.3764,
+      "verb": "arrange",
+      "reliable": false
+    },
+    {
+      "n": 13,
+      "vendi": 4.247510999657235,
+      "nn_distance": 0.19876042964168178,
+      "log_det": 0.861410049379237,
+      "hours": 0.022,
+      "vendi_per_hour": 188.9415,
+      "verb": "peel",
+      "reliable": false
+    },
+    {
+      "n": 12,
+      "vendi": 7.564612573163988,
+      "nn_distance": 0.4957025968975346,
+      "log_det": 0.9261144839128891,
+      "hours": 0.047,
+      "vendi_per_hour": 159.9002,
+      "verb": "secure",
+      "reliable": false
+    },
+    {
+      "n": 11,
+      "vendi": 6.648568607169126,
+      "nn_distance": 0.3770455339563293,
+      "log_det": 0.9197300518912674,
+      "hours": 0.081,
+      "vendi_per_hour": 82.5752,
+      "verb": "sort",
+      "reliable": false
+    },
+    {
+      "n": 10,
+      "vendi": 7.234676760288771,
+      "nn_distance": 0.47329266861091934,
+      "log_det": 0.92742410465908,
+      "hours": 0.025,
+      "vendi_per_hour": 287.1157,
+      "verb": "stack",
+      "reliable": false
+    },
+    {
+      "n": 10,
+      "vendi": 5.437870406461553,
+      "nn_distance": 0.4571446602975427,
+      "log_det": 0.8986896847824463,
+      "hours": 0.102,
+      "vendi_per_hour": 53.5117,
+      "verb": "wipe",
+      "reliable": false
+    },
+    {
+      "n": 9,
+      "vendi": 3.370384202202181,
+      "nn_distance": 0.18904560467731635,
+      "log_det": 0.8373615064379407,
+      "hours": 0.026,
+      "vendi_per_hour": 131.409,
+      "verb": "dip",
+      "reliable": false
+    },
+    {
+      "n": 9,
+      "vendi": 6.073258466289626,
+      "nn_distance": 0.46239138991248474,
+      "log_det": 0.9112345061059364,
+      "hours": 0.044,
+      "vendi_per_hour": 138.3185,
+      "verb": "package",
+      "reliable": false
+    },
+    {
+      "n": 9,
+      "vendi": 6.164798122348417,
+      "nn_distance": 0.5551444588440771,
+      "log_det": 0.915480756316013,
+      "hours": 0.05,
+      "vendi_per_hour": 122.8707,
+      "verb": "turn",
+      "reliable": false
+    },
+    {
+      "n": 9,
+      "vendi": 4.266181739441499,
+      "nn_distance": 0.2510435065282818,
+      "log_det": 0.8750015128460059,
+      "hours": 0.021,
+      "vendi_per_hour": 198.8458,
+      "verb": "use",
+      "reliable": false
+    },
+    {
+      "n": 8,
+      "vendi": 5.174556535920957,
+      "nn_distance": 0.4688924623505279,
+      "log_det": 0.8977503317144331,
+      "hours": 0.045,
+      "vendi_per_hour": 114.2146,
+      "verb": "manipulate",
+      "reliable": false
+    },
+    {
+      "n": 8,
+      "vendi": 4.0429341394057765,
+      "nn_distance": 0.26394683080911613,
+      "log_det": 0.8689132518367455,
+      "hours": 0.026,
+      "vendi_per_hour": 153.8163,
+      "verb": "shape",
+      "reliable": false
+    },
+    {
+      "n": 7,
+      "vendi": 3.748100168532147,
+      "nn_distance": 0.3025330326871914,
+      "log_det": 0.868938268180208,
+      "hours": 0.04,
+      "vendi_per_hour": 94.3994,
+      "verb": "attach",
+      "reliable": false
+    },
+    {
+      "n": 7,
+      "vendi": 4.5516283990352635,
+      "nn_distance": 0.43082715765190543,
+      "log_det": 0.8880164491786114,
+      "hours": 0.017,
+      "vendi_per_hour": 263.99,
+      "verb": "lay",
+      "reliable": false
+    },
+    {
+      "n": 6,
+      "vendi": 3.854552872411287,
+      "nn_distance": 0.3757299644827829,
+      "log_det": 0.8709407463592482,
+      "hours": 0.032,
+      "vendi_per_hour": 120.4694,
+      "verb": "pack",
+      "reliable": false
+    },
+    {
+      "n": 6,
+      "vendi": 3.952932704012652,
+      "nn_distance": 0.4529720658814072,
+      "log_det": 0.8722920459130525,
+      "hours": 0.003,
+      "vendi_per_hour": 1167.6834,
+      "verb": "slide",
+      "reliable": false
+    },
+    {
+      "n": 6,
+      "vendi": 4.208386888618314,
+      "nn_distance": 0.38121186592648876,
+      "log_det": 0.8867965121881445,
+      "hours": 0.018,
+      "vendi_per_hour": 234.8867,
+      "verb": "zip",
+      "reliable": false
+    },
+    {
+      "n": 5,
+      "vendi": 3.336606745424252,
+      "nn_distance": 0.4149242398091699,
+      "log_det": 0.8570439614267543,
+      "hours": 0.012,
+      "vendi_per_hour": 273.399,
+      "verb": "scoop",
+      "reliable": false
+    },
+    {
+      "n": 5,
+      "vendi": 3.7294065909283387,
+      "nn_distance": 0.6281863114994877,
+      "log_det": 0.8693392553152537,
+      "hours": 0.02,
+      "vendi_per_hour": 187.2062,
+      "verb": "separate",
+      "reliable": false
+    },
+    {
+      "n": 5,
+      "vendi": 1.5901781355726377,
+      "nn_distance": 0.07193144171821966,
+      "log_det": 0.7443855333245334,
+      "hours": 0.014,
+      "vendi_per_hour": 113.3076,
+      "verb": "tear",
+      "reliable": false
+    },
+    {
+      "n": 4,
+      "vendi": 1.9193706420711398,
+      "nn_distance": 0.1468964466265803,
+      "log_det": 0.7797171056358676,
+      "hours": 0.004,
+      "vendi_per_hour": 435.6705,
+      "verb": "hang",
+      "reliable": false
+    },
+    {
+      "n": 3,
+      "vendi": 2.4971220824333447,
+      "nn_distance": 0.48733900017972615,
+      "log_det": 0.829282540306208,
+      "hours": 0.008,
+      "vendi_per_hour": 322.9849,
+      "verb": "complete",
+      "reliable": false
+    },
+    {
+      "n": 3,
+      "vendi": 2.7393043837746363,
+      "nn_distance": 0.6627825460838017,
+      "log_det": 0.8466772069093411,
+      "hours": 0.013,
+      "vendi_per_hour": 210.7472,
+      "verb": "finish",
+      "reliable": false
+    },
+    {
+      "n": 3,
+      "vendi": 2.293724851844549,
+      "nn_distance": 0.40177359569961446,
+      "log_det": 0.8130201406819326,
+      "hours": 0.009,
+      "vendi_per_hour": 259.667,
+      "verb": "glue",
+      "reliable": false
+    },
+    {
+      "n": 3,
+      "vendi": 2.439786846100533,
+      "nn_distance": 0.4890568001803272,
+      "log_det": 0.8238801035467385,
+      "hours": 0.006,
+      "vendi_per_hour": 423.0844,
+      "verb": "rummage",
+      "reliable": false
+    },
+    {
+      "n": 3,
+      "vendi": 1.9040016430021165,
+      "nn_distance": 0.2834275487068372,
+      "log_det": 0.7794263335339993,
+      "hours": 0.011,
+      "vendi_per_hour": 174.9912,
+      "verb": "twist",
+      "reliable": false
+    },
+    {
+      "n": 3,
+      "vendi": 1.8212829098627712,
+      "nn_distance": 0.20752860218903846,
+      "log_det": 0.7762351372740448,
+      "hours": 0.028,
+      "vendi_per_hour": 64.8425,
+      "verb": "unwrap",
+      "reliable": false
+    },
+    {
+      "n": 2,
+      "vendi": 1.998309209986959,
+      "nn_distance": 1.041122113152028,
+      "log_det": 0.8107423065412905,
+      "hours": 0.003,
+      "vendi_per_hour": 781.9471,
+      "verb": "compress",
+      "reliable": false
+    },
+    {
+      "n": 2,
+      "vendi": 1.0558760306035755,
+      "nn_distance": 0.019293004237754707,
+      "log_det": 0.6979125317744926,
+      "hours": 0.009,
+      "vendi_per_hour": 114.0323,
+      "verb": "construct",
+      "reliable": false
+    },
+    {
+      "n": 2,
+      "vendi": 1.4556517900968726,
+      "nn_distance": 0.24864916007578353,
+      "log_det": 0.7461513005975992,
+      "hours": 0.029,
+      "vendi_per_hour": 50.3043,
+      "verb": "count",
+      "reliable": false
+    },
+    {
+      "n": 2,
+      "vendi": 1.9999964795444183,
+      "nn_distance": 0.9981237120118794,
+      "log_det": 0.8109298250544064,
+      "hours": 0.019,
+      "vendi_per_hour": 107.4625,
+      "verb": "fasten",
+      "reliable": false
+    },
+    {
+      "n": 2,
+      "vendi": 1.9992982185735577,
+      "nn_distance": 1.0264919320554104,
+      "log_det": 0.8108522329019281,
+      "hours": 0.006,
+      "vendi_per_hour": 337.0077,
+      "verb": "fix",
+      "reliable": false
+    },
+    {
+      "n": 2,
+      "vendi": 1.2539634393530974,
+      "nn_distance": 0.11952191873568774,
+      "log_det": 0.7208545549677966,
+      "hours": 0.008,
+      "vendi_per_hour": 152.1646,
+      "verb": "neatly",
+      "reliable": false
+    },
+    {
+      "n": 2,
+      "vendi": 1.8144997897786477,
+      "nn_distance": 0.5660976915678007,
+      "log_det": 0.789789289627226,
+      "hours": 0.002,
+      "vendi_per_hour": 907.2499,
+      "verb": "shake",
+      "reliable": false
+    },
+    {
+      "n": 2,
+      "vendi": 1.6847807948368325,
+      "nn_distance": 0.4317471776385121,
+      "log_det": 0.7743917115096638,
+      "hours": 0.005,
+      "vendi_per_hour": 316.4568,
+      "verb": "unbutton",
+      "reliable": false
+    },
+    {
+      "n": 2,
+      "vendi": 1.3439173459095888,
+      "nn_distance": 0.17404026709818676,
+      "log_det": 0.7321022959001495,
+      "hours": 0.001,
+      "vendi_per_hour": 1180.025,
+      "verb": "unhang",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599453,
+      "hours": 0.007,
+      "vendi_per_hour": 145.9499,
+      "verb": "accordion",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0000000000000007,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599451,
+      "hours": 0.002,
+      "vendi_per_hour": 529.4118,
+      "verb": "break",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 0.9999999999999998,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599454,
+      "hours": 0.013,
+      "vendi_per_hour": 77.7874,
+      "verb": "cardboard",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599453,
+      "hours": 0.001,
+      "vendi_per_hour": 674.9156,
+      "verb": "clearly",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 0.9999999999999996,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599455,
+      "hours": 0.001,
+      "vendi_per_hour": 710.0592,
+      "verb": "confirm",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599453,
+      "hours": 0.001,
+      "vendi_per_hour": 1714.2857,
+      "verb": "doyin",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 0.9999999999999996,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599455,
+      "hours": 0.002,
+      "vendi_per_hour": 571.4286,
+      "verb": "enclose",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 0.9999999999999998,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599454,
+      "hours": 0.001,
+      "vendi_per_hour": 720.0,
+      "verb": "expand",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599453,
+      "hours": 0.002,
+      "vendi_per_hour": 470.158,
+      "verb": "fan",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 0.9999999999999991,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599457,
+      "hours": 0.003,
+      "vendi_per_hour": 295.082,
+      "verb": "feel",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0000000000000004,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599451,
+      "hours": 0.023,
+      "vendi_per_hour": 44.226,
+      "verb": "fill",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0000000000000004,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599452,
+      "hours": 0.007,
+      "vendi_per_hour": 138.4615,
+      "verb": "form",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 0.9999999999999998,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599454,
+      "hours": 0.013,
+      "vendi_per_hour": 76.0456,
+      "verb": "interlock",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 0.9999999999999993,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599456,
+      "hours": 0.018,
+      "vendi_per_hour": 54.1353,
+      "verb": "invert",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599453,
+      "hours": 0.003,
+      "vendi_per_hour": 346.1538,
+      "verb": "lean",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0000000000000002,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599452,
+      "hours": 0.006,
+      "vendi_per_hour": 169.9717,
+      "verb": "lint",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 0.9999999999999993,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599456,
+      "hours": 0.004,
+      "vendi_per_hour": 259.9278,
+      "verb": "lock",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 0.9999999999999998,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599454,
+      "hours": 0.002,
+      "vendi_per_hour": 514.2857,
+      "verb": "look",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599453,
+      "hours": 0.006,
+      "vendi_per_hour": 180.605,
+      "verb": "make",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0000000000000002,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599452,
+      "hours": 0.005,
+      "vendi_per_hour": 214.2857,
+      "verb": "measure",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0000000000000002,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599452,
+      "hours": 0.001,
+      "vendi_per_hour": 771.3735,
+      "verb": "orient",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 0.9999999999999998,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599454,
+      "hours": 0.004,
+      "vendi_per_hour": 240.0,
+      "verb": "pair",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599453,
+      "hours": 0.007,
+      "vendi_per_hour": 144.0,
+      "verb": "perform",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0000000000000004,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599452,
+      "hours": 0.001,
+      "vendi_per_hour": 1200.0,
+      "verb": "picht",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0000000000000004,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599452,
+      "hours": 0.006,
+      "vendi_per_hour": 168.7526,
+      "verb": "picu",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0000000000000007,
+      "nn_distance": 0.0,
+      "log_det": 0.693147180559945,
+      "hours": 0.003,
+      "vendi_per_hour": 327.2727,
+      "verb": "position",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0000000000000004,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599451,
+      "hours": 0.004,
+      "vendi_per_hour": 260.8696,
+      "verb": "push",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 0.9999999999999984,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599461,
+      "hours": 0.001,
+      "vendi_per_hour": 1200.0,
+      "verb": "redefine",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 0.9999999999999998,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599454,
+      "hours": 0.001,
+      "vendi_per_hour": 1350.3376,
+      "verb": "redifine",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0000000000000009,
+      "nn_distance": 0.0,
+      "log_det": 0.693147180559945,
+      "hours": 0.004,
+      "vendi_per_hour": 257.1429,
+      "verb": "rinse",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599453,
+      "hours": 0.005,
+      "vendi_per_hour": 185.567,
+      "verb": "round",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 0.9999999999999998,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599454,
+      "hours": 0.002,
+      "vendi_per_hour": 524.3227,
+      "verb": "rub",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599453,
+      "hours": 0.002,
+      "vendi_per_hour": 600.0,
+      "verb": "search",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 0.9999999999999996,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599455,
+      "hours": 0.004,
+      "vendi_per_hour": 240.0,
+      "verb": "select",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.000000000000001,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599447,
+      "hours": 0.003,
+      "vendi_per_hour": 300.0,
+      "verb": "spray",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599453,
+      "hours": 0.002,
+      "vendi_per_hour": 465.5373,
+      "verb": "stick",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0000000000000002,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599452,
+      "hours": 0.006,
+      "vendi_per_hour": 180.605,
+      "verb": "strengthen",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599453,
+      "hours": 0.001,
+      "vendi_per_hour": 666.6667,
+      "verb": "stretch",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599453,
+      "hours": 0.0,
+      "vendi_per_hour": 3600.0,
+      "verb": "tap",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0000000000000002,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599452,
+      "hours": 0.001,
+      "vendi_per_hour": 734.6939,
+      "verb": "thread",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599453,
+      "hours": 0.013,
+      "vendi_per_hour": 76.9231,
+      "verb": "tie",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599453,
+      "hours": 0.001,
+      "vendi_per_hour": 837.2093,
+      "verb": "toss",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0000000000000002,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599452,
+      "hours": 0.002,
+      "vendi_per_hour": 600.0,
+      "verb": "transfer",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 0.9999999999999998,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599454,
+      "hours": 0.001,
+      "vendi_per_hour": 818.1818,
+      "verb": "trim",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 0.9999999999999998,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599454,
+      "hours": 0.004,
+      "vendi_per_hour": 238.4106,
+      "verb": "unstrap",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 0.9999999999999993,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599456,
+      "hours": 0.001,
+      "vendi_per_hour": 1028.5714,
+      "verb": "untangle",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 0.9999999999999989,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599458,
+      "hours": 0.002,
+      "vendi_per_hour": 428.5714,
+      "verb": "unzip",
+      "reliable": false
+    },
+    {
+      "n": 1,
+      "vendi": 1.0,
+      "nn_distance": 0.0,
+      "log_det": 0.6931471805599453,
+      "hours": 0.005,
+      "vendi_per_hour": 200.0,
+      "verb": "wrap",
+      "reliable": false
+    }
+  ],
+  "min_group": 50,
+  "n_videos": 781
+}

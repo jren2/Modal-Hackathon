@@ -151,14 +151,24 @@ def summarize(X, hours: float | None = None) -> dict:
     return out
 
 
-def greedy_select(Xn, durations, budget_hours: float, log=print):
-    """Greedily pick segments maximising Vendi until the hour budget is spent.
+def greedy_select(Xn, durations, budget_hours: float, log=print, per_hour: bool = True):
+    """Greedily pick segments under an hour budget, maximising log det(I + K_S).
 
-    Lazy (CELF) evaluation: the marginal gain of a candidate never increases as
-    the selected set grows, so a stale gain that still beats every other
-    candidate's upper bound is safe to accept. Vendi is not provably submodular,
-    so this is a heuristic rather than a guaranteed (1-1/e) approximation --
-    a full re-evaluation pass costs O(N d^3) per step and is not affordable.
+    Vendi itself is a poor greedy objective: it is not submodular, and lazy
+    pruning on it is invalid because VS(S u {x}) *increases* with |S| rather than
+    decreasing, so stale heap entries understate instead of overstate. Selecting
+    on Vendi directly measurably underperformed random sampling.
+
+    log det(I + K_S) *is* submodular, so greedy carries the standard (1-1/e)
+    guarantee and lazy pruning is sound. By Sylvester's identity the N x N form
+    equals log det(I_d + X_S^T X_S), and the matrix determinant lemma turns each
+    candidate's marginal gain into
+
+        gain(x) = log(1 + x^T A^-1 x),   A = I_d + sum_{s in S} x_s x_s^T
+
+    which is O(d^2). Gains are divided by duration so the budget buys
+    information per hour rather than per segment. The chosen set is then scored
+    with Vendi, which is what we actually report.
     """
     import heapq
 
@@ -166,42 +176,46 @@ def greedy_select(Xn, durations, budget_hours: float, log=print):
 
     n_total, d = Xn.shape
     budget_seconds = budget_hours * 3600.0
-    G = np.zeros((d, d))
+    A_inv = np.eye(d)
     chosen: list[int] = []
     spent = 0.0
     selected = np.zeros(n_total, dtype=bool)
+    dur = np.asarray(durations, dtype=float)
 
-    def score_with(idx: int) -> float:
-        return _vendi_lambda(
-            np.linalg.eigvalsh((G + np.outer(Xn[idx], Xn[idx])) / (len(chosen) + 1))
-        )
+    def gain(idx: int) -> float:
+        x = Xn[idx]
+        g = float(np.log1p(max(x @ A_inv @ x, 0.0)))
+        if per_hour and dur[idx] > 0:
+            g /= dur[idx] / 3600.0
+        return g
 
-    current = 0.0
-    heap = [(-score_with(i), i, 0) for i in range(n_total)]
+    heap = [(-gain(i), i, 0) for i in range(n_total)]
     heapq.heapify(heap)
-
     evaluations = n_total
+
     while heap and spent < budget_seconds:
-        neg_gain, idx, stamp = heapq.heappop(heap)
-        if selected[idx]:
+        neg, idx, stamp = heapq.heappop(heap)
+        if selected[idx] or dur[idx] <= 0:
             continue
-        if durations[idx] <= 0 or spent + durations[idx] > budget_seconds:
+        if spent + dur[idx] > budget_seconds:
             continue
         if stamp == len(chosen):
             selected[idx] = True
             chosen.append(idx)
-            G = G + np.outer(Xn[idx], Xn[idx])
-            current = -neg_gain
-            spent += durations[idx]
+            # Sherman-Morrison rank-1 update of A^-1 for A <- A + x x^T
+            x = Xn[idx]
+            Ax = A_inv @ x
+            A_inv = A_inv - np.outer(Ax, Ax) / (1.0 + x @ Ax)
+            spent += dur[idx]
             if len(chosen) % 500 == 0:
                 log(f"    greedy: {len(chosen)} segments, {spent / 3600:.2f}h")
         else:
-            heapq.heappush(heap, (-(score_with(idx)), idx, len(chosen)))
+            heapq.heappush(heap, (-gain(idx), idx, len(chosen)))
             evaluations += 1
 
     log(
         f"    greedy done: {len(chosen)} segments, {spent / 3600:.2f}h, "
-        f"{evaluations} evaluations, VS={current:.2f}"
+        f"{evaluations} evaluations"
     )
     return chosen, spent / 3600.0
 
@@ -341,3 +355,192 @@ def score_all(min_group: int = MIN_GROUP) -> dict:
     results["bottom_videos"] = videos[-5:]
     print(json.dumps(results, indent=2, default=str))
     return results
+
+
+# ------------------------------------------------------------------ step 4 + 6
+
+
+def _hours(meta, idx) -> float:
+    return float(meta.duration.iloc[idx].sum()) / 3600.0
+
+
+def _subsample_to_hours(rng, meta, idx, target_hours: float):
+    """Trim a shuffled index list until it fits an hour budget.
+
+    Subsets are compared at equal hours, not equal segment count -- otherwise a
+    set of long segments wins simply by containing more footage.
+    """
+    order = rng.permutation(idx)
+    budget = target_hours * 3600.0
+    kept, spent = [], 0.0
+    for i in order:
+        d = float(meta.duration.iloc[i])
+        if spent + d > budget:
+            continue
+        kept.append(int(i))
+        spent += d
+    return kept
+
+
+@app.function(image=image, volumes={str(MOUNT): volume}, timeout=60 * 60 * 3, memory=32768)
+def compare_subsets(budget_fraction: float = 0.5, n_random_draws: int = 5) -> dict:
+    """Hero comparison plus scene and operator splits, all at equal hours."""
+    import numpy as np
+    import pandas as pd
+
+    Z, meta = _load()
+    Xn = normalize_rows(Z)
+    rng = np.random.default_rng(0)
+    total_hours = float(meta.duration.sum()) / 3600.0
+    budget = total_hours * budget_fraction
+    out: dict = {"total_hours": round(total_hours, 3), "budget_hours": round(budget, 3),
+                 "feature_dims": int(Z.shape[1])}
+
+    # --- hero: random half vs greedy-curated half, equal hours ----------
+    print(f"greedy curating to {budget:.2f}h of {total_hours:.2f}h", flush=True)
+    chosen, chosen_hours = greedy_select(Xn, meta.duration.to_numpy(float), budget)
+    curated = summarize(Z[chosen], chosen_hours)
+
+    randoms = []
+    for draw in range(n_random_draws):
+        idx = _subsample_to_hours(rng, meta, np.arange(len(Z)), budget)
+        randoms.append(summarize(Z[idx], _hours(meta, idx)))
+    random_mean = {
+        k: float(np.mean([r[k] for r in randoms]))
+        for k in ("vendi", "nn_distance", "log_det", "hours")
+    }
+    out["hero"] = {
+        "curated": curated,
+        "random_draws": randoms,
+        "random_mean": {k: round(v, 4) for k, v in random_mean.items()},
+        "vendi_uplift": round(curated["vendi"] - random_mean["vendi"], 4),
+        "curated_beats_random": curated["vendi"] > random_mean["vendi"],
+        "coverage_pct_of_full": round(100 * curated["vendi"] / max(vendi(Z), 1e-9), 1),
+    }
+
+    # --- scene A vs scene B, same operator (hardware held constant) -----
+    scene_pairs = []
+    for operator, g in meta.groupby("operator"):
+        counts = g.scene.value_counts()
+        good = counts[counts >= 40]
+        if len(good) < 2:
+            continue
+        a, b = good.index[0], good.index[1]
+        ia = g.index[g.scene == a].to_numpy()
+        ib = g.index[g.scene == b].to_numpy()
+        h = min(_hours(meta, ia), _hours(meta, ib))
+        if h <= 0:
+            continue
+        sa = _subsample_to_hours(rng, meta, ia, h)
+        sb = _subsample_to_hours(rng, meta, ib, h)
+        if len(sa) < 20 or len(sb) < 20:
+            continue
+        scene_pairs.append(
+            {
+                "operator": str(operator),
+                "scene_a": str(a), "scene_b": str(b),
+                "a": summarize(Z[sa], _hours(meta, sa)),
+                "b": summarize(Z[sb], _hours(meta, sb)),
+            }
+        )
+    for p in scene_pairs:
+        p["agree"] = (
+            (p["a"]["vendi"] > p["b"]["vendi"])
+            == (p["a"]["nn_distance"] > p["b"]["nn_distance"])
+            == (p["a"]["log_det"] > p["b"]["log_det"])
+        )
+    out["scene_pairs"] = scene_pairs[:10]
+
+    # --- operator A vs B: a provenance audit, not a judgement -----------
+    # This says whose recorded motion is more varied in this corpus. It is not a
+    # statement about the person: it confounds task assignment, session length
+    # and tracking quality, so it is only usable to spot collection anomalies.
+    counts = meta.operator.value_counts()
+    top = counts[counts >= 60].index[:6]
+    operator_rows = []
+    if len(top) >= 2:
+        h = min(_hours(meta, meta.index[meta.operator == o].to_numpy()) for o in top)
+        for o in top:
+            idx = _subsample_to_hours(
+                rng, meta, meta.index[meta.operator == o].to_numpy(), h
+            )
+            if len(idx) < 20:
+                continue
+            row = summarize(Z[idx], _hours(meta, idx))
+            row["operator"] = str(o)
+            row["scenes"] = int(meta.scene.iloc[idx].nunique())
+            row["median_valid_frac"] = round(float(meta.valid_frac.iloc[idx].median()), 3)
+            operator_rows.append(row)
+    out["operators"] = {
+        "equalised_hours": round(float(h), 3) if len(top) >= 2 else None,
+        "rows": sorted(operator_rows, key=lambda r: -r["vendi"]),
+        "caveat": (
+            "Confounded by task assignment, session length and tracking quality. "
+            "Use to spot collection anomalies, not to rank people."
+        ),
+    }
+
+    # --- do the three measures agree? -----------------------------------
+    out["hero"]["measures_agree"] = (
+        curated["vendi"] > random_mean["vendi"]
+        and curated["nn_distance"] > random_mean["nn_distance"]
+        and curated["log_det"] > random_mean["log_det"]
+    )
+
+    RESULTS.mkdir(parents=True, exist_ok=True)
+    (RESULTS / "compare_subsets.json").write_text(json.dumps(out, indent=2, default=str))
+    pd.DataFrame({"selected_index": chosen}).to_parquet(
+        RESULTS / "curated_indices.parquet", index=False
+    )
+    volume.commit()
+    print(json.dumps(out, indent=2, default=str)[:4000], flush=True)
+    return out
+
+
+@app.function(image=image, volumes={str(MOUNT): volume}, timeout=60 * 60 * 3, memory=32768)
+def curate(budget_fraction: float = 0.5) -> dict:
+    """Step 6: greedy keep/drop list under an hour budget."""
+    import numpy as np
+    import pandas as pd
+
+    Z, meta = _load()
+    Xn = normalize_rows(Z)
+    total_hours = float(meta.duration.sum()) / 3600.0
+    budget = total_hours * budget_fraction
+
+    chosen, hours = greedy_select(Xn, meta.duration.to_numpy(float), budget)
+    keep = np.zeros(len(Z), dtype=bool)
+    keep[chosen] = True
+    full_vs = vendi(Z)
+    kept_vs = vendi(Z[chosen])
+
+    table = meta.assign(keep=keep)
+    RESULTS.mkdir(parents=True, exist_ok=True)
+    table.to_parquet(RESULTS / "curation.parquet", index=False)
+
+    out = {
+        "budget_fraction": budget_fraction,
+        "total_hours": round(total_hours, 3),
+        "kept_hours": round(hours, 3),
+        "kept_segments": len(chosen),
+        "total_segments": len(Z),
+        "full_vendi": round(full_vs, 4),
+        "kept_vendi": round(kept_vs, 4),
+        "coverage_pct": round(100 * kept_vs / max(full_vs, 1e-9), 1),
+        "headline": (
+            f"{100 * hours / total_hours:.0f}% of the hours, "
+            f"{100 * kept_vs / max(full_vs, 1e-9):.0f}% of the behavioural coverage"
+        ),
+        "kept_verb_mix": table[table.keep].verb.value_counts().head(12).to_dict(),
+        "dropped_verb_mix": table[~table.keep].verb.value_counts().head(12).to_dict(),
+    }
+    (RESULTS / "curation.json").write_text(json.dumps(out, indent=2, default=str))
+    volume.commit()
+    print(json.dumps(out, indent=2, default=str))
+    return out
+
+
+@app.local_entrypoint()
+def main():
+    print(json.dumps(sanity.remote(), indent=2))
+    print(json.dumps(score_all.remote(), indent=2, default=str)[:3000])

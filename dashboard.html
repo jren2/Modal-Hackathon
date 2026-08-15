@@ -1,0 +1,268 @@
+<title>Fold-Clothes Diversity</title>
+<style>
+:root{
+  --paper:#F5F4F0; --surface:#FFFFFF; --sunk:#EFEEE8;
+  --ink:#15181B; --muted:#666D71; --faint:#8B9296;
+  --rule:#DFDED7; --rule-soft:#E9E8E2;
+  --accent:#0E6B63; --accent-soft:#0E6B6320; --accent-ink:#0A4F49;
+  --amber:#C1751A; --amber-soft:#C1751A22;
+  --crit:#A93F36; --ok:#3F7A45;
+  --shadow:0 1px 2px rgba(20,24,26,.05),0 8px 24px -16px rgba(20,24,26,.28);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#111417; --surface:#191D21; --sunk:#14181B;
+    --ink:#E9EAE6; --muted:#98A0A4; --faint:#788085;
+    --rule:#272C31; --rule-soft:#1F2429;
+    --accent:#43A99E; --accent-soft:#43A99E24; --accent-ink:#7FCabf;
+    --amber:#DFA152; --amber-soft:#DFA15226;
+    --crit:#D2726A; --ok:#6FAE73;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -16px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#111417; --surface:#191D21; --sunk:#14181B;
+  --ink:#E9EAE6; --muted:#98A0A4; --faint:#788085;
+  --rule:#272C31; --rule-soft:#1F2429;
+  --accent:#43A99E; --accent-soft:#43A99E24; --accent-ink:#7FCabf;
+  --amber:#DFA152; --amber-soft:#DFA15226;
+  --crit:#D2726A; --ok:#6FAE73;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -16px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1120px;margin:0 auto;padding:48px 28px 96px;display:flex;flex-direction:column;gap:52px}
+h1,h2,h3{font-family:ui-serif,Georgia,"Iowan Old Style",serif;font-weight:600;text-wrap:balance;margin:0}
+h1{font-size:2.4rem;line-height:1.12;letter-spacing:-.015em}
+h2{font-size:1.32rem;letter-spacing:-.01em}
+.num{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-variant-numeric:tabular-nums}
+.eyebrow{font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);font-weight:600}
+.lede{color:var(--muted);max-width:64ch}
+header{display:flex;flex-direction:column;gap:14px;border-bottom:1px solid var(--rule);padding-bottom:30px}
+section{display:flex;flex-direction:column;gap:18px}
+.sechead{display:flex;flex-direction:column;gap:5px;border-bottom:1px solid var(--rule-soft);padding-bottom:9px}
+.note{font-size:.83rem;color:var(--muted);max-width:72ch}
+
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;background:var(--rule);
+  border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+.cell{background:var(--surface);padding:15px 17px;display:flex;flex-direction:column;gap:4px}
+.cell .k{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:600}
+.cell .v{font-size:1.62rem;line-height:1.1;font-family:ui-monospace,"SF Mono",Menlo,monospace;font-variant-numeric:tabular-nums}
+.cell .s{font-size:.76rem;color:var(--muted)}
+.hero-v{color:var(--accent)}
+
+.bars{display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);border-radius:3px;background:var(--surface);overflow:hidden}
+.bar{display:grid;grid-template-columns:88px 1fr 132px;align-items:center;gap:14px;padding:9px 16px;border-bottom:1px solid var(--rule-soft)}
+.bar:last-child{border-bottom:0}
+.bar .vb{font-weight:600;font-size:.92rem}
+.track{position:relative;height:16px;background:var(--sunk);border-radius:2px;overflow:hidden}
+.fill{position:absolute;inset:0 auto 0 0;background:var(--accent);opacity:.86}
+.bar.dim .fill{background:var(--faint);opacity:.5}
+.bar .rt{display:flex;gap:12px;justify-content:flex-end;font-size:.8rem;color:var(--muted)}
+.bar .rt b{color:var(--ink);font-weight:600}
+.flag{font-size:.63rem;letter-spacing:.07em;text-transform:uppercase;color:var(--crit);border:1px solid var(--crit);
+  border-radius:2px;padding:0 4px;align-self:center}
+
+.cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(292px,1fr));gap:20px}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:3px;padding:20px;box-shadow:var(--shadow);
+  display:flex;flex-direction:column;gap:14px}
+.card h3{font-size:1.02rem}
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+th{text-align:left;font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);
+  font-weight:600;padding:0 10px 7px 0;border-bottom:1px solid var(--rule)}
+td{padding:7px 10px 7px 0;border-bottom:1px solid var(--rule-soft)}
+td.n{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-variant-numeric:tabular-nums;text-align:right}
+tr:last-child td{border-bottom:0}
+.win{color:var(--accent);font-weight:600}
+.lose{color:var(--muted)}
+.scroll{overflow-x:auto}
+.chip{display:inline-block;font-size:.7rem;padding:1px 6px;border:1px solid var(--rule);border-radius:2px;
+  color:var(--muted);margin:0 3px 3px 0;white-space:nowrap}
+canvas{width:100%;height:340px;display:block;border:1px solid var(--rule);border-radius:3px;background:var(--surface)}
+.legend{display:flex;gap:18px;font-size:.78rem;color:var(--muted);flex-wrap:wrap}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:6px}
+.dot.amber{background:var(--amber)}
+.caveat{border-left:2px solid var(--amber);padding:2px 0 2px 15px;display:flex;flex-direction:column;gap:9px}
+.caveat p{margin:0;font-size:.87rem;color:var(--muted)}
+.caveat b{color:var(--ink);font-weight:600}
+footer{border-top:1px solid var(--rule);padding-top:20px;font-size:.8rem;color:var(--faint)}
+@media (max-width:640px){
+  .bar{grid-template-columns:72px 1fr;gap:9px}
+  .bar .rt{grid-column:1/-1;justify-content:flex-start}
+  h1{font-size:1.85rem}
+}
+</style>
+<div class="wrap">
+<header>
+  <div class="eyebrow">EgoVerse-I &middot; fold-clothes &middot; hand kinematics</div>
+  <h1>13.9 effective behaviours in 18 hours</h1>
+  <p class="lede">4,878 labelled manipulation cycles from 781 sessions, scored on
+  wrist trajectory and fingertip configuration &mdash; not pixels, not text. The Vendi score reads as
+  the number of genuinely distinct things the data contains: identical motion scores 1, wholly
+  dissimilar motion scores N.</p>
+</header>
+
+<section>
+  <div class="sechead"><h2>Corpus</h2>
+  <div class="note">Measured over 30 PCA dimensions of a cosine kernel.</div></div>
+  <div class="strip"><div class="cell"><div class="k">Effective behaviours</div><div class="v hero-v">13.9</div><div class="s">of 30 possible</div></div><div class="cell"><div class="k">Segments</div><div class="v">4,878</div><div class="s">781 sessions</div></div><div class="cell"><div class="k">Hours</div><div class="v">18.0</div><div class="s">labelled manipulation</div></div><div class="cell"><div class="k">Distinct verbs</div><div class="v">114</div><div class="s">11 with n≥50</div></div><div class="cell"><div class="k">Nearest-neighbour</div><div class="v">0.145</div><div class="s">mean cosine distance</div></div></div>
+</section>
+
+<section>
+  <div class="sechead"><h2>Diversity by action</h2>
+  <div class="note">Grouping comes from the annotation verb; the measurement comes from kinematics,
+  so there is no circularity. Ordered by sample count. Groups below n=50 are marked &mdash;
+  their eigenvalue estimates are noisy.</div></div>
+  <div class="bars"><div class="bar"><div class="vb">fold</div><div class="track"><div class="fill" style="width:87.4%"></div></div><div class="rt"><span>n <b class="num">1010</b></span><span>VS <b class="num">12.96</b></span><span>/h <b class="num">2</b></span></div></div><div class="bar"><div class="vb">pick</div><div class="track"><div class="fill" style="width:100.0%"></div></div><div class="rt"><span>n <b class="num">939</b></span><span>VS <b class="num">14.83</b></span><span>/h <b class="num">5</b></span></div></div><div class="bar"><div class="vb">place</div><div class="track"><div class="fill" style="width:93.9%"></div></div><div class="rt"><span>n <b class="num">630</b></span><span>VS <b class="num">13.93</b></span><span>/h <b class="num">12</b></span></div></div><div class="bar"><div class="vb">adjust</div><div class="track"><div class="fill" style="width:87.9%"></div></div><div class="rt"><span>n <b class="num">584</b></span><span>VS <b class="num">13.03</b></span><span>/h <b class="num">7</b></span></div></div><div class="bar"><div class="vb">smooth</div><div class="track"><div class="fill" style="width:68.1%"></div></div><div class="rt"><span>n <b class="num">271</b></span><span>VS <b class="num">10.11</b></span><span>/h <b class="num">12</b></span></div></div><div class="bar"><div class="vb">move</div><div class="track"><div class="fill" style="width:97.2%"></div></div><div class="rt"><span>n <b class="num">238</b></span><span>VS <b class="num">14.42</b></span><span>/h <b class="num">29</b></span></div></div><div class="bar"><div class="vb">flip</div><div class="track"><div class="fill" style="width:84.9%"></div></div><div class="rt"><span>n <b class="num">120</b></span><span>VS <b class="num">12.60</b></span><span>/h <b class="num">48</b></span></div></div><div class="bar"><div class="vb">spread</div><div class="track"><div class="fill" style="width:84.9%"></div></div><div class="rt"><span>n <b class="num">81</b></span><span>VS <b class="num">12.59</b></span><span>/h <b class="num">39</b></span></div></div><div class="bar"><div class="vb">unfold</div><div class="track"><div class="fill" style="width:67.3%"></div></div><div class="rt"><span>n <b class="num">64</b></span><span>VS <b class="num">9.98</b></span><span>/h <b class="num">61</b></span></div></div><div class="bar"><div class="vb">apply</div><div class="track"><div class="fill" style="width:66.0%"></div></div><div class="rt"><span>n <b class="num">60</b></span><span>VS <b class="num">9.80</b></span><span>/h <b class="num">42</b></span></div></div><div class="bar"><div class="vb">assemble</div><div class="track"><div class="fill" style="width:56.9%"></div></div><div class="rt"><span>n <b class="num">59</b></span><span>VS <b class="num">8.45</b></span><span>/h <b class="num">15</b></span></div></div><div class="bar dim"><div class="vb">press<span class="flag">n low</span></div><div class="track"><div class="fill" style="width:52.4%"></div></div><div class="rt"><span>n <b class="num">49</b></span><span>VS <b class="num">7.78</b></span><span>/h <b class="num">63</b></span></div></div><div class="bar dim"><div class="vb">insert<span class="flag">n low</span></div><div class="track"><div class="fill" style="width:77.3%"></div></div><div class="rt"><span>n <b class="num">47</b></span><span>VS <b class="num">11.46</b></span><span>/h <b class="num">54</b></span></div></div><div class="bar dim"><div class="vb">straighten<span class="flag">n low</span></div><div class="track"><div class="fill" style="width:70.6%"></div></div><div class="rt"><span>n <b class="num">42</b></span><span>VS <b class="num">10.47</b></span><span>/h <b class="num">51</b></span></div></div><div class="bar dim"><div class="vb">close<span class="flag">n low</span></div><div class="track"><div class="fill" style="width:43.4%"></div></div><div class="rt"><span>n <b class="num">40</b></span><span>VS <b class="num">6.44</b></span><span>/h <b class="num">72</b></span></div></div><div class="bar dim"><div class="vb">rotate<span class="flag">n low</span></div><div class="track"><div class="fill" style="width:61.1%"></div></div><div class="rt"><span>n <b class="num">39</b></span><span>VS <b class="num">9.06</b></span><span>/h <b class="num">80</b></span></div></div></div>
+  <div class="note"><b>fold</b> is the largest group (1010 cycles) yet scores
+  13.0, below <b>pick</b> at 14.8 on fewer samples &mdash; people fold more
+  stereotypically than they reach. <b>smooth</b> is the most repetitive frequent action at
+  10.1.</div>
+</section>
+
+<section>
+  <div class="sechead"><h2>Curated half vs random half</h2>
+  <div class="note">Both subsets hold 9.0 of 18.0 hours &mdash; equal
+  hours, not equal segment counts, since a set of long segments would otherwise win by containing
+  more footage. Random is the mean of 5 draws.</div></div>
+  <div class="cmp">
+    <div class="card">
+      <h3>Three measures, one kernel</h3>
+      <div class="scroll"><table>
+        <tr><th>Measure</th><th>Curated</th><th>Random</th><th>&Delta;</th></tr>
+        <tr><td>Vendi</td><td class="n win">14.890</td><td class="n lose">13.822</td><td class="n">1.068</td></tr><tr><td>log det(K+I)</td><td class="n win">0.9529</td><td class="n lose">0.9486</td><td class="n">0.0043</td></tr><tr><td>NN distance</td><td class="n lose">0.1587</td><td class="n win">0.1613</td><td class="n">-0.0026</td></tr>
+      </table></div>
+      <div class="note">Vendi and log-det both favour the curated half. NN-distance does not &mdash;
+      curation packs 3,943 short segments into the same hours, so neighbours sit closer even
+      though the spread of behaviour is wider. Two of three agree.</div>
+    </div>
+    <div class="card">
+      <h3>50% of the hours, 107% of the behavioural coverage</h3>
+      <div class="strip" style="grid-template-columns:1fr 1fr">
+        <div class="cell"><div class="k">Kept</div><div class="v">9.0h</div>
+          <div class="s">3,943 of 4,878 cycles</div></div>
+        <div class="cell"><div class="k">Coverage</div><div class="v hero-v">107%</div>
+          <div class="s">of full-corpus Vendi</div></div>
+      </div>
+      <div class="note">Selection maximises log&nbsp;det(I+K) per hour, which is submodular and so
+      carries the standard greedy guarantee. Coverage exceeds 100% because dropping redundant
+      cycles raises the score above the full corpus &mdash; the discarded half was mostly repetition.
+      Most-dropped verb: <b>fold</b> (384 cycles).</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sechead"><h2>Sessions</h2>
+  <div class="note">Internal diversity is how varied one session is on its own. Contribution is what
+  the whole corpus loses if that session is removed &mdash; computed by leaving the entire session out,
+  so five near-identical folds are not credited five times. They correlate at
+  r=0.569, so they are related but not redundant.</div></div>
+  <canvas id="sc" width="1000" height="340"></canvas>
+  <div class="legend"><span><span class="dot"></span>adds diversity</span>
+    <span><span class="dot amber"></span>redundant &mdash; removing it raises the score</span>
+    <span>point size = cycles in session</span></div>
+</section>
+
+<section>
+  <div class="sechead"><h2>Most and least distinctive sessions</h2>
+  <div class="note">Ranked by contribution. Video frames were excluded from this pull, so sessions are
+  identified by task, scene and verb mix rather than thumbnails.</div></div>
+  <div class="scroll"><table>
+    <tr><th>Episode</th><th>Task</th><th>Scene</th><th>Cycles</th><th>Internal</th>
+        <th>Contribution</th><th>Valid</th><th>Verbs</th></tr>
+    <tr><td class="num">69b495b2a5</td><td>folding_clothes</td><td>stockroom</td><td class="n">22</td><td class="n">10.03</td><td class="n">+0.0263</td><td class="n">1.00</td><td><span class="chip">adjust</span><span class="chip">flip</span><span class="chip">fold</span><span class="chip">move</span><span class="chip">pick</span></td></tr><tr><td class="num">69badd72cc</td><td>folding_clothes</td><td>bedroom</td><td class="n">16</td><td class="n">6.83</td><td class="n">+0.0227</td><td class="n">1.00</td><td><span class="chip">fold</span><span class="chip">pick</span><span class="chip">place</span></td></tr><tr><td class="num">69b3959431</td><td>folding_bags</td><td>finishing_area</td><td class="n">19</td><td class="n">4.68</td><td class="n">+0.0218</td><td class="n">1.00</td><td><span class="chip">pick</span><span class="chip">place</span><span class="chip">press</span></td></tr><tr><td class="num">69b5407fe1</td><td>folding_fabrics</td><td>stockroom</td><td class="n">16</td><td class="n">10.32</td><td class="n">+0.0215</td><td class="n">1.00</td><td><span class="chip">adjust</span><span class="chip">fold</span><span class="chip">move</span><span class="chip">open</span><span class="chip">pick</span></td></tr><tr><td class="num">69b93ef8fa</td><td>folding_clothes</td><td>laundry_room</td><td class="n">8</td><td class="n">6.53</td><td class="n">+0.0196</td><td class="n">1.00</td><td><span class="chip">fold</span><span class="chip">lay</span><span class="chip">pick</span><span class="chip">spread</span><span class="chip">straighten</span></td></tr><tr><td class="num">69bb01bf11</td><td>folding_clothes</td><td>bedroom</td><td class="n">17</td><td class="n">7.13</td><td class="n">+0.0192</td><td class="n">1.00</td><td><span class="chip">fold</span><span class="chip">move</span><span class="chip">pick</span><span class="chip">place</span><span class="chip">spread</span></td></tr><tr><td class="num">69b349a2a9</td><td>folding_clothes</td><td>stockroom</td><td class="n">24</td><td class="n">6.53</td><td class="n">+0.0192</td><td class="n">1.00</td><td><span class="chip">adjust</span><span class="chip">clean</span><span class="chip">flip</span><span class="chip">fold</span><span class="chip">move</span></td></tr><tr><td class="num">696d8dd68e</td><td>folding_bags</td><td>backroom</td><td class="n">14</td><td class="n">8.10</td><td class="n">+0.0182</td><td class="n">1.00</td><td><span class="chip">adjust</span><span class="chip">fold</span><span class="chip">move</span><span class="chip">pick</span><span class="chip">unfold</span></td></tr>
+    <tr><td colspan="8" style="padding-top:14px;color:var(--faint);font-size:.7rem;
+      letter-spacing:.09em;text-transform:uppercase">Least distinctive</td></tr>
+    <tr><td class="num">69b5749604</td><td>folding_bags</td><td>gluing_station</td><td class="n">20</td><td class="n">1.83</td><td class="n">-0.0476</td><td class="n">1.00</td><td><span class="chip">adjust</span><span class="chip">fold</span><span class="chip">pick</span><span class="chip">place</span><span class="chip">pull</span></td></tr><tr><td class="num">69b9f81d4c</td><td>folding_socks</td><td>bedroom</td><td class="n">16</td><td class="n">2.07</td><td class="n">-0.0359</td><td class="n">1.00</td><td><span class="chip">adjust</span><span class="chip">fold</span><span class="chip">pick</span><span class="chip">place</span><span class="chip">toss</span></td></tr><tr><td class="num">696bc24c81</td><td>folding_samosas</td><td>bakery_kitchen</td><td class="n">21</td><td class="n">3.11</td><td class="n">-0.0310</td><td class="n">1.00</td><td><span class="chip">adjust</span><span class="chip">move</span><span class="chip">pick</span></td></tr><tr><td class="num">69b554c1eb</td><td>folding_paper</td><td>packaging_line</td><td class="n">15</td><td class="n">1.39</td><td class="n">-0.0301</td><td class="n">1.00</td><td><span class="chip">pick</span><span class="chip">place</span><span class="chip">roll</span></td></tr><tr><td class="num">69b36653d6</td><td>folding_paper_bags</td><td>folding_area</td><td class="n">14</td><td class="n">1.67</td><td class="n">-0.0281</td><td class="n">1.00</td><td><span class="chip">adjust</span><span class="chip">align</span><span class="chip">fold</span><span class="chip">place</span><span class="chip">press</span></td></tr><tr><td class="num">69b380387a</td><td>folding_paper_bags</td><td>packaging_area</td><td class="n">12</td><td class="n">1.95</td><td class="n">-0.0263</td><td class="n">1.00</td><td><span class="chip">adjust</span><span class="chip">apply</span><span class="chip">crease</span><span class="chip">dip</span><span class="chip">fold</span></td></tr><tr><td class="num">69b8b05611</td><td>folding_clothes</td><td>bedroom</td><td class="n">22</td><td class="n">3.58</td><td class="n">-0.0256</td><td class="n">1.00</td><td><span class="chip">adjust</span><span class="chip">flip</span><span class="chip">fold</span><span class="chip">move</span><span class="chip">pick</span></td></tr><tr><td class="num">69b345a5c7</td><td>folding_clothes</td><td>sales_floor</td><td class="n">16</td><td class="n">2.77</td><td class="n">-0.0254</td><td class="n">1.00</td><td><span class="chip">adjust</span><span class="chip">fold</span><span class="chip">move</span><span class="chip">pick</span><span class="chip">place</span></td></tr>
+  </table></div>
+</section>
+
+<section>
+  <div class="sechead"><h2>Scene and operator splits</h2>
+  <div class="note">Both equalised by hours.</div></div>
+  <div class="cmp">
+    <div class="card"><h3>Scene A vs B, same operator</h3>
+      <div class="scroll"><table>
+        <tr><th>Operator</th><th>Scene A</th><th>VS</th><th>Scene B</th><th>VS</th><th>Agree</th></tr>
+        <tr><td class="num">692fb1f4</td><td>office</td><td class="n">5.28</td><td>backroom</td><td class="n">8.37</td><td class="n">yes</td></tr><tr><td class="num">694381bb</td><td>folding_area</td><td class="n">7.38</td><td>gluing_station</td><td class="n">8.02</td><td class="n">yes</td></tr>
+      </table></div>
+      <div class="note">Hardware and person held constant, so the difference is the room.</div>
+    </div>
+    <div class="card"><h3>Operator audit</h3>
+      <div class="scroll"><table>
+        <tr><th>Operator</th><th>VS</th><th>NN</th><th>Scenes</th><th>n</th></tr>
+        <tr><td class="num">69363453c6</td><td class="n">11.07</td><td class="n">0.229</td><td class="n">2</td><td class="n">62</td></tr><tr><td class="num">694381bb79</td><td class="n">8.78</td><td class="n">0.126</td><td class="n">3</td><td class="n">113</td></tr><tr><td class="num">693b94f6c6</td><td class="n">8.36</td><td class="n">0.195</td><td class="n">2</td><td class="n">67</td></tr><tr><td class="num">693a5545af</td><td class="n">7.26</td><td class="n">0.151</td><td class="n">2</td><td class="n">66</td></tr><tr><td class="num">693cbbbbc6</td><td class="n">6.42</td><td class="n">0.157</td><td class="n">2</td><td class="n">108</td></tr><tr><td class="num">692fb1f4ce</td><td class="n">6.40</td><td class="n">0.145</td><td class="n">2</td><td class="n">53</td></tr>
+      </table></div>
+      <div class="note">Confounded by task assignment, session length and tracking quality. Use to spot collection anomalies, not to rank people. Equalised at
+      0.25h each.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sechead"><h2>What these numbers cannot tell you</h2></div>
+  <div class="caveat">
+    <p><b>The ceiling is 30.</b> A cosine kernel on 30 PCA dimensions has rank at
+    most 30, so Vendi can never exceed 30 however many distinct behaviours exist. At
+    13.9 the ceiling is not binding, but a corpus twice as varied would not read as twice
+    the score.</p>
+    <p><b>Half the labels describe two actions.</b> 49% of source spans read like
+    &ldquo;pick up mask from pile, place mask on stack&rdquo; with no sub-boundary to split on. The first
+    verb wins, which biases counts toward <b>pick</b>.</p>
+    <p><b>Label granularity is coarser than a repetition.</b> A single &ldquo;fold shirt&rdquo; span runs
+    14.5s at the median, covering several physical folds. Resampling that to 30 frames averages them
+    together, so execution diversity is partly measuring blur. Composition is unaffected.</p>
+    <p><b>Operator scores are not a ranking of people.</b> They confound task assignment, session
+    length and tracking quality. Use them to spot collection anomalies only.</p>
+  </div>
+</section>
+
+<footer>Kernel: cosine over 30 PCA dims of wrist trajectory (180) + fingertip configuration
+(900) + duration. Vendi = exp of the Shannon entropy of the kernel eigenvalue spectrum. Verified
+against identical vectors (1.00), duplication (invariant) and the explicit N&times;N kernel (1e-14).</footer>
+</div>
+<script id="d" type="application/json">[[10.032, 0.02632, 22], [6.828, 0.02266, 16], [4.678, 0.0218, 19], [10.321, 0.02145, 16], [6.525, 0.01956, 8], [7.131, 0.01924, 17], [6.529, 0.01922, 24], [8.104, 0.01817, 14], [4.79, 0.01739, 33], [5.677, 0.01711, 8], [6.697, 0.01703, 14], [7.499, 0.01656, 15], [6.524, 0.01628, 16], [6.638, 0.01628, 11], [5.975, 0.01571, 8], [7.694, 0.01549, 15], [5.743, 0.01539, 10], [5.938, 0.015, 8], [5.187, 0.01403, 7], [7.137, 0.0137, 17], [4.002, 0.01349, 5], [5.307, 0.01346, 18], [5.474, 0.01317, 7], [7.319, 0.01309, 13], [6.373, 0.01296, 8], [5.057, 0.01294, 22], [7.126, 0.01281, 15], [3.885, 0.01254, 7], [6.743, 0.01246, 13], [6.553, 0.01223, 14], [5.984, 0.01223, 12], [6.166, 0.012, 17], [5.891, 0.012, 9], [5.647, 0.01198, 9], [7.088, 0.01179, 9], [5.442, 0.01177, 7], [5.431, 0.01151, 7], [6.162, 0.01133, 11], [4.333, 0.01128, 5], [4.837, 0.01122, 6], [6.211, 0.01108, 8], [5.889, 0.01072, 9], [4.169, 0.0104, 6], [4.206, 0.0103, 6], [4.091, 0.01028, 5], [4.747, 0.01025, 7], [6.018, 0.00996, 9], [3.99, 0.00996, 7], [6.441, 0.00995, 10], [5.316, 0.00991, 8], [5.546, 0.00991, 7], [5.387, 0.00982, 8], [4.451, 0.00971, 9], [6.19, 0.00965, 10], [5.651, 0.00964, 8], [6.711, 0.00963, 15], [5.988, 0.00946, 9], [3.395, 0.00937, 4], [4.863, 0.00932, 7], [4.694, 0.0093, 6], [4.116, 0.00928, 8], [4.273, 0.00923, 5], [4.565, 0.00913, 7], [5.363, 0.00909, 9], [3.499, 0.00907, 7], [3.837, 0.00905, 12], [4.798, 0.00904, 6], [4.906, 0.00871, 7], [6.888, 0.00865, 11], [4.408, 0.00858, 7], [3.79, 0.00851, 4], [4.301, 0.00845, 5], [5.498, 0.00842, 11], [4.393, 0.0084, 5], [3.777, 0.00836, 4], [5.079, 0.00829, 9], [6.247, 0.00826, 8], [5.507, 0.00821, 7], [5.009, 0.00809, 8], [4.906, 0.00806, 12], [5.39, 0.00806, 12], [4.946, 0.00801, 7], [4.451, 0.00798, 5], [4.845, 0.00794, 12], [6.631, 0.0078, 17], [4.808, 0.00769, 6], [4.519, 0.00766, 6], [5.441, 0.00757, 10], [3.986, 0.00753, 5], [5.21, 0.00751, 7], [3.366, 0.00748, 4], [5.476, 0.00746, 9], [4.958, 0.00745, 7], [5.303, 0.00735, 10], [2.928, 0.00727, 4], [3.393, 0.00721, 6], [4.64, 0.00713, 8], [4.025, 0.00694, 5], [4.193, 0.00681, 7], [4.362, 0.00677, 6], [3.541, 0.00674, 4], [2.868, 0.00674, 3], [3.686, 0.00665, 5], [3.845, 0.00661, 5], [4.637, 0.00656, 6], [5.992, 0.00648, 9], [2.594, 0.00642, 3], [3.249, 0.00638, 6], [4.394, 0.00614, 5], [3.652, 0.00613, 4], [4.251, 0.00605, 5], [4.456, 0.00601, 8], [5.367, 0.006, 7], [1.97, 0.00599, 2], [4.037, 0.00595, 5], [3.737, 0.00588, 5], [4.381, 0.00583, 6], [3.434, 0.00583, 5], [6.395, 0.00581, 9], [3.181, 0.00581, 7], [3.567, 0.00581, 4], [3.614, 0.00576, 6], [3.459, 0.0057, 9], [4.062, 0.0057, 5], [4.67, 0.00567, 7], [3.89, 0.00564, 6], [3.727, 0.00556, 6], [4.958, 0.00556, 10], [4.818, 0.00555, 7], [3.764, 0.00544, 5], [2.858, 0.00542, 3], [4.33, 0.00541, 8], [3.094, 0.00538, 5], [4.436, 0.00538, 11], [6.171, 0.00533, 12], [2.627, 0.00532, 3], [3.662, 0.00528, 4], [3.991, 0.00527, 5], [3.861, 0.00524, 5], [5.431, 0.0052, 9], [3.489, 0.00515, 4], [3.8, 0.00513, 6], [3.09, 0.00506, 4], [5.439, 0.005, 11], [2.929, 0.00499, 3], [3.202, 0.00498, 5], [3.49, 0.00493, 4], [4.631, 0.00488, 5], [3.786, 0.00475, 5], [4.229, 0.00472, 5], [3.573, 0.00469, 5], [4.199, 0.00467, 6], [3.354, 0.00464, 4], [3.587, 0.00459, 5], [3.645, 0.00458, 5], [4.045, 0.00455, 6], [5.739, 0.00455, 10], [3.953, 0.00452, 6], [3.638, 0.00449, 7], [2.645, 0.00449, 3], [3.338, 0.00447, 4], [3.335, 0.00447, 5], [3.109, 0.00436, 4], [3.748, 0.00434, 6], [4.693, 0.00432, 13], [3.626, 0.0043, 5], [2.358, 0.00428, 4], [4.717, 0.00427, 6], [2.377, 0.00427, 4], [3.414, 0.00425, 4], [4.883, 0.00423, 11], [2.773, 0.00422, 3], [4.101, 0.0042, 9], [4.089, 0.00419, 7], [4.446, 0.00419, 9], [2.593, 0.00414, 3], [5.477, 0.00413, 10], [2.869, 0.0041, 3], [2.753, 0.00407, 4], [4.625, 0.00406, 14], [3.324, 0.00405, 5], [5.652, 0.00404, 11], [4.449, 0.004, 7], [4.538, 0.004, 9], [1.947, 0.00398, 2], [4.919, 0.00393, 7], [5.079, 0.00389, 8], [5.057, 0.00382, 9], [4.117, 0.00381, 7], [3.883, 0.00373, 5], [3.247, 0.00372, 4], [3.367, 0.00372, 4], [4.622, 0.00371, 10], [4.537, 0.00368, 9], [2.935, 0.00367, 4], [6.481, 0.00364, 16], [2.487, 0.00364, 3], [1.984, 0.00364, 2], [5.534, 0.00363, 9], [2.836, 0.00362, 4], [2.752, 0.00357, 7], [4.832, 0.00347, 8], [4.042, 0.00346, 5], [5.205, 0.00345, 9], [4.933, 0.00344, 11], [4.285, 0.00342, 11], [3.477, 0.00341, 5], [2.858, 0.0034, 3], [3.309, 0.00337, 4], [2.924, 0.00337, 4], [3.509, 0.00334, 5], [2.439, 0.00331, 4], [3.071, 0.0033, 6], [3.339, 0.00329, 7], [2.012, 0.00326, 4], [3.912, 0.00322, 5], [3.888, 0.00321, 6], [2.812, 0.0032, 3], [3.497, 0.00318, 4], [4.123, 0.00318, 6], [1.947, 0.00314, 2], [3.13, 0.00306, 5], [1.6, 0.00302, 2], [6.38, 0.003, 15], [4.879, 0.00299, 7], [3.536, 0.00298, 7], [4.074, 0.00295, 6], [4.586, 0.00295, 7], [1.831, 0.00291, 2], [4.28, 0.0029, 8], [4.695, 0.00288, 9], [4.143, 0.0028, 6], [4.231, 0.00279, 6], [4.962, 0.00278, 7], [4.743, 0.00276, 10], [2.659, 0.00274, 4], [2.993, 0.00273, 3], [5.143, 0.00267, 9], [3.679, 0.00266, 5], [3.039, 0.00265, 5], [4.434, 0.0026, 7], [2.734, 0.0026, 3], [3.738, 0.0026, 6], [4.321, 0.00258, 6], [2.956, 0.0025, 4], [4.261, 0.00246, 6], [3.528, 0.00243, 4], [5.393, 0.0024, 9], [2.47, 0.0024, 3], [4.138, 0.00239, 5], [4.092, 0.00239, 6], [3.699, 0.00235, 5], [3.283, 0.00235, 4], [2.661, 0.00234, 4], [3.24, 0.00233, 5], [4.442, 0.00231, 9], [3.491, 0.00228, 7], [2.904, 0.00225, 4], [3.565, 0.00224, 5], [3.69, 0.0022, 5], [1.666, 0.00219, 2], [2.468, 0.00218, 3], [4.333, 0.00218, 5], [2.741, 0.00216, 5], [3.784, 0.00215, 10], [1.974, 0.00214, 2], [2.403, 0.00213, 3], [1.808, 0.00213, 2], [4.157, 0.00212, 9], [1.0, 0.00212, 1], [3.582, 0.00212, 4], [2.66, 0.00207, 5], [3.589, 0.00207, 6], [3.479, 0.00204, 6], [1.0, 0.00203, 1], [2.657, 0.00202, 3], [4.242, 0.00202, 7], [1.0, 0.00199, 1], [3.744, 0.00199, 5], [2.881, 0.00197, 3], [1.953, 0.00196, 2], [3.773, 0.0019, 5], [4.773, 0.00188, 7], [3.187, 0.00188, 4], [3.501, 0.00187, 6], [1.664, 0.00184, 2], [2.86, 0.00179, 4], [2.9, 0.00176, 4], [3.48, 0.00174, 6], [2.507, 0.00174, 5], [3.88, 0.00168, 7], [4.272, 0.00168, 8], [4.493, 0.00166, 6], [3.065, 0.00165, 4], [2.758, 0.00161, 3], [4.159, 0.00159, 7], [5.354, 0.00157, 13], [3.721, 0.00155, 6], [3.331, 0.00155, 5], [4.01, 0.00149, 7], [1.517, 0.00145, 2], [1.902, 0.00143, 2], [1.0, 0.00143, 1], [2.339, 0.00143, 3], [2.901, 0.00142, 3], [2.687, 0.00142, 3], [2.702, 0.00138, 3], [1.0, 0.00134, 1], [1.501, 0.00134, 2], [2.707, 0.00132, 4], [5.367, 0.00129, 10], [1.862, 0.00128, 2], [1.659, 0.00128, 2], [1.0, 0.00127, 1], [3.275, 0.00127, 6], [1.974, 0.00126, 2], [3.231, 0.00123, 4], [2.217, 0.00122, 3], [2.485, 0.0012, 5], [3.145, 0.00117, 4], [3.283, 0.00114, 4], [3.943, 0.00114, 5], [3.528, 0.00114, 6], [4.676, 0.00113, 7], [1.953, 0.00113, 2], [1.0, 0.00112, 1], [2.598, 0.00112, 4], [1.855, 0.00111, 3], [2.592, 0.00111, 3], [2.498, 0.0011, 4], [3.435, 0.00109, 6], [1.0, 0.00108, 1], [1.0, 0.00108, 1], [3.416, 0.00106, 8], [1.832, 0.00106, 2], [3.144, 0.00096, 5], [3.906, 0.00096, 5], [3.335, 0.00096, 6], [2.531, 0.00093, 5], [3.02, 0.00092, 4], [4.307, 0.00092, 6], [2.739, 0.00092, 4], [5.178, 0.00092, 9], [4.0, 0.00091, 7], [2.81, 0.0009, 4], [1.389, 0.00089, 2], [2.5, 0.00089, 3], [4.372, 0.00088, 6], [2.452, 0.00087, 3], [2.955, 0.00085, 4], [1.0, 0.00084, 1], [4.87, 0.00083, 12], [1.873, 0.00082, 2], [3.983, 0.00081, 10], [2.83, 0.00079, 6], [3.461, 0.00078, 5], [3.719, 0.00078, 8], [3.411, 0.00078, 6], [4.109, 0.00074, 10], [2.138, 0.00073, 4], [2.969, 0.00071, 4], [1.0, 0.00066, 1], [2.202, 0.00066, 3], [2.607, 0.00064, 3], [4.522, 0.00064, 6], [1.0, 0.00063, 1], [1.869, 0.00061, 2], [2.778, 0.00061, 4], [4.434, 0.0006, 12], [3.755, 0.0006, 6], [3.064, 0.00054, 4], [1.0, 0.00051, 1], [1.897, 0.00047, 3], [3.775, 0.00044, 7], [1.0, 0.00041, 1], [2.225, 0.00036, 3], [1.53, 0.00036, 2], [3.263, 0.00035, 6], [3.429, 0.00035, 6], [3.619, 0.00034, 6], [3.12, 0.00033, 4], [2.499, 0.00033, 3], [1.0, 0.00032, 1], [1.945, 0.00031, 3], [3.055, 0.00029, 5], [3.118, 0.00028, 4], [1.0, 0.00027, 1], [4.247, 0.00022, 6], [2.509, 0.00017, 6], [2.95, 0.00014, 4], [2.229, 0.00011, 3], [1.0, 9e-05, 1], [3.036, 8e-05, 5], [1.962, 7e-05, 2], [2.749, 7e-05, 4], [3.033, 5e-05, 5], [4.917, 3e-05, 9], [4.708, 3e-05, 7], [2.588, 2e-05, 4], [2.759, 2e-05, 4], [2.56, -2e-05, 3], [3.12, -2e-05, 5], [1.0, -3e-05, 1], [3.106, -3e-05, 5], [2.774, -5e-05, 3], [2.755, -0.00011, 4], [2.484, -0.00013, 4], [1.242, -0.00014, 2], [4.054, -0.00015, 7], [3.88, -0.00018, 6], [4.506, -0.00018, 16], [2.884, -0.0002, 4], [1.0, -0.00022, 1], [3.063, -0.00022, 5], [1.464, -0.00022, 2], [1.0, -0.00023, 1], [2.981, -0.00023, 4], [4.642, -0.00024, 8], [3.235, -0.00025, 4], [1.0, -0.00025, 1], [2.889, -0.00025, 6], [2.057, -0.00026, 3], [2.947, -0.00028, 4], [3.189, -0.00028, 5], [3.756, -0.00029, 6], [1.0, -0.00032, 1], [2.57, -0.00033, 4], [1.0, -0.00034, 1], [3.859, -0.00035, 8], [3.132, -0.00036, 6], [2.185, -0.00036, 4], [1.0, -0.00038, 1], [3.567, -0.00038, 5], [4.246, -0.00042, 8], [2.962, -0.00043, 4], [5.598, -0.00046, 17], [1.0, -0.00048, 1], [1.0, -0.00049, 1], [6.315, -0.00049, 18], [1.0, -0.0005, 1], [3.114, -0.00051, 4], [1.398, -0.00054, 2], [4.434, -0.00055, 12], [3.014, -0.00055, 4], [3.5, -0.00058, 5], [3.058, -0.00058, 4], [4.01, -0.0006, 5], [1.483, -0.00061, 2], [1.521, -0.00063, 2], [3.575, -0.00071, 7], [2.334, -0.00071, 5], [1.902, -0.00072, 2], [4.5, -0.00074, 10], [1.62, -0.00078, 3], [3.6, -0.00078, 5], [3.562, -0.00079, 6], [2.931, -0.00081, 5], [2.382, -0.00082, 3], [1.643, -0.00084, 2], [2.294, -0.00084, 3], [1.0, -0.00084, 1], [2.179, -0.00085, 4], [3.008, -0.00085, 4], [3.258, -0.00087, 7], [1.743, -0.00088, 3], [2.613, -0.00088, 4], [1.0, -0.00089, 1], [3.548, -0.00091, 5], [2.878, -0.00092, 4], [1.0, -0.00093, 1], [3.256, -0.00093, 5], [1.864, -0.00096, 3], [3.835, -0.00097, 7], [1.0, -0.00099, 1], [3.945, -0.001, 7], [3.736, -0.001, 7], [1.728, -0.00102, 2], [2.873, -0.00102, 4], [1.651, -0.00102, 2], [3.921, -0.00102, 11], [2.348, -0.00103, 3], [3.205, -0.00105, 4], [2.807, -0.00111, 4], [4.767, -0.00112, 9], [1.581, -0.00112, 2], [2.276, -0.00112, 4], [2.23, -0.00113, 3], [1.0, -0.00113, 1], [3.723, -0.00114, 6], [1.0, -0.00115, 1], [2.9, -0.00116, 4], [4.429, -0.00117, 8], [2.716, -0.00117, 4], [3.717, -0.00118, 7], [1.0, -0.0012, 1], [3.117, -0.00121, 6], [2.72, -0.00124, 4], [2.574, -0.00125, 4], [2.718, -0.00125, 4], [2.726, -0.00126, 4], [1.0, -0.00127, 1], [1.0, -0.00128, 1], [3.105, -0.00129, 4], [2.751, -0.00129, 3], [1.0, -0.0013, 1], [2.739, -0.0013, 4], [1.359, -0.00133, 2], [5.488, -0.00134, 10], [1.474, -0.00135, 2], [1.0, -0.00136, 1], [3.148, -0.00141, 4], [4.922, -0.00142, 9], [2.79, -0.00143, 5], [3.242, -0.00144, 6], [1.36, -0.00147, 2], [3.732, -0.00148, 6], [1.0, -0.00149, 1], [1.409, -0.00149, 2], [1.631, -0.00149, 2], [3.524, -0.00149, 6], [2.927, -0.0015, 4], [2.382, -0.00153, 4], [2.753, -0.00155, 3], [1.0, -0.0016, 1], [2.637, -0.00162, 5], [2.593, -0.00162, 3], [3.972, -0.00163, 6], [1.619, -0.00164, 2], [2.627, -0.00164, 4], [4.375, -0.00165, 19], [1.722, -0.00165, 2], [1.0, -0.00167, 1], [3.251, -0.00168, 6], [2.124, -0.00168, 4], [1.378, -0.00168, 2], [1.565, -0.00172, 4], [1.968, -0.00174, 3], [1.925, -0.00174, 5], [1.788, -0.00178, 3], [2.718, -0.0018, 4], [4.008, -0.0018, 6], [1.433, -0.00181, 2], [2.293, -0.00182, 3], [3.112, -0.00183, 6], [2.976, -0.00187, 4], [3.84, -0.00191, 7], [4.699, -0.00192, 11], [2.199, -0.00193, 3], [2.231, -0.00193, 3], [3.558, -0.00195, 6], [1.0, -0.00197, 1], [1.568, -0.00204, 2], [3.555, -0.00205, 5], [2.68, -0.00205, 5], [2.474, -0.00208, 4], [1.891, -0.00212, 4], [1.33, -0.00212, 2], [1.889, -0.00213, 2], [5.297, -0.00214, 10], [2.906, -0.00221, 5], [2.893, -0.00222, 5], [2.968, -0.00222, 6], [3.357, -0.00223, 5], [2.328, -0.00224, 6], [1.501, -0.00231, 2], [2.004, -0.00232, 5], [5.305, -0.00232, 11], [4.462, -0.00237, 10], [1.0, -0.00237, 1], [4.458, -0.00237, 9], [1.857, -0.00238, 3], [1.0, -0.00245, 1], [3.004, -0.00248, 6], [3.961, -0.00249, 6], [2.834, -0.00253, 6], [1.391, -0.00254, 2], [2.488, -0.00256, 5], [2.794, -0.00256, 7], [3.143, -0.00259, 5], [3.445, -0.00261, 5], [3.499, -0.00265, 7], [4.523, -0.00266, 8], [3.067, -0.00271, 4], [1.791, -0.00272, 2], [2.771, -0.00276, 6], [2.527, -0.00277, 4], [3.988, -0.00279, 6], [1.982, -0.00281, 3], [2.264, -0.00282, 5], [2.569, -0.00284, 5], [3.691, -0.00286, 7], [1.654, -0.00286, 2], [2.242, -0.00287, 4], [2.801, -0.00289, 5], [1.26, -0.00291, 2], [2.464, -0.00294, 3], [4.705, -0.00296, 16], [1.569, -0.00302, 3], [1.498, -0.00304, 2], [3.36, -0.00305, 5], [4.621, -0.00309, 8], [1.276, -0.00309, 3], [2.908, -0.00309, 6], [2.294, -0.00315, 4], [1.738, -0.00319, 4], [3.513, -0.0032, 7], [1.143, -0.00327, 2], [2.15, -0.00332, 5], [2.284, -0.00334, 4], [4.429, -0.00337, 10], [2.468, -0.0034, 5], [3.16, -0.00346, 17], [2.514, -0.0035, 5], [4.926, -0.00352, 14], [1.751, -0.00354, 3], [2.895, -0.00367, 7], [1.675, -0.00378, 3], [2.367, -0.00379, 5], [1.878, -0.0038, 3], [2.017, -0.00382, 5], [1.266, -0.00383, 2], [2.74, -0.00385, 6], [2.095, -0.00385, 5], [2.67, -0.00387, 5], [2.668, -0.00387, 5], [1.121, -0.00388, 2], [2.805, -0.00393, 6], [1.614, -0.00396, 3], [3.495, -0.00397, 11], [3.649, -0.00398, 15], [1.509, -0.00398, 4], [3.12, -0.00398, 6], [2.596, -0.004, 5], [1.988, -0.004, 4], [3.262, -0.00404, 8], [2.894, -0.00413, 4], [3.043, -0.00415, 5], [1.119, -0.00416, 2], [3.139, -0.00419, 7], [1.965, -0.00421, 4], [1.601, -0.00422, 4], [1.215, -0.00423, 2], [1.177, -0.00433, 3], [1.654, -0.00433, 3], [3.143, -0.00435, 8], [3.604, -0.00443, 8], [2.182, -0.00448, 5], [2.278, -0.00448, 4], [2.194, -0.0045, 12], [2.365, -0.00451, 4], [2.402, -0.00451, 3], [2.736, -0.00455, 6], [2.293, -0.00476, 8], [3.125, -0.00486, 16], [1.766, -0.00487, 3], [2.374, -0.0049, 5], [1.137, -0.00495, 2], [2.137, -0.00499, 5], [1.737, -0.005, 5], [2.817, -0.00513, 10], [3.892, -0.00514, 10], [3.197, -0.00516, 8], [1.927, -0.00521, 4], [1.721, -0.00523, 5], [1.616, -0.00524, 4], [2.279, -0.00526, 5], [2.775, -0.0053, 5], [3.35, -0.00531, 8], [2.094, -0.00533, 6], [3.142, -0.00536, 7], [2.767, -0.00538, 5], [2.904, -0.00539, 11], [5.304, -0.00539, 10], [1.327, -0.00547, 3], [1.228, -0.00549, 4], [2.179, -0.00555, 4], [2.994, -0.00567, 10], [2.518, -0.00572, 5], [4.682, -0.00589, 13], [3.803, -0.00591, 6], [4.53, -0.00593, 19], [2.285, -0.00595, 5], [1.558, -0.00596, 4], [4.898, -0.00604, 12], [2.537, -0.00605, 7], [2.192, -0.00617, 7], [2.849, -0.00619, 9], [1.403, -0.00626, 4], [1.573, -0.00627, 3], [2.773, -0.00631, 9], [2.246, -0.0064, 7], [1.557, -0.00644, 5], [3.08, -0.00647, 10], [2.963, -0.00647, 9], [3.851, -0.00649, 9], [1.637, -0.00652, 3], [1.516, -0.00657, 4], [2.56, -0.00661, 7], [2.063, -0.0067, 7], [2.551, -0.00684, 8], [1.4, -0.0069, 6], [2.477, -0.00724, 7], [2.228, -0.00729, 5], [2.325, -0.0073, 13], [1.318, -0.00741, 4], [1.521, -0.00741, 4], [1.952, -0.00747, 5], [2.573, -0.00752, 8], [2.025, -0.00753, 5], [2.211, -0.00765, 5], [2.789, -0.00769, 7], [2.157, -0.0077, 9], [3.228, -0.00774, 9], [2.322, -0.00777, 5], [2.572, -0.00784, 5], [3.078, -0.00787, 6], [2.618, -0.0079, 6], [4.214, -0.00801, 10], [3.784, -0.00803, 14], [2.594, -0.00804, 6], [2.308, -0.00822, 9], [1.858, -0.00855, 5], [3.825, -0.00859, 13], [2.684, -0.00866, 8], [4.106, -0.00869, 13], [1.511, -0.0087, 4], [2.061, -0.00886, 6], [1.557, -0.00888, 4], [1.896, -0.00973, 6], [1.932, -0.0098, 8], [1.874, -0.00983, 6], [2.188, -0.01014, 6], [1.992, -0.01024, 9], [1.457, -0.01029, 6], [1.708, -0.01069, 6], [1.941, -0.01074, 6], [1.936, -0.01075, 7], [2.022, -0.01088, 5], [1.543, -0.01099, 7], [3.965, -0.01101, 8], [1.997, -0.01118, 7], [5.198, -0.01124, 21], [1.875, -0.01127, 6], [2.163, -0.01158, 8], [3.519, -0.01213, 12], [2.709, -0.01214, 9], [1.541, -0.01222, 9], [2.48, -0.01238, 7], [2.266, -0.01238, 9], [1.948, -0.01291, 9], [1.563, -0.01416, 8], [2.359, -0.01425, 8], [1.695, -0.01494, 9], [2.318, -0.01548, 9], [1.636, -0.01557, 7], [2.628, -0.0159, 10], [2.567, -0.01612, 15], [4.724, -0.01699, 18], [2.474, -0.01724, 12], [3.811, -0.0181, 19], [2.147, -0.01843, 11], [1.836, -0.01854, 8], [1.992, -0.01856, 10], [1.857, -0.01897, 13], [1.77, -0.02005, 9], [2.159, -0.0203, 11], [2.948, -0.02062, 12], [1.849, -0.02077, 10], [1.351, -0.02141, 10], [3.168, -0.02189, 16], [2.741, -0.02429, 16], [3.066, -0.02437, 28], [1.691, -0.02472, 21], [2.766, -0.02541, 16], [3.579, -0.02559, 22], [1.952, -0.02631, 12], [1.665, -0.0281, 14], [1.393, -0.03015, 15], [3.113, -0.031, 21], [2.071, -0.03586, 16], [1.827, -0.04756, 20]]</script>
+<script>
+const pts = JSON.parse(document.getElementById('d').textContent);
+const cv = document.getElementById('sc');
+function css(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
+function draw(){
+  const dpr = window.devicePixelRatio || 1;
+  const w = cv.clientWidth, h = cv.clientHeight;
+  cv.width = w*dpr; cv.height = h*dpr;
+  const x = cv.getContext('2d'); x.setTransform(dpr,0,0,dpr,0,0);
+  x.clearRect(0,0,w,h);
+  const pad = {l:52,r:16,t:16,b:34};
+  const xs = pts.map(p=>p[0]), ys = pts.map(p=>p[1]);
+  const x0=Math.min(...xs), x1=Math.max(...xs), y0=Math.min(...ys), y1=Math.max(...ys);
+  const px = v => pad.l + (v-x0)/(x1-x0||1)*(w-pad.l-pad.r);
+  const py = v => h-pad.b - (v-y0)/(y1-y0||1)*(h-pad.t-pad.b);
+  const rule=css('--rule-soft'), muted=css('--muted'), acc=css('--accent'), am=css('--amber');
+  x.strokeStyle=rule; x.lineWidth=1; x.font='11px ui-monospace,Menlo,monospace'; x.fillStyle=muted;
+  for(let i=0;i<=4;i++){
+    const yy = pad.t + i*(h-pad.t-pad.b)/4;
+    x.beginPath(); x.moveTo(pad.l,yy); x.lineTo(w-pad.r,yy); x.stroke();
+    x.fillText((y1-(y1-y0)*i/4).toFixed(3), 6, yy+4);
+  }
+  x.strokeStyle=muted; x.globalAlpha=.5; x.beginPath();
+  x.moveTo(pad.l,py(0)); x.lineTo(w-pad.r,py(0)); x.stroke(); x.globalAlpha=1;
+  for(const [ix,ct,n] of pts){
+    x.beginPath();
+    x.arc(px(ix),py(ct), Math.max(1.6, Math.min(6, Math.sqrt(n)*0.62)), 0, 6.284);
+    x.fillStyle = ct>=0 ? acc : am; x.globalAlpha = .5; x.fill();
+  }
+  x.globalAlpha=1; x.fillStyle=muted;
+  x.fillText('internal diversity (Vendi within session) \u2192', pad.l, h-10);
+  x.save(); x.translate(13,pad.t+96); x.rotate(-Math.PI/2);
+  x.fillText('contribution \u2192', 0, 0); x.restore();
+}
+draw();
+addEventListener('resize', draw);
+matchMedia('(prefers-color-scheme:dark)').addEventListener('change', draw);
+new MutationObserver(draw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+</script>

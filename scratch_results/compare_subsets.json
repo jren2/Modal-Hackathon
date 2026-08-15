@@ -1,0 +1,185 @@
+{
+  "total_hours": 17.992,
+  "budget_hours": 8.996,
+  "feature_dims": 30,
+  "hero": {
+    "curated": {
+      "n": 3943,
+      "vendi": 14.890308949673031,
+      "nn_distance": 0.15873413986779863,
+      "log_det": 0.9529153079360575,
+      "hours": 8.996,
+      "vendi_per_hour": 1.6553
+    },
+    "random_draws": [
+      {
+        "n": 2384,
+        "vendi": 13.637660610870633,
+        "nn_distance": 0.16024794296943065,
+        "log_det": 0.9477578346070374,
+        "hours": 8.996,
+        "vendi_per_hour": 1.516
+      },
+      {
+        "n": 2452,
+        "vendi": 13.894289542988364,
+        "nn_distance": 0.16123828043876717,
+        "log_det": 0.9488949211327917,
+        "hours": 8.996,
+        "vendi_per_hour": 1.5445
+      },
+      {
+        "n": 2415,
+        "vendi": 13.802341880449491,
+        "nn_distance": 0.16094407320985538,
+        "log_det": 0.9485994725811584,
+        "hours": 8.996,
+        "vendi_per_hour": 1.5343
+      },
+      {
+        "n": 2457,
+        "vendi": 13.828737088487575,
+        "nn_distance": 0.16078728683999588,
+        "log_det": 0.948716035004867,
+        "hours": 8.996,
+        "vendi_per_hour": 1.5373
+      },
+      {
+        "n": 2444,
+        "vendi": 13.948165344357433,
+        "nn_distance": 0.1631954609450066,
+        "log_det": 0.9492543220112961,
+        "hours": 8.996,
+        "vendi_per_hour": 1.5505
+      }
+    ],
+    "random_mean": {
+      "vendi": 13.8222,
+      "nn_distance": 0.1613,
+      "log_det": 0.9486,
+      "hours": 8.996
+    },
+    "vendi_uplift": 1.0681,
+    "curated_beats_random": true,
+    "coverage_pct_of_full": 107.0,
+    "measures_agree": false
+  },
+  "scene_pairs": [
+    {
+      "operator": "692fb1f4ce5ff368187c17e8",
+      "scene_a": "office",
+      "scene_b": "backroom",
+      "a": {
+        "n": 82,
+        "vendi": 5.277001819579692,
+        "nn_distance": 0.09277992483687011,
+        "log_det": 0.8692595669854954,
+        "hours": 0.341,
+        "vendi_per_hour": 15.4739
+      },
+      "b": {
+        "n": 78,
+        "vendi": 8.367655724938835,
+        "nn_distance": 0.1582705422462899,
+        "log_det": 0.9148681837468924,
+        "hours": 0.345,
+        "vendi_per_hour": 24.2489
+      },
+      "agree": true
+    },
+    {
+      "operator": "694381bb79b4f7518ba05b39",
+      "scene_a": "folding_area",
+      "scene_b": "gluing_station",
+      "a": {
+        "n": 54,
+        "vendi": 7.377451066944472,
+        "nn_distance": 0.13669744525215113,
+        "log_det": 0.9021505594585386,
+        "hours": 0.114,
+        "vendi_per_hour": 64.4813
+      },
+      "b": {
+        "n": 55,
+        "vendi": 8.015037287489221,
+        "nn_distance": 0.15858810748628563,
+        "log_det": 0.9129920894582157,
+        "hours": 0.115,
+        "vendi_per_hour": 69.9794
+      },
+      "agree": true
+    }
+  ],
+  "operators": {
+    "equalised_hours": 0.251,
+    "rows": [
+      {
+        "n": 62,
+        "vendi": 11.074145233533523,
+        "nn_distance": 0.22916752498869614,
+        "log_det": 0.9342952079208775,
+        "hours": 0.251,
+        "vendi_per_hour": 44.1812,
+        "operator": "69363453c67c9e4814acf928",
+        "scenes": 2,
+        "median_valid_frac": 1.0
+      },
+      {
+        "n": 113,
+        "vendi": 8.780721362996276,
+        "nn_distance": 0.12648864895015707,
+        "log_det": 0.9151561621242392,
+        "hours": 0.251,
+        "vendi_per_hour": 35.0371,
+        "operator": "694381bb79b4f7518ba05b39",
+        "scenes": 3,
+        "median_valid_frac": 1.0
+      },
+      {
+        "n": 67,
+        "vendi": 8.364487371331474,
+        "nn_distance": 0.19491095600472086,
+        "log_det": 0.9139427633245719,
+        "hours": 0.251,
+        "vendi_per_hour": 33.3643,
+        "operator": "693b94f6c67c9e4814b20a78",
+        "scenes": 2,
+        "median_valid_frac": 1.0
+      },
+      {
+        "n": 66,
+        "vendi": 7.260229628119232,
+        "nn_distance": 0.15110443452483693,
+        "log_det": 0.9006676400297573,
+        "hours": 0.251,
+        "vendi_per_hour": 28.9742,
+        "operator": "693a5545af74d5acd351a385",
+        "scenes": 2,
+        "median_valid_frac": 1.0
+      },
+      {
+        "n": 108,
+        "vendi": 6.422436642998698,
+        "nn_distance": 0.15655965480582348,
+        "log_det": 0.8707386838681499,
+        "hours": 0.249,
+        "vendi_per_hour": 25.7966,
+        "operator": "693cbbbbc67c9e4814b2ce46",
+        "scenes": 2,
+        "median_valid_frac": 1.0
+      },
+      {
+        "n": 53,
+        "vendi": 6.395842542164017,
+        "nn_distance": 0.14508054706115175,
+        "log_det": 0.8934038378843572,
+        "hours": 0.251,
+        "vendi_per_hour": 25.5159,
+        "operator": "692fb1f4ce5ff368187c17e8",
+        "scenes": 2,
+        "median_valid_frac": 1.0
+      }
+    ],
+    "caveat": "Confounded by task assignment, session length and tracking quality. Use to spot collection anomalies, not to rank people."
+  }
+}
