@@ -1,4 +1,105 @@
-# Download EgoVerse into Modal
+# EgoTrim · Behavioral-diversity curation for EgoVerse
+
+EgoTrim is a dark, interactive Streamlit dashboard for inspecting how much
+EgoVerse footage can be removed while retaining the behaviors that matter. The
+current app is intentionally backed only by mock JSON: it does not run feature
+extraction, embeddings, clustering, or any other ML pipeline step.
+
+## Dashboard
+
+The demo includes:
+
+- an eight-metric curation overview;
+- an adjustable training-hours budget comparing diversity-based and random
+  selection;
+- before/after action-composition bars;
+- a searchable, filterable, row-selectable segment explorer;
+- clip detail and five cross-video behavioral neighbors; and
+- a verb-colored episode timeline with retained segments highlighted.
+
+### Run locally
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+streamlit run app.py
+```
+
+The included `mock_results.json` is loaded by default. Mock clip paths point to
+the future `clips/` output location; until those files exist, the dashboard
+shows polished media placeholders instead of raising playback errors.
+
+### Swap in pipeline output
+
+All external data access is isolated in `load_results()` in `app.py`. Either
+replace the body of that function or point the existing JSON loader at a new
+artifact without changing the rest of the UI:
+
+```powershell
+$env:EGOTRIM_RESULTS_PATH = "C:\path\to\results.json"
+streamlit run app.py
+```
+
+Paths can be absolute or relative to the repository root. The loader tolerates
+missing summaries, curve points, action rows, optional segment metadata,
+neighbor arrays, and clip files. It derives sensible counts where possible and
+surfaces an empty-state message where it cannot.
+
+### JSON contract
+
+```json
+{
+  "summary": {
+    "total_videos": 100,
+    "total_segments": 850,
+    "original_hours": 12.4,
+    "selected_hours": 5.0,
+    "coverage_retained": 94,
+    "composition_diversity": 86,
+    "execution_diversity": 91
+  },
+  "coverage_curve": [
+    {
+      "retained_hours": 5.0,
+      "retained_percent": 40.3,
+      "diversity_coverage": 94,
+      "random_coverage": 72
+    }
+  ],
+  "actions": [
+    {"verb": "fold", "before": 180, "after": 85}
+  ],
+  "segments": [
+    {
+      "id": "segment_001",
+      "episode_id": "episode_01",
+      "verb": "fold",
+      "start": 12.5,
+      "end": 14.8,
+      "clip_path": "clips/segment_001.mp4",
+      "cluster": "fold-style-2",
+      "distinctiveness_percentile": 91,
+      "keep": true,
+      "neighbors": [
+        {"segment_id": "segment_105", "similarity": 0.94}
+      ]
+    }
+  ]
+}
+```
+
+`coverage_curve`, `actions`, `segments`, and individual optional fields may be
+omitted. Neighbor relations are resolved against segment IDs and cross-video
+matches only; `video_id` is optional and falls back to `episode_id`.
+
+## EgoVerse data utilities
+
+The repository also contains the existing ingestion, segmentation, bounded
+subset download, and feature-extraction utilities. Those are independent of
+the mock dashboard.
+
+### Download EgoVerse into Modal
 
 Each person downloads the dataset into a Volume owned by their Modal workspace.
 This GitHub repository contains the downloader code—not the Zarr data or

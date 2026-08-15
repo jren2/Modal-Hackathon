@@ -1,0 +1,100 @@
+{
+  "summary": {
+    "total_videos": 100,
+    "total_segments": 850,
+    "original_hours": 12.4,
+    "selected_hours": 5.0,
+    "data_reduction_percent": 59.7,
+    "coverage_retained": 94,
+    "composition_diversity": 86,
+    "execution_diversity": 91
+  },
+  "coverage_curve": [
+    {"retained_hours": 0.0, "retained_percent": 0.0, "diversity_coverage": 0, "random_coverage": 0},
+    {"retained_hours": 0.8, "retained_percent": 6.5, "diversity_coverage": 38, "random_coverage": 15},
+    {"retained_hours": 1.6, "retained_percent": 12.9, "diversity_coverage": 61, "random_coverage": 27},
+    {"retained_hours": 2.5, "retained_percent": 20.2, "diversity_coverage": 76, "random_coverage": 42},
+    {"retained_hours": 3.3, "retained_percent": 26.6, "diversity_coverage": 84, "random_coverage": 54},
+    {"retained_hours": 4.1, "retained_percent": 33.1, "diversity_coverage": 90, "random_coverage": 64},
+    {"retained_hours": 5.0, "retained_percent": 40.3, "diversity_coverage": 94, "random_coverage": 72},
+    {"retained_hours": 6.2, "retained_percent": 50.0, "diversity_coverage": 97, "random_coverage": 81},
+    {"retained_hours": 7.8, "retained_percent": 62.9, "diversity_coverage": 98.5, "random_coverage": 89},
+    {"retained_hours": 9.9, "retained_percent": 79.8, "diversity_coverage": 99.4, "random_coverage": 96},
+    {"retained_hours": 12.4, "retained_percent": 100.0, "diversity_coverage": 100, "random_coverage": 100}
+  ],
+  "actions": [
+    {"verb": "fold", "before": 180, "after": 85},
+    {"verb": "pick", "before": 110, "after": 58},
+    {"verb": "smooth", "before": 120, "after": 72},
+    {"verb": "adjust", "before": 105, "after": 61},
+    {"verb": "straighten", "before": 90, "after": 55},
+    {"verb": "flip", "before": 75, "after": 43},
+    {"verb": "spread", "before": 95, "after": 60},
+    {"verb": "unfold", "before": 75, "after": 51}
+  ],
+  "segments": [
+    {
+      "id": "segment_001", "episode_id": "episode_01", "verb": "fold", "start": 2.1, "end": 5.4,
+      "clip_path": "clips/segment_001.mp4", "cluster": "fold-style-2", "distinctiveness_percentile": 91, "keep": true,
+      "neighbors": [
+        {"segment_id": "segment_009", "similarity": 0.94, "explanation": "Same annotation, different execution style"},
+        {"segment_id": "segment_017", "similarity": 0.92},
+        {"segment_id": "segment_025", "similarity": 0.90},
+        {"segment_id": "segment_033", "similarity": 0.88},
+        {"segment_id": "segment_041", "similarity": 0.86}
+      ]
+    },
+    {"id": "segment_002", "episode_id": "episode_01", "verb": "pick", "start": 6.2, "end": 8.1, "clip_path": "clips/segment_002.mp4", "cluster": "pick-style-1", "distinctiveness_percentile": 67, "keep": false},
+    {"id": "segment_003", "episode_id": "episode_01", "verb": "smooth", "start": 9.0, "end": 12.8, "clip_path": "clips/segment_003.mp4", "cluster": "smooth-style-3", "distinctiveness_percentile": 88, "keep": true},
+    {"id": "segment_004", "episode_id": "episode_01", "verb": "adjust", "start": 14.0, "end": 16.6, "clip_path": "clips/segment_004.mp4", "cluster": "adjust-style-2", "distinctiveness_percentile": 54, "keep": false},
+    {"id": "segment_005", "episode_id": "episode_01", "verb": "straighten", "start": 18.1, "end": 21.7, "clip_path": "clips/segment_005.mp4", "cluster": "straighten-style-4", "distinctiveness_percentile": 93, "keep": true},
+    {"id": "segment_006", "episode_id": "episode_01", "verb": "flip", "start": 23.0, "end": 25.2, "clip_path": "clips/segment_006.mp4", "cluster": "flip-style-1", "distinctiveness_percentile": 73, "keep": true},
+    {"id": "segment_007", "episode_id": "episode_01", "verb": "spread", "start": 27.4, "end": 31.8, "clip_path": "clips/segment_007.mp4", "cluster": "spread-style-2", "distinctiveness_percentile": 81, "keep": true},
+    {"id": "segment_008", "episode_id": "episode_01", "verb": "unfold", "start": 33.2, "end": 36.6, "clip_path": "clips/segment_008.mp4", "cluster": "unfold-style-3", "distinctiveness_percentile": 45, "keep": false},
+
+    {"id": "segment_009", "episode_id": "episode_02", "verb": "fold", "start": 1.4, "end": 4.2, "clip_path": "clips/segment_009.mp4", "cluster": "fold-style-5", "distinctiveness_percentile": 96, "keep": true},
+    {"id": "segment_010", "episode_id": "episode_02", "verb": "pick", "start": 5.0, "end": 7.4, "clip_path": "clips/segment_010.mp4", "cluster": "pick-style-3", "distinctiveness_percentile": 82, "keep": true},
+    {"id": "segment_011", "episode_id": "episode_02", "verb": "smooth", "start": 8.5, "end": 11.2, "clip_path": "clips/segment_011.mp4", "cluster": "smooth-style-1", "distinctiveness_percentile": 38, "keep": false},
+    {"id": "segment_012", "episode_id": "episode_02", "verb": "adjust", "start": 12.3, "end": 15.7, "clip_path": "clips/segment_012.mp4", "cluster": "adjust-style-4", "distinctiveness_percentile": 87, "keep": true},
+    {"id": "segment_013", "episode_id": "episode_02", "verb": "straighten", "start": 17.2, "end": 20.1, "clip_path": "clips/segment_013.mp4", "cluster": "straighten-style-1", "distinctiveness_percentile": 61, "keep": false},
+    {"id": "segment_014", "episode_id": "episode_02", "verb": "flip", "start": 21.6, "end": 24.5, "clip_path": "clips/segment_014.mp4", "cluster": "flip-style-4", "distinctiveness_percentile": 90, "keep": true},
+    {"id": "segment_015", "episode_id": "episode_02", "verb": "spread", "start": 26.0, "end": 29.7, "clip_path": "clips/segment_015.mp4", "cluster": "spread-style-3", "distinctiveness_percentile": 69, "keep": true},
+    {"id": "segment_016", "episode_id": "episode_02", "verb": "unfold", "start": 31.2, "end": 35.8, "clip_path": "clips/segment_016.mp4", "cluster": "unfold-style-5", "distinctiveness_percentile": 97, "keep": true},
+
+    {"id": "segment_017", "episode_id": "episode_03", "verb": "fold", "start": 3.0, "end": 7.1, "clip_path": "clips/segment_017.mp4", "cluster": "fold-style-1", "distinctiveness_percentile": 84, "keep": true},
+    {"id": "segment_018", "episode_id": "episode_03", "verb": "pick", "start": 8.0, "end": 9.6, "clip_path": "clips/segment_018.mp4", "cluster": "pick-style-2", "distinctiveness_percentile": 41, "keep": false},
+    {"id": "segment_019", "episode_id": "episode_03", "verb": "smooth", "start": 10.8, "end": 14.9, "clip_path": "clips/segment_019.mp4", "cluster": "smooth-style-5", "distinctiveness_percentile": 95, "keep": true},
+    {"id": "segment_020", "episode_id": "episode_03", "verb": "adjust", "start": 16.1, "end": 18.4, "clip_path": "clips/segment_020.mp4", "cluster": "adjust-style-1", "distinctiveness_percentile": 64, "keep": false},
+    {"id": "segment_021", "episode_id": "episode_03", "verb": "straighten", "start": 20.0, "end": 23.8, "clip_path": "clips/segment_021.mp4", "cluster": "straighten-style-3", "distinctiveness_percentile": 79, "keep": true},
+    {"id": "segment_022", "episode_id": "episode_03", "verb": "flip", "start": 25.1, "end": 27.0, "clip_path": "clips/segment_022.mp4", "cluster": "flip-style-2", "distinctiveness_percentile": 52, "keep": false},
+    {"id": "segment_023", "episode_id": "episode_03", "verb": "spread", "start": 28.4, "end": 33.0, "clip_path": "clips/segment_023.mp4", "cluster": "spread-style-5", "distinctiveness_percentile": 92, "keep": true},
+    {"id": "segment_024", "episode_id": "episode_03", "verb": "unfold", "start": 34.5, "end": 37.2, "clip_path": "clips/segment_024.mp4", "cluster": "unfold-style-1", "distinctiveness_percentile": 71, "keep": true},
+
+    {"id": "segment_025", "episode_id": "episode_04", "verb": "fold", "start": 1.8, "end": 5.6, "clip_path": "clips/segment_025.mp4", "cluster": "fold-style-4", "distinctiveness_percentile": 89, "keep": true},
+    {"id": "segment_026", "episode_id": "episode_04", "verb": "pick", "start": 6.9, "end": 9.1, "clip_path": "clips/segment_026.mp4", "cluster": "pick-style-5", "distinctiveness_percentile": 94, "keep": true},
+    {"id": "segment_027", "episode_id": "episode_04", "verb": "smooth", "start": 10.6, "end": 13.4, "clip_path": "clips/segment_027.mp4", "cluster": "smooth-style-2", "distinctiveness_percentile": 57, "keep": false},
+    {"id": "segment_028", "episode_id": "episode_04", "verb": "adjust", "start": 15.0, "end": 18.7, "clip_path": "clips/segment_028.mp4", "cluster": "adjust-style-5", "distinctiveness_percentile": 92, "keep": true},
+    {"id": "segment_029", "episode_id": "episode_04", "verb": "straighten", "start": 20.2, "end": 22.5, "clip_path": "clips/segment_029.mp4", "cluster": "straighten-style-2", "distinctiveness_percentile": 47, "keep": false},
+    {"id": "segment_030", "episode_id": "episode_04", "verb": "flip", "start": 24.0, "end": 27.6, "clip_path": "clips/segment_030.mp4", "cluster": "flip-style-5", "distinctiveness_percentile": 85, "keep": true},
+    {"id": "segment_031", "episode_id": "episode_04", "verb": "spread", "start": 29.0, "end": 32.1, "clip_path": "clips/segment_031.mp4", "cluster": "spread-style-1", "distinctiveness_percentile": 59, "keep": false},
+    {"id": "segment_032", "episode_id": "episode_04", "verb": "unfold", "start": 33.7, "end": 38.0, "clip_path": "clips/segment_032.mp4", "cluster": "unfold-style-4", "distinctiveness_percentile": 88, "keep": true},
+
+    {"id": "segment_033", "episode_id": "episode_05", "verb": "fold", "start": 2.6, "end": 6.0, "clip_path": "clips/segment_033.mp4", "cluster": "fold-style-3", "distinctiveness_percentile": 76, "keep": true},
+    {"id": "segment_034", "episode_id": "episode_05", "verb": "pick", "start": 7.1, "end": 10.0, "clip_path": "clips/segment_034.mp4", "cluster": "pick-style-4", "distinctiveness_percentile": 73, "keep": true},
+    {"id": "segment_035", "episode_id": "episode_05", "verb": "smooth", "start": 11.4, "end": 15.6, "clip_path": "clips/segment_035.mp4", "cluster": "smooth-style-4", "distinctiveness_percentile": 86, "keep": true},
+    {"id": "segment_036", "episode_id": "episode_05", "verb": "adjust", "start": 17.0, "end": 19.8, "clip_path": "clips/segment_036.mp4", "cluster": "adjust-style-3", "distinctiveness_percentile": 43, "keep": false},
+    {"id": "segment_037", "episode_id": "episode_05", "verb": "straighten", "start": 21.3, "end": 25.4, "clip_path": "clips/segment_037.mp4", "cluster": "straighten-style-5", "distinctiveness_percentile": 98, "keep": true},
+    {"id": "segment_038", "episode_id": "episode_05", "verb": "flip", "start": 26.7, "end": 29.3, "clip_path": "clips/segment_038.mp4", "cluster": "flip-style-3", "distinctiveness_percentile": 68, "keep": true},
+    {"id": "segment_039", "episode_id": "episode_05", "verb": "spread", "start": 30.5, "end": 34.9, "clip_path": "clips/segment_039.mp4", "cluster": "spread-style-4", "distinctiveness_percentile": 83, "keep": true},
+    {"id": "segment_040", "episode_id": "episode_05", "verb": "unfold", "start": 36.0, "end": 39.2, "clip_path": "clips/segment_040.mp4", "cluster": "unfold-style-2", "distinctiveness_percentile": 51, "keep": false},
+
+    {"id": "segment_041", "episode_id": "episode_06", "verb": "fold", "start": 1.2, "end": 4.7, "clip_path": "clips/segment_041.mp4", "cluster": "fold-style-6", "distinctiveness_percentile": 93, "keep": true},
+    {"id": "segment_042", "episode_id": "episode_06", "verb": "pick", "start": 6.0, "end": 8.0, "clip_path": "clips/segment_042.mp4", "cluster": "pick-style-6", "distinctiveness_percentile": 56, "keep": false},
+    {"id": "segment_043", "episode_id": "episode_06", "verb": "smooth", "start": 9.3, "end": 12.9, "clip_path": "clips/segment_043.mp4", "cluster": "smooth-style-6", "distinctiveness_percentile": 90, "keep": true},
+    {"id": "segment_044", "episode_id": "episode_06", "verb": "adjust", "start": 14.2, "end": 17.5, "clip_path": "clips/segment_044.mp4", "cluster": "adjust-style-6", "distinctiveness_percentile": 78, "keep": true},
+    {"id": "segment_045", "episode_id": "episode_06", "verb": "straighten", "start": 19.0, "end": 22.7, "clip_path": "clips/segment_045.mp4", "cluster": "straighten-style-6", "distinctiveness_percentile": 87, "keep": true},
+    {"id": "segment_046", "episode_id": "episode_06", "verb": "flip", "start": 24.1, "end": 26.4, "clip_path": "clips/segment_046.mp4", "cluster": "flip-style-6", "distinctiveness_percentile": 46, "keep": false},
+    {"id": "segment_047", "episode_id": "episode_06", "verb": "spread", "start": 27.8, "end": 31.6, "clip_path": "clips/segment_047.mp4", "cluster": "spread-style-6", "distinctiveness_percentile": 75, "keep": true},
+    {"id": "segment_048", "episode_id": "episode_06", "verb": "unfold", "start": 33.0, "end": 37.5, "clip_path": "clips/segment_048.mp4", "cluster": "unfold-style-6", "distinctiveness_percentile": 94, "keep": true}
+  ]
+}
