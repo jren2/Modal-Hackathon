@@ -1,9 +1,11 @@
 # EgoTrim · Behavioral-diversity curation for EgoVerse
 
-EgoTrim is a dark, interactive Streamlit dashboard for inspecting how much
-EgoVerse footage can be removed while retaining the behaviors that matter. The
-current app is intentionally backed only by mock JSON: it does not run feature
-extraction, embeddings, clustering, or any other ML pipeline step.
+EgoTrim is both a data pipeline and interactive demo for inspecting how much
+EgoVerse footage can be removed while retaining the behaviors that matter. The current app is hosted at https://jren2--egoverse-segment-browser-web.modal.run/ with a more in depth description of the pipeline below.
+
+## Methodology
+
+
 
 ## Dashboard
 
