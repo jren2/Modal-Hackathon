@@ -220,3 +220,60 @@ their manifests are available to functions in the same Modal workspace at:
 ```text
 /egoverse/segments/<episode-id>/front_1/
 ```
+
+## EgoTrim bounded subset utility
+
+EgoTrim curates complete EgoVerse episodes under a fixed data budget. The first
+utility safely obtains a small real-data subset for feature extraction and the
+demo.
+
+## Download a bounded EgoVerse subset
+
+The downloader uses the official GaTech-RL2/EgoVerse SQL and storage APIs. It
+queries current episode metadata first, selects a stable seeded sample, prints
+the episode IDs/labs/scenes/demonstrators, and only then asks the official
+`S3EpisodeResolver` to download those exact Zarrs.
+
+Prerequisites:
+
+1. Clone and install [GaTech-RL2/EgoVerse](https://github.com/GaTech-RL2/EgoVerse).
+2. Configure the official read-only AWS/R2 environment with EgoVerse's
+   `egomimic/utils/aws/setup_secret.sh`. Never commit the resulting environment
+   file.
+3. Ensure `s5cmd` is available on `PATH`.
+
+Preview an exact task without writing anything:
+
+```powershell
+python scripts/download_egoverse_subset.py `
+  --task fold_clothes `
+  --max-episodes 10 `
+  --seed 42 `
+  --dry-run `
+  --egoverse-repo C:\path\to\EgoVerse
+```
+
+Remove `--dry-run` to download to `data/egoverse_subset/`. Use the task string
+exactly as it appears in the EgoVerse SQL table. An all-task (`*`/`all`) or
+unlimited (`--max-episodes 0`) request is rejected unless
+`--confirm-complete-dataset` is explicitly supplied.
+
+## Put the subset in the Modal Volume
+
+After the bounded local download completes, upload that folder to the existing
+`egotrim-data` Volume:
+
+```powershell
+modal volume put egotrim-data data/egoverse_subset /egoverse_subset
+modal volume ls egotrim-data /egoverse_subset
+```
+
+The resulting path inside a Modal function is
+`<volume-mount>/egoverse_subset`. Mount the volume at `/data` to access it as
+`/data/egoverse_subset`.
+
+## Tests
+
+```powershell
+python -m unittest discover -s tests -v
+```

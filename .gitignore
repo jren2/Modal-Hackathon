@@ -1,2 +1,6 @@
 __pycache__/
 *.py[cod]
+.venv/
+.runtime-tools/
+.pytest_cache/
+data/egoverse_subset/
