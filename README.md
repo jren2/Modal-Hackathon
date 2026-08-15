@@ -174,6 +174,24 @@ ordinary `.mp4` file per episode.
 Never commit AWS credentials, generated dotenv files, or downloaded Zarr data
 to GitHub.
 
+## Browse kinematic segments
+
+Launch a small web UI that reads the manifests and representative camera frames
+directly from the Volume:
+
+```bash
+# Temporary development URL (reloads when this file changes)
+modal serve modal_segment_browser.py
+
+# Persistent deployed URL
+modal deploy modal_segment_browser.py
+```
+
+The browser can switch between episodes and between kinematic and fixed
+one-second boundaries. It provides a video player with a synchronized segment
+timeline; clicking a segment seeks the video to that boundary. This small demo
+uses a public Modal endpoint, so anyone with its URL can view the footage.
+
 ## Create one-second MP4 segments
 
 The source episodes store JPEG frames in Zarr arrays. Create playable one-second
@@ -219,4 +237,168 @@ their manifests are available to functions in the same Modal workspace at:
 
 ```text
 /egoverse/segments/<episode-id>/front_1/
+```
+
+## Kinematic segmentation
+
+Generate motion-driven boundaries and a fixed one-second baseline for the first
+two episodes:
+
+```bash
+modal run modal_kinematic_segment.py --max-episodes 2
+```
+
+The kinematic method uses head-relative left/right hand poses, smoothed and
+robustly normalized hand linear speed, hand angular speed, and inter-hand
+distance. PELT proposes only sustained change points. The script merges segments
+shorter than 1.5 seconds and normally splits segments longer than 4 seconds,
+with a small tolerance for coherent phrases. Annotations are attached by overlap
+after boundary detection; they do not influence the boundaries.
+
+Results are JSON manifests in the existing Volume:
+
+```text
+/egoverse/kinematic_segments/<episode-id>/
+├── kinematic.json
+└── fixed_1s.json
+```
+
+Each manifest contains ordered, end-exclusive frame ranges:
+
+```json
+{
+  "start_idx": 42,
+  "end_idx": 71,
+  "start_time": 1.4,
+  "end_time": 2.3667,
+  "annotation": "folding the left sleeve"
+}
+```
+
+The defaults can be tuned from the command line:
+
+```bash
+modal run modal_kinematic_segment.py \
+  --max-episodes 2 \
+  --minimum-seconds 1.5 \
+  --maximum-seconds 4.0 \
+  --smoothing-seconds 0.25 \
+  --penalty 120 \
+  --head-weight 0.0 \
+  --mode both
+```
+
+Use `--mode kinematic` or `--mode fixed` to generate only one method. A lower
+PELT penalty produces more boundaries; a higher penalty produces fewer.
+
+## Experimental task-attempt extraction
+
+The current project goal is to extract complete demonstrations from raw
+episodes—not to treat short kinematic phrases as final comparison units. Run the
+V1 attempt classifier on one episode with:
+
+```bash
+modal run modal_extract_attempts.py --max-episodes 1
+```
+
+It samples the center RGB frame from each one-second window and makes one
+`Qwen/Qwen2.5-VL-3B-Instruct` scene decision. A visible task object/workspace is
+a `TASK` candidate; a missing object, prominent unrelated person, setup,
+cleanup, or empty scene is a hard `IRRELEVANT` cut. Annotation overlap and
+head-relative hand activity provide lightweight supporting evidence. Predictions
+are temporally cleaned and saved with candidate attempt ranges at:
+
+```text
+/egoverse/attempts/<episode-id>/attempts.json
+```
+
+The manifest retains every raw/cleaned window prediction, confidence, sampled
+frame indices, VLM reason, annotation evidence, and hand-activity score.
+
+### Current validation status
+
+This fast V1 prioritizes removing obvious irrelevant footage and producing a
+running attempt-candidate pipeline. It does not try to infer subtle fold versus
+unfold direction from short temporal context. Manifests include
+`needs_human_review` and classifier-collapse warnings so questionable episodes
+can be inspected before automatic keep/drop decisions.
+
+## Attempt-level physical features and similarity
+
+After `modal_extract_attempts.py` has created attempt manifests, extract
+head-relative physical features and compare attempts within each task:
+
+```bash
+# Smoke test the first episode with an attempt manifest
+modal run modal_attempt_features.py --max-episodes 1
+
+# Process every available attempt manifest
+modal run modal_attempt_features.py --max-episodes 0
+```
+
+This stage consumes the existing attempt ranges and does not perform
+segmentation. Each attempt is resampled to 32 normalized timesteps. Position
+trajectories use linear interpolation, wrist rotations use quaternion SLERP,
+and stored features cover hand trajectories, orientations, bimanual
+coordination, handedness/activity, and execution dynamics. RGB and annotation
+embeddings are intentionally excluded.
+
+Per-attempt representations are written to:
+
+```text
+/egoverse/attempt_features/<episode-id>/features.json
+```
+
+Within-task pairwise scores, greedy keep/drop decisions, and coverage curves
+are written to:
+
+```text
+/egoverse/attempt_similarity/
+├── summary.json
+└── tasks/
+    └── <task-key>.json
+```
+
+The default overall score uses trajectory/orientation/coordination/dynamics
+weights of `0.45/0.25/0.20/0.10`. These weights, the physical distance scales,
+activity threshold, pause duration, and redundancy threshold are configurable
+from the command line. They are starting heuristics rather than learned values.
+
+## Cluster attempts for curation and browsing
+
+Once pairwise attempt similarities exist, generate average-linkage execution
+clusters and dashboard-friendly nearest-neighbor records with:
+
+```bash
+modal run modal_attempt_clustering.py
+```
+
+This is a separate stage and does not modify attempt extraction or features.
+It selects a cluster medoid, but only drops a member when at least one kept
+representative meets the configured similarity threshold. Members without a
+threshold-safe representative are promoted to `KEEP`.
+
+Outputs are written to:
+
+```text
+/egoverse/attempt_clusters/
+├── summary.json
+├── attempt_index.json
+└── tasks/
+    └── <task-key>.json
+```
+
+`attempt_index.json` maps a clicked attempt ID to its task result. Each task
+file contains cluster membership, medoids, keep/drop decisions, representatives,
+the similarity matrix, and a similarity-ranked `similar_attempts` list for each
+attempt. Every neighbor includes overall, trajectory, orientation, coordination,
+and dynamics scores so a separate dashboard can explain each match.
+
+Tune the primary threshold, neighbor-list size, and experiment thresholds with:
+
+```bash
+modal run modal_attempt_clustering.py \
+  --similarity-threshold 0.90 \
+  --neighbor-limit 50 \
+  --experiment-thresholds 0.95,0.90,0.85,0.80
 ```
