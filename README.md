@@ -1,222 +1,47 @@
-# Download EgoVerse into Modal
+# EgoTrim · Behavioral-diversity curation for EgoVerse
 
-Each person downloads the dataset into a Volume owned by their Modal workspace.
-This GitHub repository contains the downloader code—not the Zarr data or
-credentials.
+EgoTrim is both a data pipeline and interactive demo for inspecting how much
+EgoVerse footage can be removed while retaining the behaviors that matter. The scope of the project is only on folding clothes data but with the intent to scale up to the entire EgoVerse dataset. The current app is hosted at https://jren2--egoverse-segment-browser-web.modal.run/ with a more in depth description of the pipeline below.
 
-## 1. Clone the repositories
+Branches containing ingestion and segmentation, feature engineering, and weight tuning and clustering as split across the repo.
 
-```bash
-git clone https://github.com/GaTech-RL2/EgoVerse.git
-```
+## Methodology
 
-EgoVerse is needed locally to run `setup_secret.sh`. The Modal container also
-clones EgoVerse while building its image.
+<img width="754" height="484" alt="image" src="https://github.com/user-attachments/assets/4612ce62-0086-4ebc-bd4a-141d78b10c9a" />
 
-## 2. Install the command-line tools
+### 1. Data Ingestion
+In order to ingest EgoVerse data, we utilize Modal volumes for increased parallelization and future optimizations in data processing.
+### 2. Clip Segmentation
+We extract complete task attempts from raw EgoVerse episodes while removing setup, resets, and unrelated footage. Segmentation uses three signals:
 
-On macOS:
+- Visual task relevance: A VLM classifies sampled RGB frames as TASK, RESET, or IRRELEVANT.
+- Annotation relevance: EgoVerse annotations provide additional evidence that the current activity relates to the target task.
+- Hand activity: Left/right hand velocity indicates whether active manipulation is occurring.
 
-```bash
-brew install awscli
-python3.11 -m pip install --upgrade modal
-```
+These signals are combined and temporally smoothed to identify contiguous task attempts.
+### 3. Feature Engineering
+Each extracted attempt is represented using features that capture how the task was physically executed:
 
-Verify the installations and authenticate with Modal:
+- Hand Trajectory: Head-relative left/right hand positions over normalized time.
+- Hand Orientation: Wrist orientation and rotation throughout the attempt.
+- Bimanual Coordination: Inter-hand distance and relative hand positioning.
+- Hand Activity: Handedness and left/right/bimanual activity patterns.
+- Execution Dynamics: Duration, path length, velocity, angular velocity, and pauses.
 
-```bash
-aws --version
-modal --version
-modal setup
-```
+These features form an interpretable physical fingerprint used to measure similarity between attempts and identify redundant demonstrations.
+### 4. Weight Training
+Similarity combines the engineered feature groups using configurable weights:
 
-The active Modal account and workspace determine where the Volume is created.
+Trajectory: 45%
+Orientation: 25%
+Bimanual Coordination: 20%
+Execution Dynamics: 10%
 
-## 3. Configure authorized AWS credentials
+Initial weights are heuristic and can be tuned by testing which combinations best separate clearly different executions while grouping visually redundant attempts. This provides a lightweight optimization layer without requiring a learned model.
+### 5. Clustering
+We group physically similar attempts using hierarchical clustering over our weighted similarity scores. A configurable similarity threshold controls how aggressively attempts are grouped. For each cluster, we keep the medoid (most representative attempt) and mark the remaining attempts as redundant, while unique executions naturally remain as singleton clusters.
 
-Obtain your own authorized AWS bootstrap credentials from the EgoVerse/RL2
-team, then run:
+## Results
+Our results show a decrease in redundancy and increase in diversity (as compared to expected diversity in the dataset) as a result of removing segments that are similar
 
-```bash
-aws configure
-```
-
-Enter:
-
-- Your AWS access-key ID
-- Your AWS secret-access key
-- Region: `us-east-2`
-- Output format: leave blank or use `json`
-
-Never use credentials committed to GitHub or shared in chat. Verify access
-without exposing the credentials:
-
-```bash
-aws sts get-caller-identity
-```
-
-## 4. Generate the protected EgoVerse environment
-
-From the cloned EgoVerse repository:
-
-```bash
-cd ../EgoVerse
-
-ENV_FILE=/private/tmp/egoverse_env \
-  bash egomimic/utils/aws/setup_secret.sh
-```
-
-This retrieves the read-only registry and R2 configuration used by the official
-downloader. Confirm that the protected file exists without printing it:
-
-```bash
-test -f /private/tmp/egoverse_env && echo "EgoVerse environment ready"
-```
-
-Do not commit or print `/private/tmp/egoverse_env`.
-
-## 5. Download the dataset into Modal
-
-Return to this repository:
-
-```bash
-cd ../<your-modal-repo>
-
-eval "$(aws configure export-credentials --format env)"
-modal run modal_official_sync.py
-```
-
-The Modal job runs the equivalent of:
-
-```bash
-python egomimic/scripts/data_download/sync_s3.py \
-  --local-dir /egoverse/episodes \
-  --filters aria-fold-clothes \
-  --workers 32
-```
-
-It automatically creates this Volume in your active Modal workspace:
-
-```text
-egoverse-zarrs-v2
-└── episodes/
-    ├── <episode-id>/
-    ├── <episode-id>/
-    └── ...
-```
-
-The download is resumable. If the local command disconnects or times out, run
-the same commands again:
-
-```bash
-eval "$(aws configure export-credentials --format env)"
-modal run modal_official_sync.py
-```
-
-The downloader revisits incomplete episodes while skipping objects already
-present and matching the source.
-
-## 6. Verify access from a Modal container
-
-Run the lightweight proof-of-access script:
-
-```bash
-modal run modal_inspect_volume.py
-```
-
-It mounts the Volume in a Modal container and reads one real episode metadata
-file and one physical image chunk.
-
-You can also browse the Volume using the Modal CLI:
-
-```bash
-modal volume ls egoverse-zarrs-v2 episodes
-```
-
-To recursively count every stored file:
-
-```bash
-modal run modal_inspect_volume.py --full-count
-```
-
-## Use the Volume in another Modal function
-
-Members of the same Modal workspace can mount the existing Volume by name:
-
-```python
-import modal
-
-app = modal.App("my-egoverse-job")
-volume = modal.Volume.from_name("egoverse-zarrs-v2", version=2)
-
-
-@app.function(volumes={"/egoverse": volume})
-def process_episodes():
-    episodes_path = "/egoverse/episodes"
-    print(episodes_path)
-```
-
-EgoVerse episodes are Zarr datasets. Image streams, annotations, poses, and
-timestamps are stored as Zarr groups and arrays rather than necessarily as one
-ordinary `.mp4` file per episode.
-
-## Sharing behavior
-
-- Members of the same Modal workspace can all mount `egoverse-zarrs-v2`. Only
-  one download is necessary.
-- Different Modal accounts or workspaces must each run the downloader and
-  create their own copy.
-- Cloning this GitHub repository does not transfer the Volume data.
-- To distribute data across unrelated workspaces, use an authorized shared
-  S3/R2 bucket as the canonical source and let each workspace read or ingest
-  from it.
-
-Never commit AWS credentials, generated dotenv files, or downloaded Zarr data
-to GitHub.
-
-## Create one-second MP4 segments
-
-The source episodes store JPEG frames in Zarr arrays. Create playable one-second
-H.264 clips from the `images.front_1` stream with:
-
-```bash
-# Safe smoke test: process one episode
-modal run modal_segment_videos.py
-
-# Process ten episodes in parallel
-modal run modal_segment_videos.py --max-episodes 10
-
-# Process every complete episode
-modal run modal_segment_videos.py --max-episodes 0
-```
-
-Outputs are written back to the same Volume without changing the source data:
-
-```text
-segments/<episode-id>/front_1/
-├── 000000.mp4
-├── 000001.mp4
-├── ...
-└── manifest.json
-```
-
-Each manifest records the source frame range, start time, and duration of every
-clip. The last clip can be shorter than one second when an episode does not end
-on an exact one-second boundary. Completed episodes are skipped on subsequent
-runs; pass `--overwrite` to regenerate them.
-
-## Segment two episodes
-
-To segment the first two available EgoVerse episodes into one-second MP4 clips:
-
-```bash
-modal run modal_segment_videos.py --max-episodes 2
-```
-
-The command is safe to run again. Episodes with complete outputs are verified
-and skipped, while missing or incomplete outputs are resumed. The clips and
-their manifests are available to functions in the same Modal workspace at:
-
-```text
-/egoverse/segments/<episode-id>/front_1/
-```
+https://claude.ai/code/artifact/f81e53f1-88a9-49c9-9318-0e6e8e2d8c61
