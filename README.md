@@ -173,3 +173,50 @@ ordinary `.mp4` file per episode.
 
 Never commit AWS credentials, generated dotenv files, or downloaded Zarr data
 to GitHub.
+
+## Create one-second MP4 segments
+
+The source episodes store JPEG frames in Zarr arrays. Create playable one-second
+H.264 clips from the `images.front_1` stream with:
+
+```bash
+# Safe smoke test: process one episode
+modal run modal_segment_videos.py
+
+# Process ten episodes in parallel
+modal run modal_segment_videos.py --max-episodes 10
+
+# Process every complete episode
+modal run modal_segment_videos.py --max-episodes 0
+```
+
+Outputs are written back to the same Volume without changing the source data:
+
+```text
+segments/<episode-id>/front_1/
+├── 000000.mp4
+├── 000001.mp4
+├── ...
+└── manifest.json
+```
+
+Each manifest records the source frame range, start time, and duration of every
+clip. The last clip can be shorter than one second when an episode does not end
+on an exact one-second boundary. Completed episodes are skipped on subsequent
+runs; pass `--overwrite` to regenerate them.
+
+## Segment two episodes
+
+To segment the first two available EgoVerse episodes into one-second MP4 clips:
+
+```bash
+modal run modal_segment_videos.py --max-episodes 2
+```
+
+The command is safe to run again. Episodes with complete outputs are verified
+and skipped, while missing or incomplete outputs are resumed. The clips and
+their manifests are available to functions in the same Modal workspace at:
+
+```text
+/egoverse/segments/<episode-id>/front_1/
+```
